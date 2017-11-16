@@ -1,0 +1,777 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		463713A41FBD8C58003C2655 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713A31FBD8C58003C2655 /* AppDelegate.m */; };
+		463713AC1FBD8C58003C2655 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 463713AB1FBD8C58003C2655 /* Assets.xcassets */; };
+		463713AF1FBD8C58003C2655 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 463713AD1FBD8C58003C2655 /* LaunchScreen.storyboard */; };
+		463713B21FBD8C58003C2655 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713B11FBD8C58003C2655 /* main.m */; };
+		463713F81FBD8E71003C2655 /* WBModuleControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713BA1FBD8E71003C2655 /* WBModuleControl.m */; };
+		463713F91FBD8E71003C2655 /* WBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713C01FBD8E71003C2655 /* WBTabBar.m */; };
+		463713FA1FBD8E71003C2655 /* WBTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713C21FBD8E71003C2655 /* WBTabBarButton.m */; };
+		463713FB1FBD8E71003C2655 /* WBTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713C41FBD8E71003C2655 /* WBTabBarController.m */; };
+		463713FC1FBD8E71003C2655 /* WBBaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713C61FBD8E71003C2655 /* WBBaseController.m */; };
+		463713FD1FBD8E71003C2655 /* WBNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713C81FBD8E71003C2655 /* WBNavigationController.m */; };
+		463713FE1FBD8E71003C2655 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713CC1FBD8E71003C2655 /* UIColor+Hex.m */; };
+		463713FF1FBD8E71003C2655 /* NSDate+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713CF1FBD8E71003C2655 /* NSDate+Extension.m */; };
+		463714001FBD8E71003C2655 /* NSString+OPSize.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713D21FBD8E71003C2655 /* NSString+OPSize.m */; };
+		463714011FBD8E71003C2655 /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713D61FBD8E71003C2655 /* UIView+Frame.m */; };
+		463714021FBD8E71003C2655 /* UIView+Inspectable.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713D91FBD8E71003C2655 /* UIView+Inspectable.m */; };
+		463714031FBD8E71003C2655 /* UIView+NextResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713DC1FBD8E71003C2655 /* UIView+NextResponder.m */; };
+		463714041FBD8E71003C2655 /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713DF1FBD8E71003C2655 /* UIView+Toast.m */; };
+		463714051FBD8E71003C2655 /* UIViewController+NavBarItemExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713E21FBD8E71003C2655 /* UIViewController+NavBarItemExtension.m */; };
+		463714061FBD8E71003C2655 /* WBHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713EA1FBD8E71003C2655 /* WBHUD.m */; };
+		463714071FBD8E71003C2655 /* WBSelectPhotoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713ED1FBD8E71003C2655 /* WBSelectPhotoTool.m */; };
+		463714081FBD8E71003C2655 /* WBTableEmptyView.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713F01FBD8E71003C2655 /* WBTableEmptyView.m */; };
+		463714091FBD8E71003C2655 /* WBTableEmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463713F11FBD8E71003C2655 /* WBTableEmptyView.xib */; };
+		4637140A1FBD8E71003C2655 /* QRCodeMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713F51FBD8E71003C2655 /* QRCodeMaker.m */; };
+		4637140B1FBD8E71003C2655 /* UITools.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713F71FBD8E71003C2655 /* UITools.m */; };
+		463714181FBD8ED9003C2655 /* WBLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463714121FBD8ED9003C2655 /* WBLoginController.m */; };
+		463714191FBD8ED9003C2655 /* WBLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463714131FBD8ED9003C2655 /* WBLoginController.xib */; };
+		4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463714161FBD8ED9003C2655 /* WBRegisterController.m */; };
+		4637141B1FBD8ED9003C2655 /* WBRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463714171FBD8ED9003C2655 /* WBRegisterController.xib */; };
+		CC954399DD4E3F8779D46DD5 /* libPods-WBChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB2E1EDE282F0959103425C /* libPods-WBChat.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1EB2E1EDE282F0959103425C /* libPods-WBChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WBChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		43F765D2FF83BFFC3F877130 /* Pods-WBChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-WBChat/Pods-WBChat.release.xcconfig"; sourceTree = "<group>"; };
+		4637139F1FBD8C58003C2655 /* WBChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WBChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		463713A21FBD8C58003C2655 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		463713A31FBD8C58003C2655 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		463713AB1FBD8C58003C2655 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		463713AE1FBD8C58003C2655 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		463713B01FBD8C58003C2655 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		463713B11FBD8C58003C2655 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		463713B91FBD8E71003C2655 /* WBModuleControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBModuleControl.h; sourceTree = "<group>"; };
+		463713BA1FBD8E71003C2655 /* WBModuleControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBModuleControl.m; sourceTree = "<group>"; };
+		463713BF1FBD8E71003C2655 /* WBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTabBar.h; sourceTree = "<group>"; };
+		463713C01FBD8E71003C2655 /* WBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTabBar.m; sourceTree = "<group>"; };
+		463713C11FBD8E71003C2655 /* WBTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTabBarButton.h; sourceTree = "<group>"; };
+		463713C21FBD8E71003C2655 /* WBTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTabBarButton.m; sourceTree = "<group>"; };
+		463713C31FBD8E71003C2655 /* WBTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTabBarController.h; sourceTree = "<group>"; };
+		463713C41FBD8E71003C2655 /* WBTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTabBarController.m; sourceTree = "<group>"; };
+		463713C51FBD8E71003C2655 /* WBBaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBBaseController.h; sourceTree = "<group>"; };
+		463713C61FBD8E71003C2655 /* WBBaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBBaseController.m; sourceTree = "<group>"; };
+		463713C71FBD8E71003C2655 /* WBNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBNavigationController.h; sourceTree = "<group>"; };
+		463713C81FBD8E71003C2655 /* WBNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBNavigationController.m; sourceTree = "<group>"; };
+		463713CB1FBD8E71003C2655 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		463713CC1FBD8E71003C2655 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		463713CE1FBD8E71003C2655 /* NSDate+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Extension.h"; sourceTree = "<group>"; };
+		463713CF1FBD8E71003C2655 /* NSDate+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Extension.m"; sourceTree = "<group>"; };
+		463713D11FBD8E71003C2655 /* NSString+OPSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+OPSize.h"; sourceTree = "<group>"; };
+		463713D21FBD8E71003C2655 /* NSString+OPSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+OPSize.m"; sourceTree = "<group>"; };
+		463713D51FBD8E71003C2655 /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
+		463713D61FBD8E71003C2655 /* UIView+Frame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Frame.m"; sourceTree = "<group>"; };
+		463713D81FBD8E71003C2655 /* UIView+Inspectable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Inspectable.h"; sourceTree = "<group>"; };
+		463713D91FBD8E71003C2655 /* UIView+Inspectable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Inspectable.m"; sourceTree = "<group>"; };
+		463713DB1FBD8E71003C2655 /* UIView+NextResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+NextResponder.h"; sourceTree = "<group>"; };
+		463713DC1FBD8E71003C2655 /* UIView+NextResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NextResponder.m"; sourceTree = "<group>"; };
+		463713DE1FBD8E71003C2655 /* UIView+Toast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Toast.h"; sourceTree = "<group>"; };
+		463713DF1FBD8E71003C2655 /* UIView+Toast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Toast.m"; sourceTree = "<group>"; };
+		463713E11FBD8E71003C2655 /* UIViewController+NavBarItemExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+NavBarItemExtension.h"; sourceTree = "<group>"; };
+		463713E21FBD8E71003C2655 /* UIViewController+NavBarItemExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+NavBarItemExtension.m"; sourceTree = "<group>"; };
+		463713E41FBD8E71003C2655 /* LxDBAnything.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LxDBAnything.h; sourceTree = "<group>"; };
+		463713E61FBD8E71003C2655 /* WBConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBConst.h; sourceTree = "<group>"; };
+		463713E91FBD8E71003C2655 /* WBHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBHUD.h; sourceTree = "<group>"; };
+		463713EA1FBD8E71003C2655 /* WBHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBHUD.m; sourceTree = "<group>"; };
+		463713EC1FBD8E71003C2655 /* WBSelectPhotoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSelectPhotoTool.h; sourceTree = "<group>"; };
+		463713ED1FBD8E71003C2655 /* WBSelectPhotoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSelectPhotoTool.m; sourceTree = "<group>"; };
+		463713EF1FBD8E71003C2655 /* WBTableEmptyView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTableEmptyView.h; sourceTree = "<group>"; };
+		463713F01FBD8E71003C2655 /* WBTableEmptyView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBTableEmptyView.m; sourceTree = "<group>"; };
+		463713F11FBD8E71003C2655 /* WBTableEmptyView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBTableEmptyView.xib; sourceTree = "<group>"; };
+		463713F41FBD8E71003C2655 /* QRCodeMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCodeMaker.h; sourceTree = "<group>"; };
+		463713F51FBD8E71003C2655 /* QRCodeMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeMaker.m; sourceTree = "<group>"; };
+		463713F61FBD8E71003C2655 /* UITools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITools.h; sourceTree = "<group>"; };
+		463713F71FBD8E71003C2655 /* UITools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITools.m; sourceTree = "<group>"; };
+		463714111FBD8ED9003C2655 /* WBLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBLoginController.h; sourceTree = "<group>"; };
+		463714121FBD8ED9003C2655 /* WBLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBLoginController.m; sourceTree = "<group>"; };
+		463714131FBD8ED9003C2655 /* WBLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBLoginController.xib; sourceTree = "<group>"; };
+		463714151FBD8ED9003C2655 /* WBRegisterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBRegisterController.h; sourceTree = "<group>"; };
+		463714161FBD8ED9003C2655 /* WBRegisterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBRegisterController.m; sourceTree = "<group>"; };
+		463714171FBD8ED9003C2655 /* WBRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBRegisterController.xib; sourceTree = "<group>"; };
+		4637141C1FBD9033003C2655 /* WBConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBConfig.h; sourceTree = "<group>"; };
+		4637141D1FBD9254003C2655 /* WBServiceSDKHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBServiceSDKHeaders.h; sourceTree = "<group>"; };
+		AC27F697A94A6865283FF794 /* Pods-WBChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WBChat/Pods-WBChat.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4637139C1FBD8C58003C2655 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC954399DD4E3F8779D46DD5 /* libPods-WBChat.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		463713961FBD8C58003C2655 = {
+			isa = PBXGroup;
+			children = (
+				463713A11FBD8C58003C2655 /* WBChat */,
+				463713A01FBD8C58003C2655 /* Products */,
+				77E0E5C191FCD7277FDA3026 /* Pods */,
+				AC26741CD1370BE4F44D0C2E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		463713A01FBD8C58003C2655 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4637139F1FBD8C58003C2655 /* WBChat.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		463713A11FBD8C58003C2655 /* WBChat */ = {
+			isa = PBXGroup;
+			children = (
+				4637140C1FBD8E85003C2655 /* UIClasses */,
+				4637140D1FBD8EA3003C2655 /* ServiceSDK */,
+				4637141E1FBD933C003C2655 /* Other */,
+				463713A21FBD8C58003C2655 /* AppDelegate.h */,
+				463713A31FBD8C58003C2655 /* AppDelegate.m */,
+				463713AB1FBD8C58003C2655 /* Assets.xcassets */,
+			);
+			path = WBChat;
+			sourceTree = "<group>";
+		};
+		463713B81FBD8E71003C2655 /* ModuleControl */ = {
+			isa = PBXGroup;
+			children = (
+				463713B91FBD8E71003C2655 /* WBModuleControl.h */,
+				463713BA1FBD8E71003C2655 /* WBModuleControl.m */,
+			);
+			path = ModuleControl;
+			sourceTree = "<group>";
+		};
+		463713BB1FBD8E71003C2655 /* Extra */ = {
+			isa = PBXGroup;
+			children = (
+				463713BC1FBD8E71003C2655 /* Base */,
+				463713C91FBD8E71003C2655 /* Category */,
+				463713E31FBD8E71003C2655 /* Config */,
+				463713E71FBD8E71003C2655 /* CustomView */,
+				463713F21FBD8E71003C2655 /* Tools */,
+			);
+			path = Extra;
+			sourceTree = "<group>";
+		};
+		463713BC1FBD8E71003C2655 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				463713BD1FBD8E71003C2655 /* TabbarVC */,
+				463713C51FBD8E71003C2655 /* WBBaseController.h */,
+				463713C61FBD8E71003C2655 /* WBBaseController.m */,
+				463713C71FBD8E71003C2655 /* WBNavigationController.h */,
+				463713C81FBD8E71003C2655 /* WBNavigationController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		463713BD1FBD8E71003C2655 /* TabbarVC */ = {
+			isa = PBXGroup;
+			children = (
+				463713BE1FBD8E71003C2655 /* Views */,
+				463713C31FBD8E71003C2655 /* WBTabBarController.h */,
+				463713C41FBD8E71003C2655 /* WBTabBarController.m */,
+			);
+			path = TabbarVC;
+			sourceTree = "<group>";
+		};
+		463713BE1FBD8E71003C2655 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				463713BF1FBD8E71003C2655 /* WBTabBar.h */,
+				463713C01FBD8E71003C2655 /* WBTabBar.m */,
+				463713C11FBD8E71003C2655 /* WBTabBarButton.h */,
+				463713C21FBD8E71003C2655 /* WBTabBarButton.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		463713C91FBD8E71003C2655 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				463713CA1FBD8E71003C2655 /* Color */,
+				463713CD1FBD8E71003C2655 /* Date */,
+				463713D01FBD8E71003C2655 /* NSString */,
+				463713D31FBD8E71003C2655 /* UIView */,
+				463713E01FBD8E71003C2655 /* UIViewController */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		463713CA1FBD8E71003C2655 /* Color */ = {
+			isa = PBXGroup;
+			children = (
+				463713CB1FBD8E71003C2655 /* UIColor+Hex.h */,
+				463713CC1FBD8E71003C2655 /* UIColor+Hex.m */,
+			);
+			path = Color;
+			sourceTree = "<group>";
+		};
+		463713CD1FBD8E71003C2655 /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				463713CE1FBD8E71003C2655 /* NSDate+Extension.h */,
+				463713CF1FBD8E71003C2655 /* NSDate+Extension.m */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
+		463713D01FBD8E71003C2655 /* NSString */ = {
+			isa = PBXGroup;
+			children = (
+				463713D11FBD8E71003C2655 /* NSString+OPSize.h */,
+				463713D21FBD8E71003C2655 /* NSString+OPSize.m */,
+			);
+			path = NSString;
+			sourceTree = "<group>";
+		};
+		463713D31FBD8E71003C2655 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				463713D41FBD8E71003C2655 /* UIView+Frame */,
+				463713D71FBD8E71003C2655 /* UIView+Inspectable */,
+				463713DA1FBD8E71003C2655 /* UIView+NextResponder */,
+				463713DD1FBD8E71003C2655 /* UIView+Toast */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
+		463713D41FBD8E71003C2655 /* UIView+Frame */ = {
+			isa = PBXGroup;
+			children = (
+				463713D51FBD8E71003C2655 /* UIView+Frame.h */,
+				463713D61FBD8E71003C2655 /* UIView+Frame.m */,
+			);
+			path = "UIView+Frame";
+			sourceTree = "<group>";
+		};
+		463713D71FBD8E71003C2655 /* UIView+Inspectable */ = {
+			isa = PBXGroup;
+			children = (
+				463713D81FBD8E71003C2655 /* UIView+Inspectable.h */,
+				463713D91FBD8E71003C2655 /* UIView+Inspectable.m */,
+			);
+			path = "UIView+Inspectable";
+			sourceTree = "<group>";
+		};
+		463713DA1FBD8E71003C2655 /* UIView+NextResponder */ = {
+			isa = PBXGroup;
+			children = (
+				463713DB1FBD8E71003C2655 /* UIView+NextResponder.h */,
+				463713DC1FBD8E71003C2655 /* UIView+NextResponder.m */,
+			);
+			path = "UIView+NextResponder";
+			sourceTree = "<group>";
+		};
+		463713DD1FBD8E71003C2655 /* UIView+Toast */ = {
+			isa = PBXGroup;
+			children = (
+				463713DE1FBD8E71003C2655 /* UIView+Toast.h */,
+				463713DF1FBD8E71003C2655 /* UIView+Toast.m */,
+			);
+			path = "UIView+Toast";
+			sourceTree = "<group>";
+		};
+		463713E01FBD8E71003C2655 /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				463713E11FBD8E71003C2655 /* UIViewController+NavBarItemExtension.h */,
+				463713E21FBD8E71003C2655 /* UIViewController+NavBarItemExtension.m */,
+			);
+			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		463713E31FBD8E71003C2655 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				4637141C1FBD9033003C2655 /* WBConfig.h */,
+				463713E41FBD8E71003C2655 /* LxDBAnything.h */,
+				463713E61FBD8E71003C2655 /* WBConst.h */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		463713E71FBD8E71003C2655 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				463713E81FBD8E71003C2655 /* HUD */,
+				463713EB1FBD8E71003C2655 /* SelectPhotoTool */,
+				463713EE1FBD8E71003C2655 /* TableEmptyView */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		463713E81FBD8E71003C2655 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				463713E91FBD8E71003C2655 /* WBHUD.h */,
+				463713EA1FBD8E71003C2655 /* WBHUD.m */,
+			);
+			path = HUD;
+			sourceTree = "<group>";
+		};
+		463713EB1FBD8E71003C2655 /* SelectPhotoTool */ = {
+			isa = PBXGroup;
+			children = (
+				463713EC1FBD8E71003C2655 /* WBSelectPhotoTool.h */,
+				463713ED1FBD8E71003C2655 /* WBSelectPhotoTool.m */,
+			);
+			path = SelectPhotoTool;
+			sourceTree = "<group>";
+		};
+		463713EE1FBD8E71003C2655 /* TableEmptyView */ = {
+			isa = PBXGroup;
+			children = (
+				463713EF1FBD8E71003C2655 /* WBTableEmptyView.h */,
+				463713F01FBD8E71003C2655 /* WBTableEmptyView.m */,
+				463713F11FBD8E71003C2655 /* WBTableEmptyView.xib */,
+			);
+			path = TableEmptyView;
+			sourceTree = "<group>";
+		};
+		463713F21FBD8E71003C2655 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				463713F31FBD8E71003C2655 /* QRMaker */,
+				463713F61FBD8E71003C2655 /* UITools.h */,
+				463713F71FBD8E71003C2655 /* UITools.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		463713F31FBD8E71003C2655 /* QRMaker */ = {
+			isa = PBXGroup;
+			children = (
+				463713F41FBD8E71003C2655 /* QRCodeMaker.h */,
+				463713F51FBD8E71003C2655 /* QRCodeMaker.m */,
+			);
+			path = QRMaker;
+			sourceTree = "<group>";
+		};
+		4637140C1FBD8E85003C2655 /* UIClasses */ = {
+			isa = PBXGroup;
+			children = (
+				4637140E1FBD8ED0003C2655 /* UIModules */,
+				463713BB1FBD8E71003C2655 /* Extra */,
+				463713B81FBD8E71003C2655 /* ModuleControl */,
+			);
+			path = UIClasses;
+			sourceTree = "<group>";
+		};
+		4637140D1FBD8EA3003C2655 /* ServiceSDK */ = {
+			isa = PBXGroup;
+			children = (
+				4637141D1FBD9254003C2655 /* WBServiceSDKHeaders.h */,
+			);
+			path = ServiceSDK;
+			sourceTree = "<group>";
+		};
+		4637140E1FBD8ED0003C2655 /* UIModules */ = {
+			isa = PBXGroup;
+			children = (
+				4637140F1FBD8ED9003C2655 /* LoginAndRegister */,
+			);
+			path = UIModules;
+			sourceTree = "<group>";
+		};
+		4637140F1FBD8ED9003C2655 /* LoginAndRegister */ = {
+			isa = PBXGroup;
+			children = (
+				463714101FBD8ED9003C2655 /* Login */,
+				463714141FBD8ED9003C2655 /* Register */,
+			);
+			path = LoginAndRegister;
+			sourceTree = "<group>";
+		};
+		463714101FBD8ED9003C2655 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				463714111FBD8ED9003C2655 /* WBLoginController.h */,
+				463714121FBD8ED9003C2655 /* WBLoginController.m */,
+				463714131FBD8ED9003C2655 /* WBLoginController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		463714141FBD8ED9003C2655 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				463714151FBD8ED9003C2655 /* WBRegisterController.h */,
+				463714161FBD8ED9003C2655 /* WBRegisterController.m */,
+				463714171FBD8ED9003C2655 /* WBRegisterController.xib */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		4637141E1FBD933C003C2655 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				463713AD1FBD8C58003C2655 /* LaunchScreen.storyboard */,
+				463713B01FBD8C58003C2655 /* Info.plist */,
+				463713B11FBD8C58003C2655 /* main.m */,
+			);
+			name = Other;
+			sourceTree = "<group>";
+		};
+		77E0E5C191FCD7277FDA3026 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AC27F697A94A6865283FF794 /* Pods-WBChat.debug.xcconfig */,
+				43F765D2FF83BFFC3F877130 /* Pods-WBChat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		AC26741CD1370BE4F44D0C2E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1EB2E1EDE282F0959103425C /* libPods-WBChat.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4637139E1FBD8C58003C2655 /* WBChat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 463713B51FBD8C58003C2655 /* Build configuration list for PBXNativeTarget "WBChat" */;
+			buildPhases = (
+				8FF414C0221E1873C61BD8D6 /* [CP] Check Pods Manifest.lock */,
+				4637139B1FBD8C58003C2655 /* Sources */,
+				4637139C1FBD8C58003C2655 /* Frameworks */,
+				4637139D1FBD8C58003C2655 /* Resources */,
+				308DE373CC55F0A61EC5F404 /* [CP] Embed Pods Frameworks */,
+				672B5C813CAEEDC8B2A167B2 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WBChat;
+			productName = WBChat;
+			productReference = 4637139F1FBD8C58003C2655 /* WBChat.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		463713971FBD8C58003C2655 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = WB;
+				LastUpgradeCheck = 0910;
+				ORGANIZATIONNAME = RedRain;
+				TargetAttributes = {
+					4637139E1FBD8C58003C2655 = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 4637139A1FBD8C58003C2655 /* Build configuration list for PBXProject "WBChat" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 463713961FBD8C58003C2655;
+			productRefGroup = 463713A01FBD8C58003C2655 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4637139E1FBD8C58003C2655 /* WBChat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4637139D1FBD8C58003C2655 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				463714091FBD8E71003C2655 /* WBTableEmptyView.xib in Resources */,
+				463713AF1FBD8C58003C2655 /* LaunchScreen.storyboard in Resources */,
+				463714191FBD8ED9003C2655 /* WBLoginController.xib in Resources */,
+				463713AC1FBD8C58003C2655 /* Assets.xcassets in Resources */,
+				4637141B1FBD8ED9003C2655 /* WBRegisterController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		308DE373CC55F0A61EC5F404 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WBChat/Pods-WBChat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		672B5C813CAEEDC8B2A167B2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WBChat/Pods-WBChat-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WBChat/Pods-WBChat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8FF414C0221E1873C61BD8D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WBChat-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4637139B1FBD8C58003C2655 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				463713F81FBD8E71003C2655 /* WBModuleControl.m in Sources */,
+				4637140B1FBD8E71003C2655 /* UITools.m in Sources */,
+				463713FE1FBD8E71003C2655 /* UIColor+Hex.m in Sources */,
+				463713FF1FBD8E71003C2655 /* NSDate+Extension.m in Sources */,
+				463714031FBD8E71003C2655 /* UIView+NextResponder.m in Sources */,
+				463713F91FBD8E71003C2655 /* WBTabBar.m in Sources */,
+				4637140A1FBD8E71003C2655 /* QRCodeMaker.m in Sources */,
+				463714181FBD8ED9003C2655 /* WBLoginController.m in Sources */,
+				463714071FBD8E71003C2655 /* WBSelectPhotoTool.m in Sources */,
+				463713FA1FBD8E71003C2655 /* WBTabBarButton.m in Sources */,
+				463714011FBD8E71003C2655 /* UIView+Frame.m in Sources */,
+				4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */,
+				463713FD1FBD8E71003C2655 /* WBNavigationController.m in Sources */,
+				463714041FBD8E71003C2655 /* UIView+Toast.m in Sources */,
+				463713B21FBD8C58003C2655 /* main.m in Sources */,
+				463713FC1FBD8E71003C2655 /* WBBaseController.m in Sources */,
+				463714061FBD8E71003C2655 /* WBHUD.m in Sources */,
+				463714001FBD8E71003C2655 /* NSString+OPSize.m in Sources */,
+				463713A41FBD8C58003C2655 /* AppDelegate.m in Sources */,
+				463714081FBD8E71003C2655 /* WBTableEmptyView.m in Sources */,
+				463713FB1FBD8E71003C2655 /* WBTabBarController.m in Sources */,
+				463714051FBD8E71003C2655 /* UIViewController+NavBarItemExtension.m in Sources */,
+				463714021FBD8E71003C2655 /* UIView+Inspectable.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		463713AD1FBD8C58003C2655 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				463713AE1FBD8C58003C2655 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		463713B31FBD8C58003C2655 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		463713B41FBD8C58003C2655 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		463713B61FBD8C58003C2655 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AC27F697A94A6865283FF794 /* Pods-WBChat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5R7QX8YA8E;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = WBChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.redrain.WBChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		463713B71FBD8C58003C2655 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 43F765D2FF83BFFC3F877130 /* Pods-WBChat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5R7QX8YA8E;
+				GCC_PREFIX_HEADER = "";
+				INFOPLIST_FILE = WBChat/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.redrain.WBChat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4637139A1FBD8C58003C2655 /* Build configuration list for PBXProject "WBChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				463713B31FBD8C58003C2655 /* Debug */,
+				463713B41FBD8C58003C2655 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		463713B51FBD8C58003C2655 /* Build configuration list for PBXNativeTarget "WBChat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				463713B61FBD8C58003C2655 /* Debug */,
+				463713B71FBD8C58003C2655 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 463713971FBD8C58003C2655 /* Project object */;
+}
