@@ -9,6 +9,10 @@
 #import "WBTabBarController.h"
 #import "WBTabBar.h"
 #import "WBNavigationController.h"
+#import "WBMeListController.h"
+#import "WBDiscoverListController.h"
+#import "WBContactsListController.h"
+#import "WBChatListController.h"
 
 @interface WBTabBarController ()<WBTabBarDelegate>
 @property (nonatomic, weak)WBTabBar* customTabBar;
@@ -73,11 +77,19 @@
  */
 - (void)setupChildViewControllers
 {
-//    WBHomePageController *cloudChat = [[WBHomePageController alloc] init];
-//    [self setupOneChildViewController:cloudChat title:@"" image:@"ico_tab_event" selectedImage:@"ico_tab_event_selected"];
-//    
-//    WBMEController *addressBook = [[WBMEController alloc] init];
-//    [self setupOneChildViewController:addressBook title:@"" image:@"ico_tab_more" selectedImage:@"ico_tab_more_selected"];
+    WBChatListController *chatList = [[WBChatListController alloc] init];
+    [self setupOneChildViewController:chatList title:@"" image:@"ico_tab_event" selectedImage:@"ico_tab_event_selected"];
+    
+    WBContactsListController *contactsList = [[WBContactsListController alloc] init];
+    [self setupOneChildViewController:contactsList title:@"" image:@"ico_tab_more" selectedImage:@"ico_tab_more_selected"];
+    
+    
+    WBDiscoverListController *discoverList = [[WBDiscoverListController alloc] init];
+    [self setupOneChildViewController:discoverList title:@"" image:@"ico_tab_more" selectedImage:@"ico_tab_more_selected"];
+    
+    
+    WBMeListController *meList = [[WBMeListController alloc] init];
+    [self setupOneChildViewController:meList title:@"" image:@"ico_tab_more" selectedImage:@"ico_tab_more_selected"];
 }
 
 - (void)setupOneChildViewController:(UIViewController *)vc title:(NSString *)title image:(NSString *)image selectedImage:(NSString *)selectedImage

@@ -9,24 +9,25 @@
 #import "WBModuleControl.h"
 #import "WBLoginController.h"
 #import "WBTabBarController.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @implementation WBModuleControl
 + (UIViewController *)controllerFromDidFinishLaunching{
-    //AVUser *user = [AVUser currentUser];
-//    if (user) {
-//        return [self loginedControllerWithUserModel:user];
-//    }else{
+    AVUser *user = [AVUser currentUser];
+    if (user) {
+        return [self loginedControllerWithUserModel:user];
+    }else{
         return [[WBLoginController alloc] init];
-//    }
+    }
 }
 
-+ (UIViewController *)loginedController{//WithUserModel:(AVUser *)userModel{
++ (UIViewController *)loginedControllerWithUserModel:(AVUser *)userModel{
     return [[WBTabBarController alloc] init];
 }
 
-+ (void)exchangeWindowRootController{//WithUserModel:(AVUser *)userModel{
++ (void)exchangeWindowRootControllerWithUserModel:(AVUser *)userModel{
     
-    UIViewController *vc = [WBModuleControl loginedController];//WithUserModel:userModel];
+    UIViewController *vc = [WBModuleControl loginedControllerWithUserModel:userModel];
     
     [[UIApplication sharedApplication].delegate.window setRootViewController:vc];
     [[UIApplication sharedApplication].delegate.window makeKeyAndVisible];

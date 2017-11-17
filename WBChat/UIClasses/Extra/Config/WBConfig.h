@@ -12,6 +12,8 @@
 // 第三方库, 要放在最上面
 #import "WBHUD.h"
 #import "LxDBAnything.h"
+#import <AVOSCloud/AVOSCloud.h>
+#import <AVOSCloudIM/AVOSCloudIM.h>
 
 // 分类
 #import "WBConst.h"

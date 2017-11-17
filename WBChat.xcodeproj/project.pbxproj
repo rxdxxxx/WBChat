@@ -35,6 +35,10 @@
 		463714191FBD8ED9003C2655 /* WBLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463714131FBD8ED9003C2655 /* WBLoginController.xib */; };
 		4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463714161FBD8ED9003C2655 /* WBRegisterController.m */; };
 		4637141B1FBD8ED9003C2655 /* WBRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463714171FBD8ED9003C2655 /* WBRegisterController.xib */; };
+		46F142291FBEDD34004B0554 /* WBChatListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142281FBEDD34004B0554 /* WBChatListController.m */; };
+		46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F1422C1FBEDD46004B0554 /* WBContactsListController.m */; };
+		46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142301FBEDD57004B0554 /* WBDiscoverListController.m */; };
+		46F142351FBEDD67004B0554 /* WBMeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142341FBEDD67004B0554 /* WBMeListController.m */; };
 		CC954399DD4E3F8779D46DD5 /* libPods-WBChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB2E1EDE282F0959103425C /* libPods-WBChat.a */; };
 /* End PBXBuildFile section */
 
@@ -97,6 +101,14 @@
 		463714171FBD8ED9003C2655 /* WBRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBRegisterController.xib; sourceTree = "<group>"; };
 		4637141C1FBD9033003C2655 /* WBConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBConfig.h; sourceTree = "<group>"; };
 		4637141D1FBD9254003C2655 /* WBServiceSDKHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBServiceSDKHeaders.h; sourceTree = "<group>"; };
+		46F142271FBEDD34004B0554 /* WBChatListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListController.h; sourceTree = "<group>"; };
+		46F142281FBEDD34004B0554 /* WBChatListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListController.m; sourceTree = "<group>"; };
+		46F1422B1FBEDD46004B0554 /* WBContactsListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBContactsListController.h; sourceTree = "<group>"; };
+		46F1422C1FBEDD46004B0554 /* WBContactsListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBContactsListController.m; sourceTree = "<group>"; };
+		46F1422F1FBEDD57004B0554 /* WBDiscoverListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBDiscoverListController.h; sourceTree = "<group>"; };
+		46F142301FBEDD57004B0554 /* WBDiscoverListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBDiscoverListController.m; sourceTree = "<group>"; };
+		46F142331FBEDD67004B0554 /* WBMeListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBMeListController.h; sourceTree = "<group>"; };
+		46F142341FBEDD67004B0554 /* WBMeListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBMeListController.m; sourceTree = "<group>"; };
 		AC27F697A94A6865283FF794 /* Pods-WBChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WBChat/Pods-WBChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -380,7 +392,11 @@
 		4637140E1FBD8ED0003C2655 /* UIModules */ = {
 			isa = PBXGroup;
 			children = (
-				4637140F1FBD8ED9003C2655 /* LoginAndRegister */,
+				46F142211FBEDD04004B0554 /* Main */,
+				46F142231FBEDD11004B0554 /* Chat */,
+				46F142221FBEDD11004B0554 /* Contacts */,
+				46F142241FBEDD12004B0554 /* Discover */,
+				46F142251FBEDD12004B0554 /* Me */,
 			);
 			path = UIModules;
 			sourceTree = "<group>";
@@ -422,6 +438,82 @@
 				463713B11FBD8C58003C2655 /* main.m */,
 			);
 			name = Other;
+			sourceTree = "<group>";
+		};
+		46F142211FBEDD04004B0554 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				4637140F1FBD8ED9003C2655 /* LoginAndRegister */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		46F142221FBEDD11004B0554 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				46F1422A1FBEDD3C004B0554 /* ContactsList */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		46F142231FBEDD11004B0554 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				46F142261FBEDD1F004B0554 /* ChatList */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		46F142241FBEDD12004B0554 /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				46F1422E1FBEDD4C004B0554 /* DiscoverList */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		46F142251FBEDD12004B0554 /* Me */ = {
+			isa = PBXGroup;
+			children = (
+				46F142321FBEDD5E004B0554 /* MeList */,
+			);
+			path = Me;
+			sourceTree = "<group>";
+		};
+		46F142261FBEDD1F004B0554 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				46F142271FBEDD34004B0554 /* WBChatListController.h */,
+				46F142281FBEDD34004B0554 /* WBChatListController.m */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		46F1422A1FBEDD3C004B0554 /* ContactsList */ = {
+			isa = PBXGroup;
+			children = (
+				46F1422B1FBEDD46004B0554 /* WBContactsListController.h */,
+				46F1422C1FBEDD46004B0554 /* WBContactsListController.m */,
+			);
+			path = ContactsList;
+			sourceTree = "<group>";
+		};
+		46F1422E1FBEDD4C004B0554 /* DiscoverList */ = {
+			isa = PBXGroup;
+			children = (
+				46F1422F1FBEDD57004B0554 /* WBDiscoverListController.h */,
+				46F142301FBEDD57004B0554 /* WBDiscoverListController.m */,
+			);
+			path = DiscoverList;
+			sourceTree = "<group>";
+		};
+		46F142321FBEDD5E004B0554 /* MeList */ = {
+			isa = PBXGroup;
+			children = (
+				46F142331FBEDD67004B0554 /* WBMeListController.h */,
+				46F142341FBEDD67004B0554 /* WBMeListController.m */,
+			);
+			path = MeList;
 			sourceTree = "<group>";
 		};
 		77E0E5C191FCD7277FDA3026 /* Pods */ = {
@@ -536,6 +628,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WBChat/Pods-WBChat-resources.sh",
+				"${PODS_ROOT}/AVOSCloud/AVOS/AVOSCloud/AVOSCloud_Art.inc",
 				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -573,6 +666,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				463713F81FBD8E71003C2655 /* WBModuleControl.m in Sources */,
+				46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */,
+				46F142351FBEDD67004B0554 /* WBMeListController.m in Sources */,
 				4637140B1FBD8E71003C2655 /* UITools.m in Sources */,
 				463713FE1FBD8E71003C2655 /* UIColor+Hex.m in Sources */,
 				463713FF1FBD8E71003C2655 /* NSDate+Extension.m in Sources */,
@@ -584,12 +679,14 @@
 				463713FA1FBD8E71003C2655 /* WBTabBarButton.m in Sources */,
 				463714011FBD8E71003C2655 /* UIView+Frame.m in Sources */,
 				4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */,
+				46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */,
 				463713FD1FBD8E71003C2655 /* WBNavigationController.m in Sources */,
 				463714041FBD8E71003C2655 /* UIView+Toast.m in Sources */,
 				463713B21FBD8C58003C2655 /* main.m in Sources */,
 				463713FC1FBD8E71003C2655 /* WBBaseController.m in Sources */,
 				463714061FBD8E71003C2655 /* WBHUD.m in Sources */,
 				463714001FBD8E71003C2655 /* NSString+OPSize.m in Sources */,
+				46F142291FBEDD34004B0554 /* WBChatListController.m in Sources */,
 				463713A41FBD8C58003C2655 /* AppDelegate.m in Sources */,
 				463714081FBD8E71003C2655 /* WBTableEmptyView.m in Sources */,
 				463713FB1FBD8E71003C2655 /* WBTabBarController.m in Sources */,
@@ -729,7 +826,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.redrain.WBChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -746,7 +843,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.redrain.WBChat;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

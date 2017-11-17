@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class AVUser;
 @interface WBModuleControl : NSObject
 
 
@@ -19,7 +19,7 @@
 
  @param userModel 用户信息模型
  */
-+ (void)exchangeWindowRootController;//WithUserModel:(AVUser *)userModel;
++ (void)exchangeWindowRootControllerWithUserModel:(AVUser *)userModel;
 
 
 /**

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "WBModuleControl.h"
+#import <AVOSCloud/AVOSCloud.h>
 @interface AppDelegate ()
 
 @end
@@ -17,6 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self setupLeanCloud];
+    
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self.window setRootViewController:[WBModuleControl controllerFromDidFinishLaunching]];
@@ -54,5 +58,15 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)setupLeanCloud{
+#ifdef DEBUG
+#else
+    [AVOSCloud setAllLogsEnabled:false];
+#endif
+    [AVOSCloud setApplicationId:@"O9I67dBpCiW8WcgoD89dCpla-gzGzoHsz"
+                      clientKey:@"HwqdEYsaL3D3Xqr45Ryr0PW1"];
+    
+//    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+}
 
 @end
