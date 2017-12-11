@@ -15,6 +15,9 @@
 + (UIViewController *)controllerFromDidFinishLaunching{
     AVUser *user = [AVUser currentUser];
     if (user) {
+        // 开启链接
+        [ChatManager sharedInstance];
+        
         return [self loginedControllerWithUserModel:user];
     }else{
         return [[WBLoginController alloc] init];

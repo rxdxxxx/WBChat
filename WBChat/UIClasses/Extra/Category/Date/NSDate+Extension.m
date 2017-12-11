@@ -89,4 +89,29 @@
     return [fmt stringFromDate:self];
 }
 
+- (NSString *)wb_chatListTimeString{
+    
+    NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+    // 如果是真机调试，转换时间，需要设置locale
+    fmt.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    
+    
+    NSDate *createDate = self;
+    
+    // 当前时间
+    if ([createDate isToday]) { // 今天
+        
+        fmt.dateFormat = @"HH:mm";
+        return [fmt stringFromDate:createDate];
+        
+    } else if ([createDate isYesterday]) { // 昨天
+        
+        return @"昨天";
+        
+    } else { // 其他日子
+        fmt.dateFormat = @"MM月dd日";
+        return [fmt stringFromDate:createDate];
+    }
+}
+
 @end

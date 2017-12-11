@@ -9,31 +9,23 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDate (Extension)
-/**
- *  判断某个时间是否为今年
- */
-- (BOOL)isThisYear;
-
-/**
- *  判断某个时间是否为昨天
- */
-- (BOOL)isYesterday;
-
-/**
- *  判断某个时间是否为今天
- */
-- (BOOL)isToday;
-
-/**
- *  判断两个时间戳是否为同一天
- */
-+ (BOOL)isDate:(long long)dateNumber1 inSameDayAsDate:(long long)dateNumber2;
-
 
 /**
  格式化后的时间字符串
 
- @return 字符串
+ @return 字符串 @"yyyy-MM-dd HH:mm:ss";
  */
-- (NSString *)rr_formatStrig;
+- (NSString *)wb_formatStrig;
+
+
+/**
+ 会话列表的时间格式
+ 
+ 今天: HH:mm
+ 昨天: 昨天
+ 其余: MM月dd日
+ 
+ @return 格式化后的字符床
+ */
+- (NSString *)wb_chatListTimeString;
 @end

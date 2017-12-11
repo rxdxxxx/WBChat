@@ -17,6 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self rr_initTitleView:@"发现"];
+
 }
 
 - (void)didReceiveMemoryWarning {

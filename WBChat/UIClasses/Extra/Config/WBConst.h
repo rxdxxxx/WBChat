@@ -11,26 +11,15 @@
 
 
 #define kBoardHoldImage [UIImage imageNamed:@"star_bg"]
-#define kUserHeaderHoldImage [UIImage imageNamed:@"ico_ac_s_other_13"]
-#define kQRCodePrefix @"WhiteBoard-"
-
-#define kScreenWidth ([UIScreen mainScreen].bounds.size.width)
-#define kScreenHeight ([UIScreen mainScreen].bounds.size.height)
-#define kNavigationBarHeight (64)
-#define kSearchBarHeightHeight (55)
-
+#define kUserHeaderHoldImage [UIImage imageNamed:@"header_male"]WB
+#define kWBScreenWidth ([UIScreen mainScreen].bounds.size.width)
+#define kWBScreenHeight ([UIScreen mainScreen].bounds.size.height)
+#define kWBNavigationBarHeight (64)
+#define kWBSearchBarHeightHeight (55)
 #define WBNotificationCenter [NSNotificationCenter defaultCenter]
+#define WBRGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
 
 
-#define kiPhone4sHeight (480)
-#define kiPhone5sHeight (568)
-
-#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255.0 green:g/255.0 blue:b/255.0 alpha:a]
-
-#define HEIGHT(d) ((double)(d) / 667 * kScreenHeight)
-#define WIDTH(d) ((double)(d) / 375 * kScreenWidth)
-
-#define kIsIPhone4s (kScreenHeight == kiPhone4sHeight)
 
 //如果有Debug这个宏的话,就允许log输出...可变参数
 #ifdef DEBUG
@@ -55,7 +44,7 @@ free(properties);\
 return [NSString stringWithFormat:@"<%@: %p> -- %@",[self class],self,dictionary];\
 }
 
-#define kAlphaNum   @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+#define kWBAlphaNum   @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
 
 #define kWBOverwriteCopyWithZone \
 - (id)copyWithZone:(NSZone *)zone{\

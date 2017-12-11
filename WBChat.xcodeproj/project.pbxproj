@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46150BCD1FDE755700B85E9D /* WBChatListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BCC1FDE755700B85E9D /* WBChatListCell.m */; };
+		46150BD31FDE7B9B00B85E9D /* WBChatListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BD21FDE7B9B00B85E9D /* WBChatListCellModel.m */; };
+		46150BD71FDE809300B85E9D /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BD61FDE809300B85E9D /* ChatManager.m */; };
 		463713A41FBD8C58003C2655 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713A31FBD8C58003C2655 /* AppDelegate.m */; };
 		463713AC1FBD8C58003C2655 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 463713AB1FBD8C58003C2655 /* Assets.xcassets */; };
 		463713AF1FBD8C58003C2655 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 463713AD1FBD8C58003C2655 /* LaunchScreen.storyboard */; };
@@ -39,12 +42,22 @@
 		46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F1422C1FBEDD46004B0554 /* WBContactsListController.m */; };
 		46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142301FBEDD57004B0554 /* WBDiscoverListController.m */; };
 		46F142351FBEDD67004B0554 /* WBMeListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142341FBEDD67004B0554 /* WBMeListController.m */; };
+		46F1423F1FBEE0A3004B0554 /* WBSearchContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F1423D1FBEE0A3004B0554 /* WBSearchContactsController.m */; };
+		46F142401FBEE0A3004B0554 /* WBSearchContactsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F1423E1FBEE0A3004B0554 /* WBSearchContactsController.xib */; };
+		46F142451FBEE33D004B0554 /* WBSearchContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142431FBEE33D004B0554 /* WBSearchContactsCell.m */; };
+		46F142461FBEE33D004B0554 /* WBSearchContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F142441FBEE33D004B0554 /* WBSearchContactsCell.xib */; };
 		CC954399DD4E3F8779D46DD5 /* libPods-WBChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB2E1EDE282F0959103425C /* libPods-WBChat.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1EB2E1EDE282F0959103425C /* libPods-WBChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WBChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F765D2FF83BFFC3F877130 /* Pods-WBChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-WBChat/Pods-WBChat.release.xcconfig"; sourceTree = "<group>"; };
+		46150BCB1FDE755700B85E9D /* WBChatListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListCell.h; sourceTree = "<group>"; };
+		46150BCC1FDE755700B85E9D /* WBChatListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListCell.m; sourceTree = "<group>"; };
+		46150BD11FDE7B9B00B85E9D /* WBChatListCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListCellModel.h; sourceTree = "<group>"; };
+		46150BD21FDE7B9B00B85E9D /* WBChatListCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListCellModel.m; sourceTree = "<group>"; };
+		46150BD51FDE809300B85E9D /* ChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatManager.h; sourceTree = "<group>"; };
+		46150BD61FDE809300B85E9D /* ChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatManager.m; sourceTree = "<group>"; };
 		4637139F1FBD8C58003C2655 /* WBChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WBChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		463713A21FBD8C58003C2655 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		463713A31FBD8C58003C2655 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -109,6 +122,12 @@
 		46F142301FBEDD57004B0554 /* WBDiscoverListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBDiscoverListController.m; sourceTree = "<group>"; };
 		46F142331FBEDD67004B0554 /* WBMeListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBMeListController.h; sourceTree = "<group>"; };
 		46F142341FBEDD67004B0554 /* WBMeListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBMeListController.m; sourceTree = "<group>"; };
+		46F1423C1FBEE0A3004B0554 /* WBSearchContactsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBSearchContactsController.h; sourceTree = "<group>"; };
+		46F1423D1FBEE0A3004B0554 /* WBSearchContactsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBSearchContactsController.m; sourceTree = "<group>"; };
+		46F1423E1FBEE0A3004B0554 /* WBSearchContactsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBSearchContactsController.xib; sourceTree = "<group>"; };
+		46F142421FBEE33D004B0554 /* WBSearchContactsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBSearchContactsCell.h; sourceTree = "<group>"; };
+		46F142431FBEE33D004B0554 /* WBSearchContactsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBSearchContactsCell.m; sourceTree = "<group>"; };
+		46F142441FBEE33D004B0554 /* WBSearchContactsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBSearchContactsCell.xib; sourceTree = "<group>"; };
 		AC27F697A94A6865283FF794 /* Pods-WBChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WBChat/Pods-WBChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,6 +143,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46150BC91FDE753300B85E9D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				46150BCB1FDE755700B85E9D /* WBChatListCell.h */,
+				46150BCC1FDE755700B85E9D /* WBChatListCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		46150BCA1FDE754000B85E9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				46150BD11FDE7B9B00B85E9D /* WBChatListCellModel.h */,
+				46150BD21FDE7B9B00B85E9D /* WBChatListCellModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		46150BCE1FDE76FC00B85E9D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		46150BD41FDE809300B85E9D /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				46150BD51FDE809300B85E9D /* ChatManager.h */,
+				46150BD61FDE809300B85E9D /* ChatManager.m */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		463713961FBD8C58003C2655 = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +437,7 @@
 		4637140D1FBD8EA3003C2655 /* ServiceSDK */ = {
 			isa = PBXGroup;
 			children = (
+				46150BD41FDE809300B85E9D /* Manager */,
 				4637141D1FBD9254003C2655 /* WBServiceSDKHeaders.h */,
 			);
 			path = ServiceSDK;
@@ -451,6 +505,7 @@
 		46F142221FBEDD11004B0554 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				46F1423B1FBEE078004B0554 /* SearchContacts */,
 				46F1422A1FBEDD3C004B0554 /* ContactsList */,
 			);
 			path = Contacts;
@@ -483,6 +538,9 @@
 		46F142261FBEDD1F004B0554 /* ChatList */ = {
 			isa = PBXGroup;
 			children = (
+				46150BCE1FDE76FC00B85E9D /* Views */,
+				46150BCA1FDE754000B85E9D /* Model */,
+				46150BC91FDE753300B85E9D /* Cell */,
 				46F142271FBEDD34004B0554 /* WBChatListController.h */,
 				46F142281FBEDD34004B0554 /* WBChatListController.m */,
 			);
@@ -514,6 +572,27 @@
 				46F142341FBEDD67004B0554 /* WBMeListController.m */,
 			);
 			path = MeList;
+			sourceTree = "<group>";
+		};
+		46F1423B1FBEE078004B0554 /* SearchContacts */ = {
+			isa = PBXGroup;
+			children = (
+				46F142411FBEE328004B0554 /* Cell */,
+				46F1423C1FBEE0A3004B0554 /* WBSearchContactsController.h */,
+				46F1423D1FBEE0A3004B0554 /* WBSearchContactsController.m */,
+				46F1423E1FBEE0A3004B0554 /* WBSearchContactsController.xib */,
+			);
+			path = SearchContacts;
+			sourceTree = "<group>";
+		};
+		46F142411FBEE328004B0554 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				46F142421FBEE33D004B0554 /* WBSearchContactsCell.h */,
+				46F142431FBEE33D004B0554 /* WBSearchContactsCell.m */,
+				46F142441FBEE33D004B0554 /* WBSearchContactsCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		77E0E5C191FCD7277FDA3026 /* Pods */ = {
@@ -596,6 +675,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				463714091FBD8E71003C2655 /* WBTableEmptyView.xib in Resources */,
+				46F142461FBEE33D004B0554 /* WBSearchContactsCell.xib in Resources */,
+				46F142401FBEE0A3004B0554 /* WBSearchContactsController.xib in Resources */,
 				463713AF1FBD8C58003C2655 /* LaunchScreen.storyboard in Resources */,
 				463714191FBD8ED9003C2655 /* WBLoginController.xib in Resources */,
 				463713AC1FBD8C58003C2655 /* Assets.xcassets in Resources */,
@@ -668,8 +749,10 @@
 				463713F81FBD8E71003C2655 /* WBModuleControl.m in Sources */,
 				46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */,
 				46F142351FBEDD67004B0554 /* WBMeListController.m in Sources */,
+				46150BD71FDE809300B85E9D /* ChatManager.m in Sources */,
 				4637140B1FBD8E71003C2655 /* UITools.m in Sources */,
 				463713FE1FBD8E71003C2655 /* UIColor+Hex.m in Sources */,
+				46F1423F1FBEE0A3004B0554 /* WBSearchContactsController.m in Sources */,
 				463713FF1FBD8E71003C2655 /* NSDate+Extension.m in Sources */,
 				463714031FBD8E71003C2655 /* UIView+NextResponder.m in Sources */,
 				463713F91FBD8E71003C2655 /* WBTabBar.m in Sources */,
@@ -679,6 +762,7 @@
 				463713FA1FBD8E71003C2655 /* WBTabBarButton.m in Sources */,
 				463714011FBD8E71003C2655 /* UIView+Frame.m in Sources */,
 				4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */,
+				46F142451FBEE33D004B0554 /* WBSearchContactsCell.m in Sources */,
 				46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */,
 				463713FD1FBD8E71003C2655 /* WBNavigationController.m in Sources */,
 				463714041FBD8E71003C2655 /* UIView+Toast.m in Sources */,
@@ -691,7 +775,9 @@
 				463714081FBD8E71003C2655 /* WBTableEmptyView.m in Sources */,
 				463713FB1FBD8E71003C2655 /* WBTabBarController.m in Sources */,
 				463714051FBD8E71003C2655 /* UIViewController+NavBarItemExtension.m in Sources */,
+				46150BCD1FDE755700B85E9D /* WBChatListCell.m in Sources */,
 				463714021FBD8E71003C2655 /* UIView+Inspectable.m in Sources */,
+				46150BD31FDE7B9B00B85E9D /* WBChatListCellModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
