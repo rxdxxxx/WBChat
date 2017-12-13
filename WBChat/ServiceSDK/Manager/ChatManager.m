@@ -41,6 +41,8 @@
 
 - (void)list:(AVIMArrayResultBlock)block{
     AVIMConversationQuery *query = [self.client conversationQuery];
+    query.cachePolicy = kAVIMCachePolicyCacheThenNetwork;
+    query.option = AVIMConversationQueryOptionWithMessage;
     // 执行查询
     [query findConversationsWithCallback:block];
 }
