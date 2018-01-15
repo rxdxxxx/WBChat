@@ -13,6 +13,7 @@
 @property (nonatomic, strong) UILabel *chatTitleLabel; ///< 会话的名称
 @property (nonatomic, strong) UILabel *chatMessageLabel; ///< 最后一天聊天记录
 @property (nonatomic, strong) UILabel *chatTimeLabel; ///< 时间
+@property (nonatomic, strong) UIView *cutLineView; ///< 分割线
 
 @end
 
@@ -35,6 +36,7 @@
         [self.contentView addSubview:self.chatTitleLabel];
         [self.contentView addSubview:self.chatMessageLabel];
         [self.contentView addSubview:self.chatTimeLabel];
+        [self.contentView addSubview:self.cutLineView];
     }
     return self;
 }
@@ -75,6 +77,8 @@
     
     self.chatMessageLabel.frame = cellModel.chatMessageF;
     self.chatMessageLabel.text = cellModel.dataModel.lastMessage.content;
+    
+    self.cutLineView.frame = cellModel.cutLineF;
 }
 
 
@@ -116,5 +120,15 @@
     }
     return _chatTimeLabel;
 }
+- (UIView *)cutLineView{
+    if (!_cutLineView) {
+        _cutLineView = [[UIView alloc]init];
+        _cutLineView.translatesAutoresizingMaskIntoConstraints = NO;
+        _cutLineView.backgroundColor = [UIColor lightGrayColor];
+        _cutLineView.alpha = 0.5;
+    }
+    return _cutLineView;
+}
+
 
 @end

@@ -38,6 +38,11 @@
     CGFloat chatMessageY = cellH - margin * 1.3 - chatMessageH;
     CGFloat chatMessageW = cellW - chatTitleX - 2 * margin;
     _chatMessageF = CGRectMake(chatTitleX, chatMessageY, chatMessageW, chatMessageH);
+    
+    CGFloat cutLineH = 1;
+    CGFloat cutLineY = cellH - cutLineH;
+    CGFloat cutLineW = cellW;
+    _cutLineF = CGRectMake(0, cutLineY, cutLineW, cutLineH);
 }
 
 

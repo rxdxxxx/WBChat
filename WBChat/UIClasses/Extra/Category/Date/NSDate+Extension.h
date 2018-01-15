@@ -11,14 +11,6 @@
 @interface NSDate (Extension)
 
 /**
- 格式化后的时间字符串
-
- @return 字符串 @"yyyy-MM-dd HH:mm:ss";
- */
-- (NSString *)wb_formatStrig;
-
-
-/**
  会话列表的时间格式
  
  今天: HH:mm

@@ -15,6 +15,7 @@
 @property (nonatomic, assign) CGRect chatTitleF;
 @property (nonatomic, assign) CGRect chatMessageF;
 @property (nonatomic, assign) CGRect chatTimeF;
+@property (nonatomic, assign) CGRect cutLineF;
 
 @property (nonatomic, strong) AVIMConversation *dataModel;
 
