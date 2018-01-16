@@ -63,10 +63,22 @@
 #else
     [AVOSCloud setAllLogsEnabled:false];
 #endif
-    [AVOSCloud setApplicationId:@"O9I67dBpCiW8WcgoD89dCpla-gzGzoHsz"
-                      clientKey:@"HwqdEYsaL3D3Xqr45Ryr0PW1"];
+    [WBChatKit setAppId:@"O9I67dBpCiW8WcgoD89dCpla-gzGzoHsz"
+              clientKey:@"HwqdEYsaL3D3Xqr45Ryr0PW1"];
     
-//    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    //    [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    AVUser *user = [AVUser currentUser];
+    
+    
+    [[WBChatKit sharedInstance] openWithClientId:user.objectId success:^(NSString * _Nonnull clientId) {
+        WBLog(@"链接成功");
+    } error:^(NSError * _Nonnull error) {
+        WBLog(@"链接失败: %@",
+              error.description);
+    }];
+    
 }
 
 @end
+

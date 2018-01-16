@@ -9,15 +9,11 @@
 #import "WBModuleControl.h"
 #import "WBLoginController.h"
 #import "WBTabBarController.h"
-#import <AVOSCloud/AVOSCloud.h>
 
 @implementation WBModuleControl
 + (UIViewController *)controllerFromDidFinishLaunching{
     AVUser *user = [AVUser currentUser];
-    if (user) {
-        // 开启链接
-        [ChatManager sharedInstance];
-        
+    if (user) {       
         return [self loginedControllerWithUserModel:user];
     }else{
         return [[WBLoginController alloc] init];

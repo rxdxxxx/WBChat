@@ -17,7 +17,8 @@
 @property (nonatomic, weak) UIViewController * showController;
 @end
 
-
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 @implementation WBSelectPhotoTool
 #pragma mark -  Life Cycle
 
@@ -141,3 +142,4 @@
 
 #pragma mark -  Getters and Setters
 @end
+#pragma clang diagnostic pop

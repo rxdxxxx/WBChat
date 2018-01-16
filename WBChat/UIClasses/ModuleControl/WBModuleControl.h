@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WBServiceSDKHeaders.h"
+
 @class AVUser;
 @interface WBModuleControl : NSObject
 

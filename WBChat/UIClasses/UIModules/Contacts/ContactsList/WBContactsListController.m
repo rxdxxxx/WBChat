@@ -34,18 +34,18 @@
 #pragma mark -  Event Response
 #pragma mark -  Btn Click
 - (void)navRightBtnClick{
-    [[ChatManager sharedInstance].client createConversationWithName:@"猫和老鼠"
-                                                          clientIds:@[@"Jerry"]
-                                                           callback:^(AVIMConversation *conversation, NSError *error)
-    {
-        NSString *text = [NSString stringWithFormat:@"%@,hello",[NSDate date]];
-    
-        [conversation sendMessage:[AVIMTextMessage messageWithText:text attributes:nil] callback:^(BOOL succeeded, NSError *error) {
-            if (succeeded) {
-                WBLog(@"发送成功！");
-            }
-        }];
-    }];
+//    [[ChatManager sharedInstance].client createConversationWithName:@"猫和老鼠"
+//                                                          clientIds:@[@"Jerry"]
+//                                                           callback:^(AVIMConversation *conversation, NSError *error)
+//    {
+//        NSString *text = [NSString stringWithFormat:@"%@,hello",[NSDate date]];
+//    
+//        [conversation sendMessage:[AVIMTextMessage messageWithText:text attributes:nil] callback:^(BOOL succeeded, NSError *error) {
+//            if (succeeded) {
+//                WBLog(@"发送成功！");
+//            }
+//        }];
+//    }];
     
     
 //    WBSearchContactsController *vc = [WBSearchContactsController new];

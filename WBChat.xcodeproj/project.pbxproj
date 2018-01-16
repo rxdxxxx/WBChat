@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		46150BCD1FDE755700B85E9D /* WBChatListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BCC1FDE755700B85E9D /* WBChatListCell.m */; };
 		46150BD31FDE7B9B00B85E9D /* WBChatListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BD21FDE7B9B00B85E9D /* WBChatListCellModel.m */; };
-		46150BD71FDE809300B85E9D /* ChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BD61FDE809300B85E9D /* ChatManager.m */; };
 		463713A41FBD8C58003C2655 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713A31FBD8C58003C2655 /* AppDelegate.m */; };
 		463713AC1FBD8C58003C2655 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 463713AB1FBD8C58003C2655 /* Assets.xcassets */; };
 		463713AF1FBD8C58003C2655 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 463713AD1FBD8C58003C2655 /* LaunchScreen.storyboard */; };
@@ -38,6 +37,22 @@
 		463714191FBD8ED9003C2655 /* WBLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463714131FBD8ED9003C2655 /* WBLoginController.xib */; };
 		4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463714161FBD8ED9003C2655 /* WBRegisterController.m */; };
 		4637141B1FBD8ED9003C2655 /* WBRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463714171FBD8ED9003C2655 /* WBRegisterController.xib */; };
+		465A3281200CB4BD00ABAAAA /* NSError+WBError.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A3280200CB4BD00ABAAAA /* NSError+WBError.m */; };
+		465A3286200CB8FF00ABAAAA /* AVIMMessage+WBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A3285200CB8FE00ABAAAA /* AVIMMessage+WBExtension.m */; };
+		465A328C200CBDA500ABAAAA /* NSBundle+LCCKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A328A200CBDA500ABAAAA /* NSBundle+LCCKExtension.m */; };
+		465A3292200CBF8400ABAAAA /* AVIMTypedMessage+WBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A3291200CBF8400ABAAAA /* AVIMTypedMessage+WBExtension.m */; };
+		465A3298200CC08500ABAAAA /* NSObject+WBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A3297200CC08500ABAAAA /* NSObject+WBExtension.m */; };
+		465A32A1200DA2F500ABAAAA /* WBChatListManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A32A0200DA2F500ABAAAA /* WBChatListManager.m */; };
+		465A32A5200DC1F600ABAAAA /* WBChatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A32A4200DC1F600ABAAAA /* WBChatManager.m */; };
+		465A32A9200DDFED00ABAAAA /* WBChatBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A32A8200DDFED00ABAAAA /* WBChatBaseViewController.m */; };
+		465A32AD200E02D400ABAAAA /* WBBackgroundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A32AC200E02D400ABAAAA /* WBBackgroundManager.m */; };
+		46A7A8B2200C796100061340 /* WBChatKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B1200C796100061340 /* WBChatKit.m */; };
+		46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B4200C7F4000061340 /* WBIMClientDelegateImp.m */; };
+		46A7A8BC200C921900061340 /* Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46A7A8BB200C921900061340 /* Other.bundle */; };
+		46A7A8C8200C96C500061340 /* WBDBClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8C0200C96C500061340 /* WBDBClient.m */; };
+		46A7A8C9200C96C500061340 /* WBCoreRegister.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8C2200C96C500061340 /* WBCoreRegister.m */; };
+		46A7A8CA200C96C500061340 /* WBUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8C4200C96C500061340 /* WBUserManager.m */; };
+		46A7A8D3200C96D400061340 /* WBUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8D0200C96D400061340 /* WBUserDefaults.m */; };
 		46F142291FBEDD34004B0554 /* WBChatListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142281FBEDD34004B0554 /* WBChatListController.m */; };
 		46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F1422C1FBEDD46004B0554 /* WBContactsListController.m */; };
 		46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142301FBEDD57004B0554 /* WBDiscoverListController.m */; };
@@ -56,8 +71,6 @@
 		46150BCC1FDE755700B85E9D /* WBChatListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListCell.m; sourceTree = "<group>"; };
 		46150BD11FDE7B9B00B85E9D /* WBChatListCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListCellModel.h; sourceTree = "<group>"; };
 		46150BD21FDE7B9B00B85E9D /* WBChatListCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListCellModel.m; sourceTree = "<group>"; };
-		46150BD51FDE809300B85E9D /* ChatManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatManager.h; sourceTree = "<group>"; };
-		46150BD61FDE809300B85E9D /* ChatManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatManager.m; sourceTree = "<group>"; };
 		4637139F1FBD8C58003C2655 /* WBChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WBChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		463713A21FBD8C58003C2655 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		463713A31FBD8C58003C2655 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -114,6 +127,43 @@
 		463714171FBD8ED9003C2655 /* WBRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBRegisterController.xib; sourceTree = "<group>"; };
 		4637141C1FBD9033003C2655 /* WBConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBConfig.h; sourceTree = "<group>"; };
 		4637141D1FBD9254003C2655 /* WBServiceSDKHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBServiceSDKHeaders.h; sourceTree = "<group>"; };
+		465A327F200CB4BD00ABAAAA /* NSError+WBError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+WBError.h"; sourceTree = "<group>"; };
+		465A3280200CB4BD00ABAAAA /* NSError+WBError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+WBError.m"; sourceTree = "<group>"; };
+		465A3284200CB8FE00ABAAAA /* AVIMMessage+WBExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVIMMessage+WBExtension.h"; sourceTree = "<group>"; };
+		465A3285200CB8FE00ABAAAA /* AVIMMessage+WBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AVIMMessage+WBExtension.m"; sourceTree = "<group>"; };
+		465A328A200CBDA500ABAAAA /* NSBundle+LCCKExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+LCCKExtension.m"; sourceTree = "<group>"; };
+		465A328B200CBDA500ABAAAA /* NSBundle+LCCKExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+LCCKExtension.h"; sourceTree = "<group>"; };
+		465A3290200CBF8400ABAAAA /* AVIMTypedMessage+WBExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVIMTypedMessage+WBExtension.h"; sourceTree = "<group>"; };
+		465A3291200CBF8400ABAAAA /* AVIMTypedMessage+WBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AVIMTypedMessage+WBExtension.m"; sourceTree = "<group>"; };
+		465A3296200CC08500ABAAAA /* NSObject+WBExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+WBExtension.h"; sourceTree = "<group>"; };
+		465A3297200CC08500ABAAAA /* NSObject+WBExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+WBExtension.m"; sourceTree = "<group>"; };
+		465A329F200DA2F500ABAAAA /* WBChatListManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListManager.h; sourceTree = "<group>"; };
+		465A32A0200DA2F500ABAAAA /* WBChatListManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListManager.m; sourceTree = "<group>"; };
+		465A32A3200DC1F600ABAAAA /* WBChatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatManager.h; sourceTree = "<group>"; };
+		465A32A4200DC1F600ABAAAA /* WBChatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatManager.m; sourceTree = "<group>"; };
+		465A32A7200DDFED00ABAAAA /* WBChatBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatBaseViewController.h; sourceTree = "<group>"; };
+		465A32A8200DDFED00ABAAAA /* WBChatBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatBaseViewController.m; sourceTree = "<group>"; };
+		465A32AB200E02D400ABAAAA /* WBBackgroundManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBBackgroundManager.h; sourceTree = "<group>"; };
+		465A32AC200E02D400ABAAAA /* WBBackgroundManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBBackgroundManager.m; sourceTree = "<group>"; };
+		46A7A8B0200C796100061340 /* WBChatKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatKit.h; sourceTree = "<group>"; };
+		46A7A8B1200C796100061340 /* WBChatKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatKit.m; sourceTree = "<group>"; };
+		46A7A8B3200C7F4000061340 /* WBIMClientDelegateImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBIMClientDelegateImp.h; sourceTree = "<group>"; };
+		46A7A8B4200C7F4000061340 /* WBIMClientDelegateImp.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBIMClientDelegateImp.m; sourceTree = "<group>"; };
+		46A7A8B7200C893500061340 /* WBIMDefine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBIMDefine.h; sourceTree = "<group>"; };
+		46A7A8BB200C921900061340 /* Other.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Other.bundle; sourceTree = "<group>"; };
+		46A7A8BF200C96C500061340 /* WBDBClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDBClient.h; sourceTree = "<group>"; };
+		46A7A8C0200C96C500061340 /* WBDBClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBDBClient.m; sourceTree = "<group>"; };
+		46A7A8C1200C96C500061340 /* WBCoreRegister.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCoreRegister.h; sourceTree = "<group>"; };
+		46A7A8C2200C96C500061340 /* WBCoreRegister.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBCoreRegister.m; sourceTree = "<group>"; };
+		46A7A8C3200C96C500061340 /* WBUserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBUserManager.h; sourceTree = "<group>"; };
+		46A7A8C4200C96C500061340 /* WBUserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBUserManager.m; sourceTree = "<group>"; };
+		46A7A8C6200C96C500061340 /* WBDBCreater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBDBCreater.h; sourceTree = "<group>"; };
+		46A7A8C7200C96C500061340 /* WBTerminateHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBTerminateHandler.h; sourceTree = "<group>"; };
+		46A7A8CE200C96D400061340 /* WBCoreConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBCoreConfiguration.h; sourceTree = "<group>"; };
+		46A7A8CF200C96D400061340 /* WBUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBUserDefaults.h; sourceTree = "<group>"; };
+		46A7A8D0200C96D400061340 /* WBUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBUserDefaults.m; sourceTree = "<group>"; };
+		46A7A8D4200C975900061340 /* WBSynthesizeSingleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBSynthesizeSingleton.h; sourceTree = "<group>"; };
+		46A7A8D5200C982700061340 /* WBManagerHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBManagerHeaders.h; sourceTree = "<group>"; };
 		46F142271FBEDD34004B0554 /* WBChatListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListController.h; sourceTree = "<group>"; };
 		46F142281FBEDD34004B0554 /* WBChatListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListController.m; sourceTree = "<group>"; };
 		46F1422B1FBEDD46004B0554 /* WBContactsListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBContactsListController.h; sourceTree = "<group>"; };
@@ -171,8 +221,9 @@
 		46150BD41FDE809300B85E9D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				46150BD51FDE809300B85E9D /* ChatManager.h */,
-				46150BD61FDE809300B85E9D /* ChatManager.m */,
+				465A32AA200E02B600ABAAAA /* Background */,
+				465A32A2200DC1E700ABAAAA /* Chat */,
+				465A329E200DA2E200ABAAAA /* ChatList */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -437,8 +488,15 @@
 		4637140D1FBD8EA3003C2655 /* ServiceSDK */ = {
 			isa = PBXGroup;
 			children = (
+				46A7A8BD200C969D00061340 /* Core */,
+				46A7A8BA200C91EB00061340 /* Resource */,
+				46A7A8B6200C890600061340 /* WBDefine */,
 				46150BD41FDE809300B85E9D /* Manager */,
 				4637141D1FBD9254003C2655 /* WBServiceSDKHeaders.h */,
+				46A7A8B0200C796100061340 /* WBChatKit.h */,
+				46A7A8B1200C796100061340 /* WBChatKit.m */,
+				46A7A8B3200C7F4000061340 /* WBIMClientDelegateImp.h */,
+				46A7A8B4200C7F4000061340 /* WBIMClientDelegateImp.m */,
 			);
 			path = ServiceSDK;
 			sourceTree = "<group>";
@@ -494,6 +552,136 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
+		465A327E200CB4A200ABAAAA /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				465A3283200CB8C600ABAAAA /* Foundation */,
+				465A3282200CB8BB00ABAAAA /* AVCategory */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		465A3282200CB8BB00ABAAAA /* AVCategory */ = {
+			isa = PBXGroup;
+			children = (
+				465A3284200CB8FE00ABAAAA /* AVIMMessage+WBExtension.h */,
+				465A3285200CB8FE00ABAAAA /* AVIMMessage+WBExtension.m */,
+				465A3290200CBF8400ABAAAA /* AVIMTypedMessage+WBExtension.h */,
+				465A3291200CBF8400ABAAAA /* AVIMTypedMessage+WBExtension.m */,
+			);
+			path = AVCategory;
+			sourceTree = "<group>";
+		};
+		465A3283200CB8C600ABAAAA /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				465A328B200CBDA500ABAAAA /* NSBundle+LCCKExtension.h */,
+				465A328A200CBDA500ABAAAA /* NSBundle+LCCKExtension.m */,
+				465A327F200CB4BD00ABAAAA /* NSError+WBError.h */,
+				465A3280200CB4BD00ABAAAA /* NSError+WBError.m */,
+				465A3296200CC08500ABAAAA /* NSObject+WBExtension.h */,
+				465A3297200CC08500ABAAAA /* NSObject+WBExtension.m */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		465A329E200DA2E200ABAAAA /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				465A329F200DA2F500ABAAAA /* WBChatListManager.h */,
+				465A32A0200DA2F500ABAAAA /* WBChatListManager.m */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		465A32A2200DC1E700ABAAAA /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				465A32A3200DC1F600ABAAAA /* WBChatManager.h */,
+				465A32A4200DC1F600ABAAAA /* WBChatManager.m */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		465A32A6200DDFC900ABAAAA /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				465A32A7200DDFED00ABAAAA /* WBChatBaseViewController.h */,
+				465A32A8200DDFED00ABAAAA /* WBChatBaseViewController.m */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		465A32AA200E02B600ABAAAA /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				465A32AB200E02D400ABAAAA /* WBBackgroundManager.h */,
+				465A32AC200E02D400ABAAAA /* WBBackgroundManager.m */,
+			);
+			path = Background;
+			sourceTree = "<group>";
+		};
+		46A7A8B6200C890600061340 /* WBDefine */ = {
+			isa = PBXGroup;
+			children = (
+				46A7A8B7200C893500061340 /* WBIMDefine.h */,
+			);
+			path = WBDefine;
+			sourceTree = "<group>";
+		};
+		46A7A8BA200C91EB00061340 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				46A7A8BB200C921900061340 /* Other.bundle */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		46A7A8BD200C969D00061340 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				465A327E200CB4A200ABAAAA /* Category */,
+				46A7A8BE200C96C500061340 /* Base */,
+				46A7A8CB200C96D400061340 /* Tool */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		46A7A8BE200C96C500061340 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				46A7A8BF200C96C500061340 /* WBDBClient.h */,
+				46A7A8C0200C96C500061340 /* WBDBClient.m */,
+				46A7A8C1200C96C500061340 /* WBCoreRegister.h */,
+				46A7A8C2200C96C500061340 /* WBCoreRegister.m */,
+				46A7A8C3200C96C500061340 /* WBUserManager.h */,
+				46A7A8C4200C96C500061340 /* WBUserManager.m */,
+				46A7A8C5200C96C500061340 /* Protocol */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		46A7A8C5200C96C500061340 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				46A7A8C6200C96C500061340 /* WBDBCreater.h */,
+				46A7A8C7200C96C500061340 /* WBTerminateHandler.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		46A7A8CB200C96D400061340 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				46A7A8CE200C96D400061340 /* WBCoreConfiguration.h */,
+				46A7A8D5200C982700061340 /* WBManagerHeaders.h */,
+				46A7A8D4200C975900061340 /* WBSynthesizeSingleton.h */,
+				46A7A8CF200C96D400061340 /* WBUserDefaults.h */,
+				46A7A8D0200C96D400061340 /* WBUserDefaults.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
 		46F142211FBEDD04004B0554 /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +702,7 @@
 		46F142231FBEDD11004B0554 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				465A32A6200DDFC900ABAAAA /* Chat */,
 				46F142261FBEDD1F004B0554 /* ChatList */,
 			);
 			path = Chat;
@@ -680,6 +869,7 @@
 				463713AF1FBD8C58003C2655 /* LaunchScreen.storyboard in Resources */,
 				463714191FBD8ED9003C2655 /* WBLoginController.xib in Resources */,
 				463713AC1FBD8C58003C2655 /* Assets.xcassets in Resources */,
+				46A7A8BC200C921900061340 /* Other.bundle in Resources */,
 				4637141B1FBD8ED9003C2655 /* WBRegisterController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -749,9 +939,14 @@
 				463713F81FBD8E71003C2655 /* WBModuleControl.m in Sources */,
 				46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */,
 				46F142351FBEDD67004B0554 /* WBMeListController.m in Sources */,
-				46150BD71FDE809300B85E9D /* ChatManager.m in Sources */,
+				465A32A1200DA2F500ABAAAA /* WBChatListManager.m in Sources */,
+				46A7A8CA200C96C500061340 /* WBUserManager.m in Sources */,
 				4637140B1FBD8E71003C2655 /* UITools.m in Sources */,
+				46A7A8C8200C96C500061340 /* WBDBClient.m in Sources */,
+				465A3286200CB8FF00ABAAAA /* AVIMMessage+WBExtension.m in Sources */,
+				465A32A9200DDFED00ABAAAA /* WBChatBaseViewController.m in Sources */,
 				463713FE1FBD8E71003C2655 /* UIColor+Hex.m in Sources */,
+				46A7A8B2200C796100061340 /* WBChatKit.m in Sources */,
 				46F1423F1FBEE0A3004B0554 /* WBSearchContactsController.m in Sources */,
 				463713FF1FBD8E71003C2655 /* NSDate+Extension.m in Sources */,
 				463714031FBD8E71003C2655 /* UIView+NextResponder.m in Sources */,
@@ -762,22 +957,31 @@
 				463713FA1FBD8E71003C2655 /* WBTabBarButton.m in Sources */,
 				463714011FBD8E71003C2655 /* UIView+Frame.m in Sources */,
 				4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */,
+				46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */,
 				46F142451FBEE33D004B0554 /* WBSearchContactsCell.m in Sources */,
+				465A328C200CBDA500ABAAAA /* NSBundle+LCCKExtension.m in Sources */,
 				46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */,
+				465A3281200CB4BD00ABAAAA /* NSError+WBError.m in Sources */,
+				465A32AD200E02D400ABAAAA /* WBBackgroundManager.m in Sources */,
 				463713FD1FBD8E71003C2655 /* WBNavigationController.m in Sources */,
 				463714041FBD8E71003C2655 /* UIView+Toast.m in Sources */,
 				463713B21FBD8C58003C2655 /* main.m in Sources */,
 				463713FC1FBD8E71003C2655 /* WBBaseController.m in Sources */,
 				463714061FBD8E71003C2655 /* WBHUD.m in Sources */,
+				465A32A5200DC1F600ABAAAA /* WBChatManager.m in Sources */,
 				463714001FBD8E71003C2655 /* NSString+OPSize.m in Sources */,
 				46F142291FBEDD34004B0554 /* WBChatListController.m in Sources */,
+				46A7A8C9200C96C500061340 /* WBCoreRegister.m in Sources */,
 				463713A41FBD8C58003C2655 /* AppDelegate.m in Sources */,
+				465A3298200CC08500ABAAAA /* NSObject+WBExtension.m in Sources */,
 				463714081FBD8E71003C2655 /* WBTableEmptyView.m in Sources */,
 				463713FB1FBD8E71003C2655 /* WBTabBarController.m in Sources */,
 				463714051FBD8E71003C2655 /* UIViewController+NavBarItemExtension.m in Sources */,
 				46150BCD1FDE755700B85E9D /* WBChatListCell.m in Sources */,
+				465A3292200CBF8400ABAAAA /* AVIMTypedMessage+WBExtension.m in Sources */,
 				463714021FBD8E71003C2655 /* UIView+Inspectable.m in Sources */,
 				46150BD31FDE7B9B00B85E9D /* WBChatListCellModel.m in Sources */,
+				46A7A8D3200C96D400061340 /* WBUserDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,15 +1,16 @@
 //
 //  WBServiceSDKHeaders.h
-//  WBChat
-//
-//  Created by RedRain on 2017/11/16.
-//  Copyright © 2017年 RedRain. All rights reserved.
-//
+
 
 #ifndef WBServiceSDKHeaders_h
 #define WBServiceSDKHeaders_h
 
-#import "ChatManager.h"
+#import "AVIMMessage+WBExtension.h"
+#import "AVIMTypedMessage+WBExtension.h"
+#import "NSObject+WBExtension.h"
+
+#import "WBManagerHeaders.h"
+#import "WBChatKit.h"
 
 
 #endif /* WBServiceSDKHeaders_h */
