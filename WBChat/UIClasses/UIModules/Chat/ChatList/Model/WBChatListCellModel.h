@@ -17,6 +17,8 @@
 @property (nonatomic, assign) CGRect chatTimeF;
 @property (nonatomic, assign) CGRect cutLineF;
 
+@property (nonatomic, copy) NSString *lastMessageString;
+
 @property (nonatomic, strong) WBChatListModel *dataModel;
 
 @end

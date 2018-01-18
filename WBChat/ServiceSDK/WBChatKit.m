@@ -99,7 +99,7 @@
 /**
  拉取本地的所有对话
  */
-- (void)fetchAllConversationsFromLocal:(void(^_Nullable)(NSArray<AVIMConversation *> * _Nullable conersations,
+- (void)fetchAllConversationsFromLocal:(void(^_Nullable)(NSArray<WBChatListModel *> * _Nullable conersations,
                                                          NSError * _Nullable error))block{
     [[WBChatListManager sharedInstance] fetchAllConversationsFromLocal:block];
 }

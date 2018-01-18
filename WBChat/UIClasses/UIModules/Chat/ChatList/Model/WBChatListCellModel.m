@@ -11,6 +11,36 @@
 
 @implementation WBChatListCellModel
 
+- (void)handleLastMessageString:(WBChatListModel *)dataModel {
+    AVIMTypedMessage *typedMessage = [dataModel.conversation.lastMessage wb_getValidTypedMessage];
+    switch (typedMessage.mediaType) {
+        case kAVIMMessageMediaTypeText:
+            self.lastMessageString = typedMessage.text;
+            break;
+        case kAVIMMessageMediaTypeImage:
+            self.lastMessageString = @"[图片]";
+            break;
+        case kAVIMMessageMediaTypeAudio:
+            self.lastMessageString = @"[语音]";
+            break;
+        case kAVIMMessageMediaTypeVideo:
+            self.lastMessageString = @"[视频]";
+            break;
+        case kAVIMMessageMediaTypeLocation:
+            self.lastMessageString = @"[位置]";
+            break;
+        case kAVIMMessageMediaTypeFile:
+            self.lastMessageString = @"[文件]";
+            break;
+        case kAVIMMessageMediaTypeRecalled:
+            self.lastMessageString = @"[有一条撤回的消息]";
+            break;
+        default:
+            self.lastMessageString = @"[不支持的消息类型]";
+            break;
+    }
+}
+
 - (void)setDataModel:(WBChatListModel *)dataModel{
     _dataModel = dataModel;
     
@@ -43,6 +73,9 @@
     CGFloat cutLineY = cellH - cutLineH;
     CGFloat cutLineW = cellW;
     _cutLineF = CGRectMake(0, cutLineY, cutLineW, cutLineH);
+    
+    [self handleLastMessageString:dataModel];
+
 }
 
 

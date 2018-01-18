@@ -76,7 +76,7 @@
     self.chatTimeLabel.text = cellModel.dataModel.conversation.lastMessageAt.wb_chatListTimeString;
     
     self.chatMessageLabel.frame = cellModel.chatMessageF;
-    self.chatMessageLabel.text = cellModel.dataModel.conversation.lastMessage.content;
+    self.chatMessageLabel.text = cellModel.lastMessageString;
     
     self.cutLineView.frame = cellModel.cutLineF;
 }
