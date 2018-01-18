@@ -17,6 +17,6 @@
 @property (nonatomic, assign) CGRect chatTimeF;
 @property (nonatomic, assign) CGRect cutLineF;
 
-@property (nonatomic, strong) AVIMConversation *dataModel;
+@property (nonatomic, strong) WBChatListModel *dataModel;
 
 @end

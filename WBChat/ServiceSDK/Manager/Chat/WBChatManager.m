@@ -7,11 +7,16 @@
 //
 
 #import "WBChatManager.h"
+#import "WBCoreConfiguration.h"
+#import "WBChatKit.h"
+#import "WBChatInfoDao.h"
 
 @implementation WBChatManager
 WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatManager)
 
-
+- (BOOL)createDBTable{
+    return [[WBChatInfoDao sharedInstance] createDBTable];
+}
 #pragma mark - 创建一个Conversation
 /**
  根据传入姓名和成员,获取到相应的Conversation对象
@@ -20,7 +25,7 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatManager)
                            members:(NSArray *)members
                  reuseConversation:(BOOL)reuseConversation
                           callback:(AVIMConversationResultBlock)callback {
-    if (self.connect) {
+    if (!self.connect) {
         if (callback) {
             callback(nil,[NSError wb_description:@"请检测当前网络状态"]);
         }
@@ -35,7 +40,8 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatManager)
         return;
     }
     
-    if (members.count == 0) {
+    if (members.count == 0 ||
+        (members.count == 1 && [members containsObject:self.client.clientId])) {
         if (callback) {
             callback(nil,[NSError wb_description:@"请选择参与会话的人员"]);
         }
@@ -54,10 +60,10 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatManager)
     AVIMConversationOption options = reuseConversation ? AVIMConversationOptionUnique : AVIMConversationOptionNone ;
     
     // 2. 区分会话的类型
-    WBIMConversationType type = WBIMConversationTypeSingle;
+    WBConversationType type = WBConversationTypeSingle;
     if (members.count > 2) {
         // 除去自己,还有第三个人
-        type = WBIMConversationTypeGroup;
+        type = WBConversationTypeDiscussion;
     }
     
     [self.client createConversationWithName:name clientIds:members attributes:@{ WBIM_CONVERSATION_TYPE : @(type) } options:options callback:callback];
@@ -73,12 +79,12 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatManager)
                        message:(AVIMMessage *)message
                       callback:(AVIMBooleanResultBlock)callback{
     
-    if (targetConversation) {
+    if (!targetConversation) {
         !callback ? : callback(NO,[NSError wb_description:@"目标会话信息有误."]);
         return;
     }
     
-    if (message) {
+    if (!message) {
         !callback ? : callback(NO,[NSError wb_description:@"聊天信息有误."]);
         return;
     }

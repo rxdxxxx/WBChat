@@ -1,10 +1,5 @@
 //
 //  OPDBCreater.h
-//  AccountingLife
-//
-//  Created by RedRain on 16/11/19.
-//  Copyright © 2016年 haixue. All rights reserved.
-//
 
 #import <Foundation/Foundation.h>
 
@@ -12,9 +7,9 @@
 
 @required
 // 初次创建数据库表
-- (BOOL)createTable;
+- (BOOL)createDBTable;
 
 @optional
-- (BOOL)expandTable:(int)oldVersion;
+- (BOOL)expandDBTable:(int)oldVersion;
 
 @end

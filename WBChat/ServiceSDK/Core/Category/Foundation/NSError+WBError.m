@@ -10,5 +10,9 @@
                                code:0
                            userInfo:@{NSLocalizedDescriptionKey:desc}];
 }
+
+- (NSString *)wb_localizedDesc{
+    return self.userInfo[NSLocalizedDescriptionKey];
+}
 @end
 

@@ -10,6 +10,7 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import <AVOSCloudIM/AVOSCloudIM.h>
 #import "WBIMDefine.h"
+@class WBChatListModel;
 
 #define WBIMNotificationConnectivityUpdated @"WBIMNotificationConnectivityUpdated" ///< 连接状态变更的通知
 
@@ -73,7 +74,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  拉取本地的所有对话
  */
-- (void)fetchAllConversationsFromLocal:(void(^_Nullable)(NSArray<AVIMConversation *> * _Nullable conersations,
+- (void)fetchAllConversationsFromLocal:(void(^_Nullable)(NSArray<WBChatListModel *> * _Nullable conersations,
                                                          NSError * _Nullable error))block;
 
 
@@ -89,7 +90,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)queryTypedMessagesWithConversation:(AVIMConversation *)conversation
                               queryMessage:(AVIMMessage * _Nullable)queryMessage
                                      limit:(NSInteger)limit
-                                     block:(AVIMArrayResultBlock)block;
+                                   success:(void (^)(NSArray<AVIMTypedMessage *> *messageArray))successBlock
+                                     error:(void (^)(NSError *error))errorBlock;
 
 #pragma mark - 创建一个Conversation
 
@@ -101,18 +103,19 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)createConversationWithName:(NSString *)name
                            members:(NSArray *)members
-                          callback:(AVIMConversationResultBlock)callback;
+                           success:(void (^)(AVIMConversation *convObj))successBlock
+                             error:(void (^)(NSError *error))errorBlock;
 
 
 #pragma mark - 往对话中发送消息。
 /*!
  往对话中发送消息。
  @param message － 消息对象
- @param callback － 结果回调
  */
 - (void)sendTargetConversation:(AVIMConversation *)targetConversation
                        message:(AVIMMessage *)message
-                      callback:(AVIMBooleanResultBlock)callback;
+                       success:(void (^)(void))successBlock
+                         error:(void (^)(NSError *error))errorBlock;
 
 
 @end

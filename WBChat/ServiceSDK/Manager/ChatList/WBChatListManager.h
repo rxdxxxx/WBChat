@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "WBServiceSDKHeaders.h"
 NS_ASSUME_NONNULL_BEGIN
-@interface WBChatListManager : NSObject
+@interface WBChatListManager : NSObject<WBDBCreater>
 
 WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatListManager)
 
@@ -17,14 +17,14 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatListManager)
 /**
  拉取服务器端的所有对话
  */
-- (void)fetchAllConversationsFromServer:(void(^_Nullable)(NSArray<AVIMConversation *> * _Nullable conersations,
+- (void)fetchAllConversationsFromServer:(void(^_Nullable)(NSArray<WBChatListModel *> * _Nullable conersations,
                                                           NSError * _Nullable error))block;
 #pragma mark - 拉取本地的所有对话
 
 /**
  拉取服务器端的所有对话
  */
-- (void)fetchAllConversationsFromLocal:(void(^_Nullable)(NSArray<AVIMConversation *> * _Nullable conersations,
+- (void)fetchAllConversationsFromLocal:(void(^_Nullable)(NSArray<WBChatListModel *> * _Nullable conersations,
                                                          NSError * _Nullable error))block;
 #pragma mark - 根据 conversationId 获取对话
 /**

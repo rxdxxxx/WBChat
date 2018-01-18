@@ -7,23 +7,32 @@
 //
 
 #import "WBChatListManager.h"
+#import "WBChatListDao.h"
 
 
 @implementation WBChatListManager
 WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListManager)
 
+- (BOOL)createDBTable{
+    return [[WBChatListDao sharedInstance] createDBTable];
+}
 
 #pragma mark - 拉取服务器端的所有对话
-- (void)fetchAllConversationsFromServer:(void(^_Nullable)(NSArray<AVIMConversation *> * _Nullable conersations,
+- (void)fetchAllConversationsFromServer:(void(^_Nullable)(NSArray<WBChatListModel *> * _Nullable conersations,
                                                           NSError * _Nullable error))block {
     
-    [self fetchConversationsWithCachePolicy:kAVIMCachePolicyNetworkOnly block:block];
+    [self fetchConversationsWithCachePolicy:kAVIMCachePolicyIgnoreCache block:block];
 
 }
-- (void)fetchAllConversationsFromLocal:(void(^_Nullable)(NSArray<AVIMConversation *> * _Nullable conersations,
+- (void)fetchAllConversationsFromLocal:(void(^_Nullable)(NSArray<WBChatListModel *> * _Nullable conersations,
                                                           NSError * _Nullable error))block {
     
-    [self fetchConversationsWithCachePolicy:kAVIMCachePolicyCacheOnly block:block];
+    
+    [[WBChatListDao sharedInstance] loadChatListWithClient:self.client
+                                                    result:^(NSArray<WBChatListModel *> * _Nonnull modelArray)
+    {
+        block(modelArray,nil);
+    }];
 }
 
 - (void)fetchConversationsWithCachePolicy:(AVIMCachePolicy)chachePolicy block:(id)block{
@@ -32,7 +41,16 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListManager)
     orConversationQuery.cachePolicy = chachePolicy;
     orConversationQuery.option = AVIMConversationQueryOptionWithMessage;
     [orConversationQuery findConversationsWithCallback:^(NSArray<AVIMConversation *> * _Nullable conversations, NSError * _Nullable error) {
-        !block ?: ((AVIMArrayResultBlock)block)(conversations, error);
+        NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:conversations.count];
+        for (AVIMConversation *conver in conversations) {
+            WBChatListModel *listModel = [WBChatListModel createWithConversation:conver];
+            [tempArray addObject:listModel];
+        }
+        
+        // 存储到本地
+        [[WBChatListDao sharedInstance] insertChatListModelArray:tempArray];
+        
+        !block ?: ((AVIMArrayResultBlock)block)(tempArray, error);
     }];
 }
 

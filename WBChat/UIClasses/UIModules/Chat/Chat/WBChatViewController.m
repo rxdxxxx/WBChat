@@ -1,19 +1,19 @@
 //
-//  WBChatBaseViewController.m
+//  WBChatViewController.m
 //  WBChat
 //
 //  Created by RedRain on 2018/1/16.
 //  Copyright © 2018年 RedRain. All rights reserved.
 //
 
-#import "WBChatBaseViewController.h"
+#import "WBChatViewController.h"
 
-@interface WBChatBaseViewController ()
+@interface WBChatViewController ()
 @property (nonatomic, strong) AVIMConversation *conversation;
 @property (nonatomic, strong) NSMutableArray<AVIMTypedMessage *> *dataArray;
 @end
 
-@implementation WBChatBaseViewController
+@implementation WBChatViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -22,11 +22,16 @@
     [[WBChatKit sharedInstance] queryTypedMessagesWithConversation:self.conversation
                                                       queryMessage:nil
                                                              limit:20
-                                                             block:^(NSArray * _Nullable messageArray, NSError * _Nullable error)
-    {
-        self.dataArray = [NSMutableArray arrayWithArray:messageArray];
-        [self.tableView reloadData];
-    }];
+                                                           success:^(NSArray<AVIMTypedMessage *> * messageArray)
+     {
+         
+         self.dataArray = [NSMutableArray arrayWithArray:messageArray];
+         [self.tableView reloadData];
+         
+     } error:^(NSError * _Nonnull error) {
+         
+     }];
+
 }
 
 #pragma mark -  Life Cycle
@@ -58,7 +63,7 @@
 }
 #pragma mark -  Public Methods
 + (instancetype)createWithConversation:(AVIMConversation *)conversation{
-    WBChatBaseViewController *vc = [WBChatBaseViewController new];
+    WBChatViewController *vc = [WBChatViewController new];
     vc.conversation = conversation;
     return vc;
 }
@@ -71,3 +76,4 @@
     return _dataArray;
 }
 @end
+

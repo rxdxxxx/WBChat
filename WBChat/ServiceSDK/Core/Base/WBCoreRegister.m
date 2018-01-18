@@ -25,8 +25,8 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBCoreRegister)
 
 
 - (void)registerCreater{
-    
-
+    [[WBDBClient sharedInstance] registerDBCreater:[WBChatListManager sharedInstance]];
+    [[WBDBClient sharedInstance] registerDBCreater:[WBChatManager sharedInstance]];
 }
 
 - (void)registerTerminateHandler{

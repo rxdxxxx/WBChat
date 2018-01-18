@@ -36,13 +36,7 @@
 
 // 除了 sdk 的上面三个回调调用了，还在 open client 的时候调用了，好统一处理
 - (void)updateConnectStatus {
-    /* for better UI presentation */
-    ///
-    if (_client.status == AVIMClientStatusPaused ||
-        _client.status == AVIMClientStatusResuming) {
-        return;
-    }
-    ///
+
     self.connect = _client.status == AVIMClientStatusOpened;
     [[NSNotificationCenter defaultCenter] postNotificationName:WBIMNotificationConnectivityUpdated object:@(self.connect)];
 }
@@ -134,7 +128,7 @@
         return;
     }
     if (!message.messageId) {
-        WBLog(@"🔴类名与方法名：%@（在第%@行），描述：%@", @(__PRETTY_FUNCTION__), @(__LINE__), @"Receive Message , but MessageId is nil");
+        WBIMLog(@"🔴类名与方法名：%@（在第%@行），描述：%@", @(__PRETTY_FUNCTION__), @(__LINE__), @"Receive Message , but MessageId is nil");
         return;
     }
     

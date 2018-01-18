@@ -33,13 +33,13 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBDBClient);
 
 - (void)createTable {
     for (id<WBDBCreater> creater in _dbCreaters){
-        [creater createTable];
+        [creater createDBTable];
     }
 }
 
 - (void)extendTable:(int)version {
     for (id<WBDBCreater> creater in _dbCreaters){
-        [creater expandTable:version];
+        [creater expandDBTable:version];
     }
 }
 

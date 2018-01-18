@@ -70,13 +70,13 @@
     self.chatHeaderView.image = [UIImage imageNamed:@"header_male"];
     
     self.chatTitleLabel.frame = cellModel.chatTitleF;
-    self.chatTitleLabel.text = cellModel.dataModel.name;
+    self.chatTitleLabel.text = cellModel.dataModel.conversation.name;
     
     self.chatTimeLabel.frame = cellModel.chatTimeF;
-    self.chatTimeLabel.text = cellModel.dataModel.lastMessageAt.wb_chatListTimeString;
+    self.chatTimeLabel.text = cellModel.dataModel.conversation.lastMessageAt.wb_chatListTimeString;
     
     self.chatMessageLabel.frame = cellModel.chatMessageF;
-    self.chatMessageLabel.text = cellModel.dataModel.lastMessage.content;
+    self.chatMessageLabel.text = cellModel.dataModel.conversation.lastMessage.content;
     
     self.cutLineView.frame = cellModel.cutLineF;
 }

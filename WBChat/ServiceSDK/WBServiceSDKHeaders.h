@@ -5,11 +5,11 @@
 #ifndef WBServiceSDKHeaders_h
 #define WBServiceSDKHeaders_h
 
-#import "AVIMMessage+WBExtension.h"
-#import "AVIMTypedMessage+WBExtension.h"
-#import "NSObject+WBExtension.h"
+
+#import "WBIMDefine.h"
 
 #import "WBManagerHeaders.h"
+
 #import "WBChatKit.h"
 
 

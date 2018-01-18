@@ -1,5 +1,5 @@
 //
-//  WBChatBaseViewController.h
+//  WBChatViewController.h
 //  WBChat
 //
 //  Created by RedRain on 2018/1/16.
@@ -9,7 +9,7 @@
 #import "WBBaseController.h"
 #import "WBServiceSDKHeaders.h"
 
-@interface WBChatBaseViewController : WBBaseController
+@interface WBChatViewController : WBBaseController
 
 + (instancetype)createWithConversation:(AVIMConversation *)conversation;
 

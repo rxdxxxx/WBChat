@@ -13,11 +13,27 @@
 @implementation WBModuleControl
 + (UIViewController *)controllerFromDidFinishLaunching{
     AVUser *user = [AVUser currentUser];
-    if (user) {       
+    if (user) {
+        [self openClient];
         return [self loginedControllerWithUserModel:user];
     }else{
         return [[WBLoginController alloc] init];
     }
+}
+
+
++ (void)openClient{
+    
+    AVUser *user = [AVUser currentUser];
+    
+    
+    [[WBChatKit sharedInstance] openWithClientId:user.objectId success:^(NSString * _Nonnull clientId) {
+        WBLog(@"链接成功");
+    } error:^(NSError * _Nonnull error) {
+        WBLog(@"链接失败: %@",
+              error.description);
+    }];
+    
 }
 
 + (UIViewController *)loginedControllerWithUserModel:(AVUser *)userModel{
@@ -25,6 +41,9 @@
 }
 
 + (void)exchangeWindowRootControllerWithUserModel:(AVUser *)userModel{
+    
+    [self openClient];
+    
     
     UIViewController *vc = [WBModuleControl loginedControllerWithUserModel:userModel];
     

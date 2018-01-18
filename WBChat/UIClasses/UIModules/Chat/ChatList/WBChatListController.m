@@ -8,7 +8,7 @@
 
 #import "WBChatListController.h"
 #import "WBChatListCell.h"
-#import "WBChatBaseViewController.h"
+#import "WBChatViewController.h"
 #import "WBServiceSDKHeaders.h"
 #import "WBIMDefine.h"
 
@@ -23,13 +23,13 @@
     // Do any additional setup after loading the view.
     [self setupUI];
     [self setupObserver];
-    [self reloadListData];   
 }
 
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    
+    [self reloadListData];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +49,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    WBChatBaseViewController *vc = [WBChatBaseViewController createWithConversation:self.dataArray[indexPath.row].dataModel];
+    WBChatViewController *vc = [WBChatViewController createWithConversation:self.dataArray[indexPath.row].dataModel.conversation];
     [self.navigationController pushViewController:vc animated:YES];
 }
 
@@ -58,6 +58,7 @@
 #pragma mark -  Notification Callback
 - (void)connectivityUpdated:(NSNotification *)notifi{
     do_dispatch_async_mainQueue(^{
+        WBLog(@"%@",@([WBChatKit sharedInstance].connectStatus));
         switch ([WBChatKit sharedInstance].connectStatus) {
             case AVIMClientStatusOpening:
             case AVIMClientStatusResuming:{
@@ -79,12 +80,39 @@
 }
 #pragma mark -  GestureRecognizer Action
 #pragma mark -  Btn Click
+- (void)sendMessageClick{
+    
+    [[WBChatKit sharedInstance] createConversationWithName:@"1811" members:@[@"5a0ea6d22f301e00650e9807"]
+                                                   success:^(AVIMConversation * _Nonnull convObj)
+    {
+        
+        AVIMTextMessage *message = [AVIMTextMessage messageWithText:@"哈哈哈" attributes:nil];
+
+        [[WBChatKit sharedInstance] sendTargetConversation:convObj
+                                                   message:message
+                                                   success:^
+         {
+             [WBHUD showSuccessMessage:@"发送成功" toView:self.view];
+             [self reloadListData];
+         } error:^(NSError * _Nonnull error) {
+             [WBHUD showErrorMessage:error.wb_localizedDesc toView:self.view];
+
+         }];
+        
+        
+    } error:^(NSError * _Nonnull error) {
+        [WBHUD showErrorMessage:error.wb_localizedDesc toView:self.view];
+
+    }];
+}
 #pragma mark -  Private Methods
 - (void)setupUI{
     [self rr_initTitleView:@"聊呗"];
 
     [self.view addSubview:self.tableView];
     self.tableView.rowHeight = [WBChatListCell cellHeight];
+    [self rr_initNavRightBtnWithTitle:@"发送" target:self
+                               action:@selector(sendMessageClick)];
 }
 - (void)setupObserver{
 
@@ -98,11 +126,11 @@
 
 
 - (void)reloadListData {
-    [[WBChatKit sharedInstance] fetchAllConversationsFromLocal:^(NSArray<AVIMConversation *> * _Nullable conersations,
+    [[WBChatKit sharedInstance] fetchAllConversationsFromLocal:^(NSArray<WBChatListModel *> * _Nullable conersations,
                                                                  NSError * _Nullable error) {
         
         NSMutableArray *tempA = [NSMutableArray arrayWithCapacity:conersations.count];
-        for (AVIMConversation *obj in conersations) {
+        for (WBChatListModel *obj in conersations) {
             WBChatListCellModel *cellModel = [WBChatListCellModel new];
             cellModel.dataModel = obj;
             [tempA addObject:cellModel];

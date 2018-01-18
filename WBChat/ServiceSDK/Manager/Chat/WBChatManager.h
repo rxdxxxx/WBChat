@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WBServiceSDKHeaders.h"
+#import "WBCoreConfiguration.h"
+#import <AVOSCloud/AVOSCloud.h>
+#import <AVOSCloudIM/AVOSCloudIM.h>
+
 NS_ASSUME_NONNULL_BEGIN
 
-@interface WBChatManager : NSObject
+@interface WBChatManager : NSObject<WBDBCreater>
 WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatManager)
 
 #pragma mark - 创建一个Conversation

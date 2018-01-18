@@ -11,7 +11,7 @@
 
 @implementation WBChatListCellModel
 
-- (void)setDataModel:(AVIMConversation *)dataModel{
+- (void)setDataModel:(WBChatListModel *)dataModel{
     _dataModel = dataModel;
     
     CGFloat cellW = kWBScreenWidth;

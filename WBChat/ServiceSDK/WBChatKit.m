@@ -68,7 +68,7 @@
 
 /**
  开启一个账户的聊天
-
+ 
  @param clientId 连接Id
  @param force 是否使用单点登录
  */
@@ -114,12 +114,19 @@
 - (void)queryTypedMessagesWithConversation:(AVIMConversation *)conversation
                               queryMessage:(AVIMMessage * _Nullable)queryMessage
                                      limit:(NSInteger)limit
-                                     block:(AVIMArrayResultBlock)block{
+                                   success:(void (^)(NSArray<AVIMTypedMessage *> *messageArray))successBlock
+                                     error:(void (^)(NSError *error))errorBlock{
     [[WBChatManager sharedInstance]
      queryTypedMessagesWithConversation:conversation
      queryMessage:queryMessage
      limit:limit
-     block:block];
+     block:^(NSArray * _Nullable array, NSError * _Nullable error) {
+         if (error && errorBlock) {
+             errorBlock(error);
+         }else if(successBlock){
+             successBlock(array);
+         }
+     }];
 }
 
 #pragma mark - 创建一个Conversation
@@ -132,12 +139,21 @@
  */
 - (void)createConversationWithName:(NSString *)name
                            members:(NSArray *)members
-                          callback:(AVIMConversationResultBlock)callback{
+                           success:(void (^)(AVIMConversation *convObj))successBlock
+                             error:(void (^)(NSError *error))errorBlock{
     
-    [[WBChatManager sharedInstance] createConversationWithName:name
-                                                       members:members
-                                             reuseConversation:YES
-                                                      callback:callback];
+    [[WBChatManager sharedInstance]
+     createConversationWithName:name
+     members:members
+     reuseConversation:YES
+     callback:^(AVIMConversation * _Nullable con, NSError * _Nullable error)
+     {
+         if (error && errorBlock) {
+             errorBlock(error);
+         }else if(successBlock){
+             successBlock(con);
+         }
+     }];
 }
 #pragma mark - 往对话中发送消息。
 /*!
@@ -147,11 +163,22 @@
  */
 - (void)sendTargetConversation:(AVIMConversation *)targetConversation
                        message:(AVIMMessage *)message
-                      callback:(AVIMBooleanResultBlock)callback{
+                       success:(nonnull void (^)(void))successBlock
+                         error:(nonnull void (^)(NSError * _Nonnull))errorBlock{
     
-    [[WBChatManager sharedInstance] sendTargetConversation:targetConversation
-                                                   message:message
-                                                  callback:callback];
+    
+    
+    [[WBChatManager sharedInstance]
+     sendTargetConversation:targetConversation
+     message:message
+     callback:^(BOOL success, NSError * _Nullable error)
+     {
+         if (error && errorBlock) {
+             errorBlock(error);
+         }else if(successBlock){
+             successBlock();
+         }
+     }];
 }
 
 @end
@@ -164,3 +191,4 @@ void do_dispatch_async_mainQueue(dispatch_block_t _Nullable task) {
         dispatch_async(dispatch_get_main_queue(), task);
     }
 }
+
