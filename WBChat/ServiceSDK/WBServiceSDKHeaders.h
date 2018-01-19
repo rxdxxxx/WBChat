@@ -5,6 +5,8 @@
 #ifndef WBServiceSDKHeaders_h
 #define WBServiceSDKHeaders_h
 
+#import "UIImage+WBImage.h"
+#import "NSString+OPSize.h"
 
 #import "WBIMDefine.h"
 

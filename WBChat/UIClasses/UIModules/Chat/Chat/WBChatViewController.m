@@ -7,10 +7,11 @@
 //
 
 #import "WBChatViewController.h"
+#import "WBChatMessageBaseCell.h"
 
 @interface WBChatViewController ()
 @property (nonatomic, strong) AVIMConversation *conversation;
-@property (nonatomic, strong) NSMutableArray<AVIMTypedMessage *> *dataArray;
+@property (nonatomic, strong) NSMutableArray<WBChatMessageBaseCellModel *> *dataArray;
 @end
 
 @implementation WBChatViewController
@@ -24,8 +25,14 @@
                                                              limit:20
                                                            success:^(NSArray<AVIMTypedMessage *> * messageArray)
      {
+         NSMutableArray *temp = [NSMutableArray new];
          
-         self.dataArray = [NSMutableArray arrayWithArray:messageArray];
+         for (AVIMTypedMessage *message in messageArray) {
+             WBChatMessageBaseCellModel *cellModel = [WBChatMessageBaseCellModel modelWithMessageModel:message];
+             [temp addObject:cellModel];
+        }
+         
+         self.dataArray = temp;
          [self.tableView reloadData];
          
      } error:^(NSError * _Nonnull error) {
@@ -41,13 +48,14 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:0 reuseIdentifier:@"KEy"];
-    cell.textLabel.text = self.dataArray[indexPath.row].content;
+    WBChatMessageBaseCell *cell = [WBChatMessageBaseCell cellWithTableView:tableView
+                                                                 cellModel:self.dataArray[indexPath.row]];
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
+    WBChatMessageBaseCellModel *cellModel = self.dataArray[indexPath.row];
+    return cellModel.cellHeight;
 }
 
 

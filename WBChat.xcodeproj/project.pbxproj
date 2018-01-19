@@ -50,6 +50,11 @@
 		465EA940200F368F00BA84C7 /* WBChatListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 465EA93F200F368F00BA84C7 /* WBChatListModel.m */; };
 		465EA94D200F473900BA84C7 /* FMDatabase+WBAutoSql.m in Sources */ = {isa = PBXBuildFile; fileRef = 465EA94C200F473900BA84C7 /* FMDatabase+WBAutoSql.m */; };
 		465EA950200F581100BA84C7 /* NSDate+WBExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 465EA94F200F581100BA84C7 /* NSDate+WBExt.m */; };
+		46655206201191AE007111F6 /* WBChatCellConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 46655205201191AE007111F6 /* WBChatCellConfig.m */; };
+		4665520920119606007111F6 /* WBChatMessageTextCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4665520820119606007111F6 /* WBChatMessageTextCellModel.m */; };
+		4665520C20119DDA007111F6 /* WBChatMessageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4665520B20119DDA007111F6 /* WBChatMessageTextCell.m */; };
+		466552102011A299007111F6 /* UIImage+WBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4665520F2011A299007111F6 /* UIImage+WBImage.m */; };
+		466552122011A378007111F6 /* WBUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 466552112011A378007111F6 /* WBUI.bundle */; };
 		46A7A8B2200C796100061340 /* WBChatKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B1200C796100061340 /* WBChatKit.m */; };
 		46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B4200C7F4000061340 /* WBIMClientDelegateImp.m */; };
 		46A7A8BC200C921900061340 /* Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46A7A8BB200C921900061340 /* Other.bundle */; };
@@ -58,6 +63,8 @@
 		46A7A8CA200C96C500061340 /* WBUserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8C4200C96C500061340 /* WBUserManager.m */; };
 		46A7A8D3200C96D400061340 /* WBUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8D0200C96D400061340 /* WBUserDefaults.m */; };
 		46B1E19A20107166005DD078 /* WBChatInfoDao.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B1E19920107166005DD078 /* WBChatInfoDao.m */; };
+		46B1E19D2010AC86005DD078 /* WBChatMessageBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B1E19C2010AC86005DD078 /* WBChatMessageBaseCell.m */; };
+		46B1E1A02010AEA0005DD078 /* WBChatMessageBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B1E19F2010AEA0005DD078 /* WBChatMessageBaseCellModel.m */; };
 		46F142291FBEDD34004B0554 /* WBChatListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142281FBEDD34004B0554 /* WBChatListController.m */; };
 		46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F1422C1FBEDD46004B0554 /* WBContactsListController.m */; };
 		46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142301FBEDD57004B0554 /* WBDiscoverListController.m */; };
@@ -158,6 +165,15 @@
 		465EA94C200F473900BA84C7 /* FMDatabase+WBAutoSql.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "FMDatabase+WBAutoSql.m"; sourceTree = "<group>"; };
 		465EA94E200F581100BA84C7 /* NSDate+WBExt.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+WBExt.h"; sourceTree = "<group>"; };
 		465EA94F200F581100BA84C7 /* NSDate+WBExt.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WBExt.m"; sourceTree = "<group>"; };
+		46655204201191AE007111F6 /* WBChatCellConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatCellConfig.h; sourceTree = "<group>"; };
+		46655205201191AE007111F6 /* WBChatCellConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatCellConfig.m; sourceTree = "<group>"; };
+		4665520720119606007111F6 /* WBChatMessageTextCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatMessageTextCellModel.h; sourceTree = "<group>"; };
+		4665520820119606007111F6 /* WBChatMessageTextCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatMessageTextCellModel.m; sourceTree = "<group>"; };
+		4665520A20119DDA007111F6 /* WBChatMessageTextCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatMessageTextCell.h; sourceTree = "<group>"; };
+		4665520B20119DDA007111F6 /* WBChatMessageTextCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatMessageTextCell.m; sourceTree = "<group>"; };
+		4665520E2011A299007111F6 /* UIImage+WBImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+WBImage.h"; sourceTree = "<group>"; };
+		4665520F2011A299007111F6 /* UIImage+WBImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WBImage.m"; sourceTree = "<group>"; };
+		466552112011A378007111F6 /* WBUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WBUI.bundle; sourceTree = "<group>"; };
 		46A7A8B0200C796100061340 /* WBChatKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatKit.h; sourceTree = "<group>"; };
 		46A7A8B1200C796100061340 /* WBChatKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatKit.m; sourceTree = "<group>"; };
 		46A7A8B3200C7F4000061340 /* WBIMClientDelegateImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBIMClientDelegateImp.h; sourceTree = "<group>"; };
@@ -179,6 +195,10 @@
 		46A7A8D5200C982700061340 /* WBManagerHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBManagerHeaders.h; sourceTree = "<group>"; };
 		46B1E19820107166005DD078 /* WBChatInfoDao.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatInfoDao.h; sourceTree = "<group>"; };
 		46B1E19920107166005DD078 /* WBChatInfoDao.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatInfoDao.m; sourceTree = "<group>"; };
+		46B1E19B2010AC86005DD078 /* WBChatMessageBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatMessageBaseCell.h; sourceTree = "<group>"; };
+		46B1E19C2010AC86005DD078 /* WBChatMessageBaseCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatMessageBaseCell.m; sourceTree = "<group>"; };
+		46B1E19E2010AEA0005DD078 /* WBChatMessageBaseCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatMessageBaseCellModel.h; sourceTree = "<group>"; };
+		46B1E19F2010AEA0005DD078 /* WBChatMessageBaseCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatMessageBaseCellModel.m; sourceTree = "<group>"; };
 		46F142271FBEDD34004B0554 /* WBChatListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListController.h; sourceTree = "<group>"; };
 		46F142281FBEDD34004B0554 /* WBChatListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListController.m; sourceTree = "<group>"; };
 		46F1422B1FBEDD46004B0554 /* WBContactsListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBContactsListController.h; sourceTree = "<group>"; };
@@ -331,6 +351,7 @@
 		463713C91FBD8E71003C2655 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				4665520D2011A28B007111F6 /* UIImage */,
 				463713CA1FBD8E71003C2655 /* Color */,
 				463713CD1FBD8E71003C2655 /* Date */,
 				463713D01FBD8E71003C2655 /* NSString */,
@@ -628,6 +649,7 @@
 		465A32A6200DDFC900ABAAAA /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				46655202201190DD007111F6 /* Tool */,
 				465A32B9200E416B00ABAAAA /* Cell */,
 				465A32BF200E433A00ABAAAA /* CellModel */,
 				465A32A7200DDFED00ABAAAA /* WBChatViewController.h */,
@@ -648,6 +670,10 @@
 		465A32B9200E416B00ABAAAA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				46B1E19B2010AC86005DD078 /* WBChatMessageBaseCell.h */,
+				46B1E19C2010AC86005DD078 /* WBChatMessageBaseCell.m */,
+				4665520A20119DDA007111F6 /* WBChatMessageTextCell.h */,
+				4665520B20119DDA007111F6 /* WBChatMessageTextCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -655,6 +681,10 @@
 		465A32BF200E433A00ABAAAA /* CellModel */ = {
 			isa = PBXGroup;
 			children = (
+				46B1E19E2010AEA0005DD078 /* WBChatMessageBaseCellModel.h */,
+				46B1E19F2010AEA0005DD078 /* WBChatMessageBaseCellModel.m */,
+				4665520720119606007111F6 /* WBChatMessageTextCellModel.h */,
+				4665520820119606007111F6 /* WBChatMessageTextCellModel.m */,
 			);
 			path = CellModel;
 			sourceTree = "<group>";
@@ -677,6 +707,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		46655202201190DD007111F6 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				46655204201191AE007111F6 /* WBChatCellConfig.h */,
+				46655205201191AE007111F6 /* WBChatCellConfig.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		4665520D2011A28B007111F6 /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				4665520E2011A299007111F6 /* UIImage+WBImage.h */,
+				4665520F2011A299007111F6 /* UIImage+WBImage.m */,
+			);
+			path = UIImage;
+			sourceTree = "<group>";
+		};
 		46A7A8B6200C890600061340 /* WBDefine */ = {
 			isa = PBXGroup;
 			children = (
@@ -688,6 +736,7 @@
 		46A7A8BA200C91EB00061340 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				466552112011A378007111F6 /* WBUI.bundle */,
 				46A7A8BB200C921900061340 /* Other.bundle */,
 			);
 			path = Resource;
@@ -936,6 +985,7 @@
 				463713AC1FBD8C58003C2655 /* Assets.xcassets in Resources */,
 				46A7A8BC200C921900061340 /* Other.bundle in Resources */,
 				4637141B1FBD8ED9003C2655 /* WBRegisterController.xib in Resources */,
+				466552122011A378007111F6 /* WBUI.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,6 +1064,8 @@
 				465A32A9200DDFED00ABAAAA /* WBChatViewController.m in Sources */,
 				463713FE1FBD8E71003C2655 /* UIColor+Hex.m in Sources */,
 				46A7A8B2200C796100061340 /* WBChatKit.m in Sources */,
+				4665520C20119DDA007111F6 /* WBChatMessageTextCell.m in Sources */,
+				46B1E1A02010AEA0005DD078 /* WBChatMessageBaseCellModel.m in Sources */,
 				46F1423F1FBEE0A3004B0554 /* WBSearchContactsController.m in Sources */,
 				463713FF1FBD8E71003C2655 /* NSDate+Extension.m in Sources */,
 				463714031FBD8E71003C2655 /* UIView+NextResponder.m in Sources */,
@@ -1024,10 +1076,12 @@
 				463714071FBD8E71003C2655 /* WBSelectPhotoTool.m in Sources */,
 				463713FA1FBD8E71003C2655 /* WBTabBarButton.m in Sources */,
 				463714011FBD8E71003C2655 /* UIView+Frame.m in Sources */,
+				4665520920119606007111F6 /* WBChatMessageTextCellModel.m in Sources */,
 				4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */,
 				46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */,
 				46F142451FBEE33D004B0554 /* WBSearchContactsCell.m in Sources */,
 				465A328C200CBDA500ABAAAA /* NSBundle+LCCKExtension.m in Sources */,
+				46B1E19D2010AC86005DD078 /* WBChatMessageBaseCell.m in Sources */,
 				46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */,
 				46B1E19A20107166005DD078 /* WBChatInfoDao.m in Sources */,
 				465A3281200CB4BD00ABAAAA /* NSError+WBError.m in Sources */,
@@ -1035,12 +1089,14 @@
 				463713FD1FBD8E71003C2655 /* WBNavigationController.m in Sources */,
 				463714041FBD8E71003C2655 /* UIView+Toast.m in Sources */,
 				463713B21FBD8C58003C2655 /* main.m in Sources */,
+				466552102011A299007111F6 /* UIImage+WBImage.m in Sources */,
 				463713FC1FBD8E71003C2655 /* WBBaseController.m in Sources */,
 				463714061FBD8E71003C2655 /* WBHUD.m in Sources */,
 				465A32A5200DC1F600ABAAAA /* WBChatManager.m in Sources */,
 				465EA940200F368F00BA84C7 /* WBChatListModel.m in Sources */,
 				463714001FBD8E71003C2655 /* NSString+OPSize.m in Sources */,
 				46F142291FBEDD34004B0554 /* WBChatListController.m in Sources */,
+				46655206201191AE007111F6 /* WBChatCellConfig.m in Sources */,
 				46A7A8C9200C96C500061340 /* WBCoreRegister.m in Sources */,
 				463713A41FBD8C58003C2655 /* AppDelegate.m in Sources */,
 				465A3298200CC08500ABAAAA /* NSObject+WBExtension.m in Sources */,

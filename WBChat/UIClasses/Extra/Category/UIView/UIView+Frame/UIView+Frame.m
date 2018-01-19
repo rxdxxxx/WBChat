@@ -213,4 +213,15 @@ CGRect CGRectMoveToCenter(CGRect rect, CGPoint center)
 	
 	self.frame = newframe;	
 }
+
+- (void) wb_addRorationAnimaitonInLayer{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = [NSNumber numberWithInt:0];
+    animation.toValue = [NSNumber numberWithInt:2*M_PI];
+    animation.duration = 1;
+    animation.autoreverses = NO ;
+    animation.repeatCount = INT16_MAX;
+    animation.removedOnCompletion = NO;
+    [self.layer addAnimation:animation forKey:@"rotateAnimation"];
+}
 @end

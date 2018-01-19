@@ -14,7 +14,7 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatInfoDao)
 
 - (BOOL)createDBTable{
     __block BOOL ret = NO;
-    NSString *sql =@"CREATE TABLE IF NOT EXISTS 65181(\
+    NSString *sql =@"CREATE TABLE IF NOT EXISTS t_ChatInfo(\
     conversationID          VARCHAR(63) PRIMARY KEY,\
     topTime                 INTEGER DEFAULT 0,\
     conversationBGFileID    Text,\
