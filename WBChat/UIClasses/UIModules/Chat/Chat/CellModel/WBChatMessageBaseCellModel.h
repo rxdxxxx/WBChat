@@ -60,8 +60,6 @@ typedef NS_ENUM(NSUInteger, WBChatCellType) {
 @property (nonatomic, assign) CGRect usernameRectFrame;
 
 
-@property (nonatomic, assign) BOOL isDisplayMessageTime;
-
-@property (nonatomic, assign) BOOL isDisplayNickname;
+@property (nonatomic, assign) BOOL showName;
 
 @end

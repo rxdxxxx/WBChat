@@ -52,10 +52,11 @@
     [UIView setAnimationsEnabled:NO];
     
     self.bubbleImageView.frame = cellModel.textWithBubbleRectFrame;
+    self.mLabel.frame=cellModel.textRectFrame;
+    
     
     [UIView setAnimationsEnabled:YES];
     
-    self.mLabel.frame=cellModel.textRectFrame;
     
     if(cellModel.messageModel.ioType == AVIMMessageIOTypeIn){
         self.mLabel.textColor=[UIColor blackColor];

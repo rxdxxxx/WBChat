@@ -36,8 +36,8 @@
     [super viewDidLayoutSubviews];
     
     self.tableView.frame = self.view.bounds;
-    self.tableView.top = self.searchTextField.height + 10;
-    self.tableView.height = self.tableView.height - self.tableView.top;
+    self.tableView.top_wb = self.searchTextField.height_wb + 10;
+    self.tableView.height_wb = self.tableView.height_wb - self.tableView.top_wb;
 }
 
 #pragma mark -  UITableViewDelegate

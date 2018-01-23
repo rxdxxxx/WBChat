@@ -55,6 +55,12 @@
 		4665520C20119DDA007111F6 /* WBChatMessageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4665520B20119DDA007111F6 /* WBChatMessageTextCell.m */; };
 		466552102011A299007111F6 /* UIImage+WBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4665520F2011A299007111F6 /* UIImage+WBImage.m */; };
 		466552122011A378007111F6 /* WBUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 466552112011A378007111F6 /* WBUI.bundle */; };
+		46870B192012F5570066F65A /* WBKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B182012F5570066F65A /* WBKeyBoard.m */; };
+		46870B1F2013026B0066F65A /* TLTalkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B1D2013026B0066F65A /* TLTalkButton.m */; };
+		46870B2A2015B8EA0066F65A /* TLAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B272015B8EA0066F65A /* TLAudioPlayer.m */; };
+		46870B2B2015B8EA0066F65A /* TLAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B292015B8EA0066F65A /* TLAudioRecorder.m */; };
+		46870B312015EA2E0066F65A /* TLRecorderIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B302015EA2D0066F65A /* TLRecorderIndicatorView.m */; };
+		46870B352015EA680066F65A /* WBKeyBoardTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B342015EA680066F65A /* WBKeyBoardTextView.m */; };
 		46A7A8B2200C796100061340 /* WBChatKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B1200C796100061340 /* WBChatKit.m */; };
 		46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B4200C7F4000061340 /* WBIMClientDelegateImp.m */; };
 		46A7A8BC200C921900061340 /* Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46A7A8BB200C921900061340 /* Other.bundle */; };
@@ -174,6 +180,18 @@
 		4665520E2011A299007111F6 /* UIImage+WBImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+WBImage.h"; sourceTree = "<group>"; };
 		4665520F2011A299007111F6 /* UIImage+WBImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WBImage.m"; sourceTree = "<group>"; };
 		466552112011A378007111F6 /* WBUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WBUI.bundle; sourceTree = "<group>"; };
+		46870B172012F5570066F65A /* WBKeyBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBKeyBoard.h; sourceTree = "<group>"; };
+		46870B182012F5570066F65A /* WBKeyBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBKeyBoard.m; sourceTree = "<group>"; };
+		46870B1D2013026B0066F65A /* TLTalkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTalkButton.m; sourceTree = "<group>"; };
+		46870B1E2013026B0066F65A /* TLTalkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTalkButton.h; sourceTree = "<group>"; };
+		46870B262015B8EA0066F65A /* TLAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAudioPlayer.h; sourceTree = "<group>"; };
+		46870B272015B8EA0066F65A /* TLAudioPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAudioPlayer.m; sourceTree = "<group>"; };
+		46870B282015B8EA0066F65A /* TLAudioRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAudioRecorder.h; sourceTree = "<group>"; };
+		46870B292015B8EA0066F65A /* TLAudioRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLAudioRecorder.m; sourceTree = "<group>"; };
+		46870B2F2015EA2D0066F65A /* TLRecorderIndicatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLRecorderIndicatorView.h; sourceTree = "<group>"; };
+		46870B302015EA2D0066F65A /* TLRecorderIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLRecorderIndicatorView.m; sourceTree = "<group>"; };
+		46870B332015EA680066F65A /* WBKeyBoardTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBKeyBoardTextView.h; sourceTree = "<group>"; };
+		46870B342015EA680066F65A /* WBKeyBoardTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBKeyBoardTextView.m; sourceTree = "<group>"; };
 		46A7A8B0200C796100061340 /* WBChatKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatKit.h; sourceTree = "<group>"; };
 		46A7A8B1200C796100061340 /* WBChatKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatKit.m; sourceTree = "<group>"; };
 		46A7A8B3200C7F4000061340 /* WBIMClientDelegateImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBIMClientDelegateImp.h; sourceTree = "<group>"; };
@@ -457,6 +475,7 @@
 		463713E71FBD8E71003C2655 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				46870B162012F50E0066F65A /* WBKeyBoard */,
 				463713E81FBD8E71003C2655 /* HUD */,
 				463713EB1FBD8E71003C2655 /* SelectPhotoTool */,
 				463713EE1FBD8E71003C2655 /* TableEmptyView */,
@@ -723,6 +742,57 @@
 				4665520F2011A299007111F6 /* UIImage+WBImage.m */,
 			);
 			path = UIImage;
+			sourceTree = "<group>";
+		};
+		46870B162012F50E0066F65A /* WBKeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				46870B322015EA5D0066F65A /* WBKeyBoardTextView */,
+				46870B2E2015EA2D0066F65A /* TLRecorderIndicatorView */,
+				46870B252015B8EA0066F65A /* MediaUtilities */,
+				46870B1C2013024F0066F65A /* TalkButton */,
+				46870B172012F5570066F65A /* WBKeyBoard.h */,
+				46870B182012F5570066F65A /* WBKeyBoard.m */,
+			);
+			path = WBKeyBoard;
+			sourceTree = "<group>";
+		};
+		46870B1C2013024F0066F65A /* TalkButton */ = {
+			isa = PBXGroup;
+			children = (
+				46870B1E2013026B0066F65A /* TLTalkButton.h */,
+				46870B1D2013026B0066F65A /* TLTalkButton.m */,
+			);
+			path = TalkButton;
+			sourceTree = "<group>";
+		};
+		46870B252015B8EA0066F65A /* MediaUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				46870B262015B8EA0066F65A /* TLAudioPlayer.h */,
+				46870B272015B8EA0066F65A /* TLAudioPlayer.m */,
+				46870B282015B8EA0066F65A /* TLAudioRecorder.h */,
+				46870B292015B8EA0066F65A /* TLAudioRecorder.m */,
+			);
+			path = MediaUtilities;
+			sourceTree = "<group>";
+		};
+		46870B2E2015EA2D0066F65A /* TLRecorderIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				46870B2F2015EA2D0066F65A /* TLRecorderIndicatorView.h */,
+				46870B302015EA2D0066F65A /* TLRecorderIndicatorView.m */,
+			);
+			path = TLRecorderIndicatorView;
+			sourceTree = "<group>";
+		};
+		46870B322015EA5D0066F65A /* WBKeyBoardTextView */ = {
+			isa = PBXGroup;
+			children = (
+				46870B332015EA680066F65A /* WBKeyBoardTextView.h */,
+				46870B342015EA680066F65A /* WBKeyBoardTextView.m */,
+			);
+			path = WBKeyBoardTextView;
 			sourceTree = "<group>";
 		};
 		46A7A8B6200C890600061340 /* WBDefine */ = {
@@ -1054,16 +1124,19 @@
 				463713F81FBD8E71003C2655 /* WBModuleControl.m in Sources */,
 				46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */,
 				465EA93C200F2FDE00BA84C7 /* WBChatListDao.m in Sources */,
+				46870B192012F5570066F65A /* WBKeyBoard.m in Sources */,
 				46F142351FBEDD67004B0554 /* WBMeListController.m in Sources */,
 				465A32A1200DA2F500ABAAAA /* WBChatListManager.m in Sources */,
 				465EA94D200F473900BA84C7 /* FMDatabase+WBAutoSql.m in Sources */,
 				46A7A8CA200C96C500061340 /* WBUserManager.m in Sources */,
+				46870B352015EA680066F65A /* WBKeyBoardTextView.m in Sources */,
 				4637140B1FBD8E71003C2655 /* UITools.m in Sources */,
 				46A7A8C8200C96C500061340 /* WBDBClient.m in Sources */,
 				465A3286200CB8FF00ABAAAA /* AVIMMessage+WBExtension.m in Sources */,
 				465A32A9200DDFED00ABAAAA /* WBChatViewController.m in Sources */,
 				463713FE1FBD8E71003C2655 /* UIColor+Hex.m in Sources */,
 				46A7A8B2200C796100061340 /* WBChatKit.m in Sources */,
+				46870B1F2013026B0066F65A /* TLTalkButton.m in Sources */,
 				4665520C20119DDA007111F6 /* WBChatMessageTextCell.m in Sources */,
 				46B1E1A02010AEA0005DD078 /* WBChatMessageBaseCellModel.m in Sources */,
 				46F1423F1FBEE0A3004B0554 /* WBSearchContactsController.m in Sources */,
@@ -1095,6 +1168,7 @@
 				465A32A5200DC1F600ABAAAA /* WBChatManager.m in Sources */,
 				465EA940200F368F00BA84C7 /* WBChatListModel.m in Sources */,
 				463714001FBD8E71003C2655 /* NSString+OPSize.m in Sources */,
+				46870B2A2015B8EA0066F65A /* TLAudioPlayer.m in Sources */,
 				46F142291FBEDD34004B0554 /* WBChatListController.m in Sources */,
 				46655206201191AE007111F6 /* WBChatCellConfig.m in Sources */,
 				46A7A8C9200C96C500061340 /* WBCoreRegister.m in Sources */,
@@ -1105,6 +1179,8 @@
 				463714051FBD8E71003C2655 /* UIViewController+NavBarItemExtension.m in Sources */,
 				46150BCD1FDE755700B85E9D /* WBChatListCell.m in Sources */,
 				465A3292200CBF8400ABAAAA /* AVIMTypedMessage+WBExtension.m in Sources */,
+				46870B312015EA2E0066F65A /* TLRecorderIndicatorView.m in Sources */,
+				46870B2B2015B8EA0066F65A /* TLAudioRecorder.m in Sources */,
 				463714021FBD8E71003C2655 /* UIView+Inspectable.m in Sources */,
 				46150BD31FDE7B9B00B85E9D /* WBChatListCellModel.m in Sources */,
 				46A7A8D3200C96D400061340 /* WBUserDefaults.m in Sources */,

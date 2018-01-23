@@ -11,7 +11,7 @@
 
 
 #define kBoardHoldImage [UIImage imageNamed:@"star_bg"]
-#define kUserHeaderHoldImage [UIImage imageNamed:@"header_male"]
+#define kUserHeaderHoldImage [UIImage wb_resourceImageNamed:@"header_male"]
 #define kWBScreenWidth ([UIScreen mainScreen].bounds.size.width)
 #define kWBScreenHeight ([UIScreen mainScreen].bounds.size.height)
 #define kWBNavigationBarHeight (64)
@@ -21,13 +21,13 @@
 
 #define WB_IS_IPHONE_X (fabs((double)[[ UIScreen mainScreen ] bounds ].size.height - ( double )812)==0)
 
-#define WB_IPHONEX_TOP_SPACE ((IS_IPHONE_X)?24:0)
+#define WB_IPHONEX_TOP_SPACE ((WB_IS_IPHONE_X)?24:0)
 
-#define WB_IPHONEX_BOTTOM_SPACE ((IS_IPHONE_X)?34:0)
+#define WB_IPHONEX_BOTTOM_SPACE ((WB_IS_IPHONE_X)?34:0)
 
-#define WB_NavHeight (64+IPHONEX_TOP_SPACE)
+#define WB_NavHeight (64+WB_IPHONEX_TOP_SPACE)
 
-#define WB_TabBarHeight (49+IPHONEX_BOTTOM_SPACE)
+#define WB_TabBarHeight (49+WB_IPHONEX_BOTTOM_SPACE)
 
 //如果有Debug这个宏的话,就允许log输出...可变参数
 #ifdef DEBUG

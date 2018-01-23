@@ -166,7 +166,7 @@
         
         if (dataModel.status == AVIMMessageStatusFailed || dataModel.status == AVIMMessageStatusNone) {
             self.messageStatusImageView.hidden = NO;
-            self.messageStatusImageView.image = [UIImage wb_resourceImageNamed:@"fail_icon"];
+            self.messageStatusImageView.image = [UIImage wb_resourceImageNamed:@"ExclamationMark"];
             [self.messageStatusImageView.layer removeAllAnimations];
         } else if (dataModel.status == AVIMMessageStatusSending &&
                    self.cellModel.cellType != WBChatCellTypeImage &&
@@ -259,5 +259,18 @@
         _usernameLabel.adjustsFontSizeToFitWidth = YES;
     }
     return _usernameLabel;
+}
+
+- (UILabel *)timeLabel{
+    if (_timeLabel == nil) {
+        _timeLabel = [[UILabel alloc] init];
+        [_timeLabel setFont:[UIFont systemFontOfSize:12.0f]];
+        [_timeLabel setTextColor:[UIColor whiteColor]];
+        [_timeLabel setBackgroundColor:[UIColor grayColor]];
+        [_timeLabel setAlpha:0.7f];
+        [_timeLabel.layer setMasksToBounds:YES];
+        [_timeLabel.layer setCornerRadius:5.0f];
+    }
+    return _timeLabel;
 }
 @end

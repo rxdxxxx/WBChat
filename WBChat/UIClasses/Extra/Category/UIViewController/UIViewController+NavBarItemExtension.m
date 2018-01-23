@@ -265,8 +265,8 @@
     rrTitleLabel.text = title;
     
     
-    UIImageView  * remindImageView = [[UIImageView alloc]initWithFrame:CGRectMake(rrTitleLabel.right, 0, 15, 15)];
-    remindImageView.centerY = rrTitleLabel.centerY;
+    UIImageView  * remindImageView = [[UIImageView alloc]initWithFrame:CGRectMake(rrTitleLabel.right_wb, 0, 15, 15)];
+    remindImageView.centerY_wb = rrTitleLabel.centerY_wb;
     
     [remindImageView setImage:[UIImage imageNamed:imageString]];
     remindImageView.contentMode = UIViewContentModeScaleAspectFit;

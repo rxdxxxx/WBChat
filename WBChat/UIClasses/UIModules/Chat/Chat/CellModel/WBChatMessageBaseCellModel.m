@@ -78,32 +78,18 @@
         
     } else if (messageModel.ioType == AVIMMessageIOTypeIn) {
         // 收到的消息的状态就是MessageStatusNone
-        
         _headerRectFrame = CGRectMake(headerMarginSpace, headerMarginSpace, headerSize.width, headerSize.height);
         
     } else {
         CGFloat headerX = kWBScreenWidth - headerMarginSpace - headerSize.width;
         _myHeaderRectFrame = CGRectMake(headerX, headerMarginSpace, headerSize.width, headerSize.height);
     }
-    if ([self needShowUsernameLabel]) {
+    if (self.showName) {
         CGFloat userNameX = CGRectGetMaxX(_headerRectFrame) + config.headerBubbleSpace + config.bubbleClosedAngleWidth;
         CGFloat userNameY = CGRectGetMinY(_headerRectFrame);
         _usernameRectFrame = CGRectMake(userNameX, userNameY, config.userNameSize.width, config.userNameSize.height);
     }
 }
 
-- (BOOL)needShowUsernameLabel {
-    //AVIMMessageIOType status = self.messageModel.ioType;
-    return NO;
-//    return (self.messageModel.conversationType == XM_ConversationType_DISCUSSION ||
-//            self.messageModel.conversationType == XM_ConversationType_GROUP) &&
-//    status == XM_MessageDirection_RECEIVE;
-}
-
-- (void)adjustCellHeightIfNeeded {
-//    if ([self needShowUsernameLabel]) {
-//        self.cellHeight += kDialogUserNameLabelHeight + kDialogUserNameLabelYWithBubble;
-//    }
-}
 
 @end

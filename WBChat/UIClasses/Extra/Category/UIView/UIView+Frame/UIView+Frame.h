@@ -11,31 +11,31 @@ CGRect  CGRectMoveToCenter(CGRect rect, CGPoint center);
 
 @interface UIView (ViewFrameGeometry)
 
-@property CGPoint origin;
-@property CGSize size;
+@property CGPoint origin_wb;
+@property CGSize size_wb;
 
-@property (readonly) CGPoint bottomLeft;
-@property (readonly) CGPoint bottomRight;
-@property (readonly) CGPoint topRight;
+@property (readonly) CGPoint bottomLeft_wb;
+@property (readonly) CGPoint bottomRight_wb;
+@property (readonly) CGPoint topRight_wb;
 
-@property(nonatomic,assign)CGFloat width;
-@property(nonatomic,assign)CGFloat height;
+@property(nonatomic,assign)CGFloat width_wb;
+@property(nonatomic,assign)CGFloat height_wb;
 
-@property CGFloat top;
-@property CGFloat left;
+@property CGFloat top_wb;
+@property CGFloat left_wb;
 
-@property CGFloat bottom;
-@property CGFloat right;
+@property CGFloat bottom_wb;
+@property CGFloat right_wb;
 
 //中心点的x与y
-@property (nonatomic, assign) CGFloat centerX;
-@property (nonatomic, assign) CGFloat centerY;
+@property (nonatomic, assign) CGFloat centerX_wb;
+@property (nonatomic, assign) CGFloat centerY_wb;
 
 
 
-- (void) moveBy: (CGPoint) delta;
-- (void) scaleBy: (CGFloat) scaleFactor;
-- (void) fitInSize: (CGSize) aSize;
+- (void) moveBy_wb: (CGPoint) delta;
+- (void) scaleBy_wb: (CGFloat) scaleFactor;
+- (void) fitInSize_wb: (CGSize) aSize;
 
 - (void) wb_addRorationAnimaitonInLayer;
 @end
