@@ -8,7 +8,6 @@
 
 #import "WBChatListCellModel.h"
 #import "WBConfig.h"
-
 @implementation WBChatListCellModel
 
 - (void)handleLastMessageString:(WBChatListModel *)dataModel {

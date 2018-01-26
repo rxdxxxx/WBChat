@@ -33,10 +33,22 @@ typedef NS_ENUM(NSInteger, WBChatBarStatus) {
     WBChatBarStatusKeyboard,
 };
 
-@interface WBKeyBoard : UIView
+
+@class WBChatBarView;
+
+@protocol WBChatBarViewDelegate <NSObject>
+
+- (void)chatBar:(WBChatBarView *)keyBoardView sendText:(NSString *)sendText;
+
+@end
+
+
+@interface WBChatBarView : UIView
 
 @property (nonatomic, assign) WBChatBarStatus status;
 
 @property (nonatomic, assign) BOOL activity;
+
+@property (nonatomic, weak) id<WBChatBarViewDelegate> delegate;
 
 @end

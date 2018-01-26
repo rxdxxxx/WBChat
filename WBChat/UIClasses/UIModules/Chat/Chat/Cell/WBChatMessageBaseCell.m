@@ -102,7 +102,7 @@
 
 - (void)setInterface {
     
-    AVIMTypedMessage* dataModel = self.cellModel.messageModel;
+    AVIMTypedMessage* dataModel = self.cellModel.messageModel.content;
     UIImage * bubbleImage = nil;
     
     if(dataModel.ioType == AVIMMessageIOTypeIn){
@@ -228,6 +228,7 @@
     if (_messageStatusImageView == nil) {
         _messageStatusImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
         _messageStatusImageView.userInteractionEnabled = YES;
+        _messageStatusImageView.contentMode = UIViewContentModeScaleAspectFill;
         UITapGestureRecognizer *resentMessage = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resentMessage:)];
         [_messageStatusImageView addGestureRecognizer:resentMessage];
         

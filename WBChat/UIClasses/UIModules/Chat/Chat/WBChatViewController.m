@@ -8,12 +8,12 @@
 
 #import "WBChatViewController.h"
 #import "WBChatMessageBaseCell.h"
-#import "WBKeyBoard.h"
+#import "WBChatBarView.h"
 
-@interface WBChatViewController ()
+@interface WBChatViewController ()<WBChatBarViewDelegate>
 @property (nonatomic, strong) AVIMConversation *conversation;
 @property (nonatomic, strong) NSMutableArray<WBChatMessageBaseCellModel *> *dataArray;
-@property (nonatomic, strong) WBKeyBoard *chatBar;
+@property (nonatomic, strong) WBChatBarView *chatBar;
 @end
 
 @implementation WBChatViewController
@@ -30,6 +30,7 @@
          NSMutableArray *temp = [NSMutableArray new];
          
          for (AVIMTypedMessage *message in messageArray) {
+             
              WBChatMessageBaseCellModel *cellModel = [WBChatMessageBaseCellModel modelWithMessageModel:message];
              [temp addObject:cellModel];
         }
@@ -74,6 +75,31 @@
 }
 
 #pragma mark -  CustomDelegate
+#pragma mark - WBChatBarViewDelegate
+- (void)chatBar:(WBChatBarView *)keyBoardView sendText:(NSString *)sendText{
+    if (sendText.length > 0) {
+        
+        WBMessageModel *message = [WBMessageModel createWithText:sendText];
+        [self appendAMessageToTableView:message];
+        
+        
+        [[WBChatKit sharedInstance] sendTargetConversation:self.conversation
+                                                   message:message
+                                                   success:^(WBMessageModel * _Nonnull aMessage)
+        {
+            
+            [self refershAMessageState:aMessage];
+            
+        } error:^(WBMessageModel * _Nonnull aMessage, NSError * _Nonnull error) {
+            
+            [self refershAMessageState:aMessage];
+            
+        }];
+        
+    }
+}
+
+
 #pragma mark -  Event Response
 #pragma mark -  Notification Callback
 
@@ -120,16 +146,35 @@
 #pragma mark -  GestureRecognizer Action
 #pragma mark -  Btn Click
 #pragma mark -  Private Methods
+- (void)appendAMessageToTableView:(WBMessageModel *)aMessage{
+
+    WBChatMessageBaseCellModel *cellModel = [WBChatMessageBaseCellModel modelWithMessageModel:aMessage];
+    [self.dataArray addObject:cellModel];
+    [self.tableView reloadData];
+}
+
+- (void)refershAMessageState:(WBMessageModel *)aMessage{
+    for (NSInteger i = self.dataArray.count - 1; i >=0 ; i--) {
+        WBChatMessageBaseCellModel *cellModel = self.dataArray[i];
+        if (cellModel.messageModel == aMessage) {
+//            NSInteger index = [self.dataArray indexOfObject:cellModel];
+            [self.tableView reloadData];
+            break;
+        }
+    }
+}
+
 - (void)setupUI{
     [self rr_initTitleView:self.conversation.name];
     [self.view addSubview:self.tableView];
     
     
     
-    WBKeyBoard *keyBoard = [[WBKeyBoard alloc] initWithFrame:CGRectMake(0, kWBScreenHeight - 48 - WB_NavHeight - WB_IPHONEX_BOTTOM_SPACE,
+    WBChatBarView *keyBoard = [[WBChatBarView alloc] initWithFrame:CGRectMake(0, kWBScreenHeight - 48 - WB_NavHeight - WB_IPHONEX_BOTTOM_SPACE,
                                                                         kWBScreenWidth, 48)];
     [self.view addSubview:keyBoard];
     self.chatBar = keyBoard;
+    self.chatBar.delegate = self;
     
     //3,缩小tableView的高度
     self.tableView.height_wb = self.chatBar.top_wb;

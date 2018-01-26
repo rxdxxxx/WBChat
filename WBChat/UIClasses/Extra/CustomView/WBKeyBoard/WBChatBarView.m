@@ -6,12 +6,13 @@
 //  Copyright © 2018年 RedRain. All rights reserved.
 //
 
-#import "WBKeyBoard.h"
+#import "WBChatBarView.h"
 #import "TLTalkButton.h"
 #import "UIImage+WBImage.h"
 #import "UIView+Frame.h"
 #import "UIView+NextResponder.h"
 #import "WBKeyBoardTextView.h"
+#import "WBEmotionDisplayBoard.h"
 
 #define     WBKeyBoardRGBAColor(r, g, b, a)       [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
 
@@ -30,7 +31,7 @@
 
 #define     WB_TabBarHeight_ky (49+WB_IPHONEX_BOTTOM_SPACE_ky)
 
-@interface WBKeyBoard ()<UITextViewDelegate>
+@interface WBChatBarView ()<UITextViewDelegate>
 {
     UIImage *kVoiceImage;
     UIImage *kVoiceImageHL;
@@ -58,14 +59,16 @@
 @property (nonatomic, strong) UITextView *switchTextView;
 
 
-@property (nonatomic, strong) UIView *emojiBoard;
+@property (nonatomic, strong) WBEmotionDisplayBoard *emojiBoard;
 @property (nonatomic, strong) UIView *moreBoard;
 @end
 
 
 
-@implementation WBKeyBoard
-
+@implementation WBChatBarView
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 #pragma mark -  life cycle
 - (instancetype)initWithFrame:(CGRect)frame{
@@ -165,6 +168,21 @@
     }
     return YES;
 }
+
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]){
+        [self sendCurrentText];
+        return NO;
+    }
+    else if (textView.text.length > 0 && [text isEqualToString:@""]) {       // delete
+
+    }
+    
+    return YES;
+}
+
+
 #pragma mark -  CustomDelegate
 #pragma mark -  Event Response
 #pragma mark -  Notification Callback
@@ -211,6 +229,36 @@
     }
     [CATransaction commit];
 
+}
+//获取上一级响应者
+- (UIViewController *)viewController
+{
+    UIResponder *next = self.nextResponder;
+    while (next != nil) {
+        if ([next isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)next;
+        }
+        next = next.nextResponder;
+    }
+    return nil;
+}
+
+- (void)receiveEmojiInfo:(NSNotification *)notication{
+    if (notication.object == [self viewController]){
+        NSString *text = notication.userInfo[@"text"];
+        // delete
+        if ([text isEqualToString:@"-1"]) {
+            [self.textView deleteBackward];
+        }else{
+            [self.textView insertText:text];
+        }
+        
+    }
+}
+- (void)receiveKeyBoardSendClick:(NSNotification *)notication{
+    if (notication.object == [self viewController]){
+        [self sendCurrentText];
+    }
 }
 
 #pragma mark -  GestureRecognizer Action
@@ -291,7 +339,8 @@
         }
         
         
-        
+        [self setActivity:NO];
+
         [self changeKeyboardWithView:self.emojiBoard nextState:WBChatBarStatusEmoji] ;
 
         [self.emojiButton setImage:kKeyboardImage forState:UIControlStateNormal];
@@ -328,14 +377,22 @@
             [self.emojiButton setImage:kEmojiImageHL forState:UIControlStateHighlighted];
         }
         
-        
+        [self setActivity:NO];
         [self changeKeyboardWithView:self.moreBoard nextState:WBChatBarStatusMore];
         self.status = WBChatBarStatusMore;
     }
 }
 
 #pragma mark -  Private Methods
-
+- (void)sendCurrentText
+{
+    if (self.textView.text.length > 0) {     // send Text
+        if (_delegate && [_delegate respondsToSelector:@selector(chatBar:sendText:)]) {
+            [_delegate chatBar:self sendText:self.textView.text];
+        }
+    }
+    [self.textView setText:@""];
+}
 - (void)changeKeyboardWithView:(UIView *)view  nextState:(WBChatBarStatus)nextStatus{
     
     //  self.switchTextView.inputView == nil : 使用的是系统自带的键盘
@@ -363,16 +420,22 @@
     _activity = activity;
     if (activity) {
         [self.textView setTextColor:[UIColor blackColor]];
+        
+        // 把之前的键盘设置为nil, 即系统键盘,恢复原状
+        self.switchTextView.inputView = nil;
     }
     else {
         [self.textView setTextColor:[UIColor grayColor]];
     }
+    
 }
+
 - (void)addNotificationForSocial{
     // 键盘通知
     // 键盘的frame发生改变时发出的通知（位置和尺寸）
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveEmojiInfo:) name:WBEmotionDisplayBoardDidSelectEmojiNotifi object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveKeyBoardSendClick:) name:WBEmotionDisplayBoardSendClickNotifi object:nil];
 
 }
 - (void)p_initImage
@@ -399,7 +462,7 @@
         _modeButton = [[UIButton alloc] init];
         [_modeButton setImage:[UIImage wb_resourceImageNamed:@"Mode_texttolist"] forState:(UIControlStateNormal)];
         [_modeButton setImage:[UIImage wb_resourceImageNamed:@"Mode_texttolistHL"] forState:(UIControlStateHighlighted)];
-        [_modeButton addTarget:self action:@selector(modeButtonDown) forControlEvents:UIControlEventTouchUpInside];
+//        [_modeButton addTarget:self action:@selector(modeButtonDown) forControlEvents:UIControlEventTouchUpInside];
 
     }
     return _modeButton;
@@ -499,11 +562,9 @@
     }
     return _switchTextView;
 }
-- (UIView *)emojiBoard{
+- (WBEmotionDisplayBoard *)emojiBoard{
     if (!_emojiBoard) {
-        
-        _emojiBoard = [[UIView alloc] initWithFrame:CGRectMake(0, 0,self.width_wb, 200)];
-        _emojiBoard.backgroundColor = [UIColor yellowColor];
+        _emojiBoard = [WBEmotionDisplayBoard createEmojiKeyboard];
     }
     return _emojiBoard;
 }

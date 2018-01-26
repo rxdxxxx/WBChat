@@ -9,6 +9,7 @@
 #import "WBChatKit.h"
 #import "WBIMClientDelegateImp.h"
 #import "WBManagerHeaders.h"
+#import "WBMessageModel.h"
 
 
 
@@ -114,7 +115,7 @@
 - (void)queryTypedMessagesWithConversation:(AVIMConversation *)conversation
                               queryMessage:(AVIMMessage * _Nullable)queryMessage
                                      limit:(NSInteger)limit
-                                   success:(void (^)(NSArray<AVIMTypedMessage *> *messageArray))successBlock
+                                   success:(void (^)(NSArray<WBMessageModel *> *messageArray))successBlock
                                      error:(void (^)(NSError *error))errorBlock{
     [[WBChatManager sharedInstance]
      queryTypedMessagesWithConversation:conversation
@@ -124,7 +125,14 @@
          if (error && errorBlock) {
              errorBlock(error);
          }else if(successBlock){
-             successBlock(array);
+             NSMutableArray *temp = [NSMutableArray new];
+             for (AVIMTypedMessage *imMessage in array) {
+                 WBMessageModel *message = [WBMessageModel new];
+                 message.status = imMessage.status;
+                 message.content = imMessage;
+                 [temp addObject:message];
+             }
+             successBlock(temp);
          }
      }];
 }
@@ -159,12 +167,11 @@
 /*!
  往对话中发送消息。
  @param message － 消息对象
- @param callback － 结果回调
  */
 - (void)sendTargetConversation:(AVIMConversation *)targetConversation
-                       message:(AVIMMessage *)message
-                       success:(nonnull void (^)(void))successBlock
-                         error:(nonnull void (^)(NSError * _Nonnull))errorBlock{
+                       message:(WBMessageModel *)message
+                       success:(nonnull void (^)(WBMessageModel *aMessage))successBlock
+                         error:(nonnull void (^)(WBMessageModel *aMessage,NSError * _Nonnull))errorBlock{
     
     
     
@@ -174,9 +181,14 @@
      callback:^(BOOL success, NSError * _Nullable error)
      {
          if (error && errorBlock) {
-             errorBlock(error);
+             message.status = AVIMMessageStatusFailed;
+
+             errorBlock(message,error);
+             
          }else if(successBlock){
-             successBlock();
+             
+             message.status = AVIMMessageStatusSent;
+             successBlock(message);
          }
      }];
 }

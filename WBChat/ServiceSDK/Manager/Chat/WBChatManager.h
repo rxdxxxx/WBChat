@@ -11,6 +11,8 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import <AVOSCloudIM/AVOSCloudIM.h>
 
+@class WBMessageModel;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WBChatManager : NSObject<WBDBCreater>
@@ -37,7 +39,7 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatManager)
  @param callback － 结果回调
  */
 - (void)sendTargetConversation:(AVIMConversation *)targetConversation
-                       message:(AVIMMessage *)message
+                       message:(WBMessageModel *)message
                       callback:(AVIMBooleanResultBlock)callback;
 
 

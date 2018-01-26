@@ -11,7 +11,7 @@
 @implementation UIImage (WBImage)
 
 + (UIImage *)wb_userHeaderPlaceholderImage{
-    return [self wb_resourceImageNamed:@"User_header"];
+    return [self wb_resourceImageNamed:@"header_male"];
 }
 + (UIImage *)wb_resourceImageNamed:(NSString *)name{
     //先从默认目录里读

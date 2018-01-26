@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		461504CA201B199700B495CE /* WBMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 461504C9201B199700B495CE /* WBMessageModel.m */; };
 		46150BCD1FDE755700B85E9D /* WBChatListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BCC1FDE755700B85E9D /* WBChatListCell.m */; };
 		46150BD31FDE7B9B00B85E9D /* WBChatListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BD21FDE7B9B00B85E9D /* WBChatListCellModel.m */; };
+		4624A60620187FF500E7B38A /* WBEmotionDisplayBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4624A60520187FF500E7B38A /* WBEmotionDisplayBoard.m */; };
+		4624A60A2018879200E7B38A /* WBEmojiKeyBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4624A6092018879200E7B38A /* WBEmojiKeyBoardCell.m */; };
+		4624A60E201887DB00E7B38A /* WBEmotionPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4624A60D201887DB00E7B38A /* WBEmotionPageModel.m */; };
 		463713A41FBD8C58003C2655 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 463713A31FBD8C58003C2655 /* AppDelegate.m */; };
 		463713AC1FBD8C58003C2655 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 463713AB1FBD8C58003C2655 /* Assets.xcassets */; };
 		463713AF1FBD8C58003C2655 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 463713AD1FBD8C58003C2655 /* LaunchScreen.storyboard */; };
@@ -37,6 +41,8 @@
 		463714191FBD8ED9003C2655 /* WBLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463714131FBD8ED9003C2655 /* WBLoginController.xib */; };
 		4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 463714161FBD8ED9003C2655 /* WBRegisterController.m */; };
 		4637141B1FBD8ED9003C2655 /* WBRegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 463714171FBD8ED9003C2655 /* WBRegisterController.xib */; };
+		464572242019A70100CAE47D /* WBEmojiGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 464572212019A70000CAE47D /* WBEmojiGroupCell.m */; };
+		464572252019A70100CAE47D /* WBEmojiGroupControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 464572232019A70000CAE47D /* WBEmojiGroupControl.m */; };
 		465A3281200CB4BD00ABAAAA /* NSError+WBError.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A3280200CB4BD00ABAAAA /* NSError+WBError.m */; };
 		465A3286200CB8FF00ABAAAA /* AVIMMessage+WBExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A3285200CB8FE00ABAAAA /* AVIMMessage+WBExtension.m */; };
 		465A328C200CBDA500ABAAAA /* NSBundle+LCCKExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 465A328A200CBDA500ABAAAA /* NSBundle+LCCKExtension.m */; };
@@ -55,7 +61,7 @@
 		4665520C20119DDA007111F6 /* WBChatMessageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4665520B20119DDA007111F6 /* WBChatMessageTextCell.m */; };
 		466552102011A299007111F6 /* UIImage+WBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4665520F2011A299007111F6 /* UIImage+WBImage.m */; };
 		466552122011A378007111F6 /* WBUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 466552112011A378007111F6 /* WBUI.bundle */; };
-		46870B192012F5570066F65A /* WBKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B182012F5570066F65A /* WBKeyBoard.m */; };
+		46870B192012F5570066F65A /* WBChatBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B182012F5570066F65A /* WBChatBarView.m */; };
 		46870B1F2013026B0066F65A /* TLTalkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B1D2013026B0066F65A /* TLTalkButton.m */; };
 		46870B2A2015B8EA0066F65A /* TLAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B272015B8EA0066F65A /* TLAudioPlayer.m */; };
 		46870B2B2015B8EA0066F65A /* TLAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B292015B8EA0066F65A /* TLAudioRecorder.m */; };
@@ -85,10 +91,18 @@
 /* Begin PBXFileReference section */
 		1EB2E1EDE282F0959103425C /* libPods-WBChat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WBChat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43F765D2FF83BFFC3F877130 /* Pods-WBChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-WBChat/Pods-WBChat.release.xcconfig"; sourceTree = "<group>"; };
+		461504C8201B199700B495CE /* WBMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBMessageModel.h; sourceTree = "<group>"; };
+		461504C9201B199700B495CE /* WBMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBMessageModel.m; sourceTree = "<group>"; };
 		46150BCB1FDE755700B85E9D /* WBChatListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListCell.h; sourceTree = "<group>"; };
 		46150BCC1FDE755700B85E9D /* WBChatListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListCell.m; sourceTree = "<group>"; };
 		46150BD11FDE7B9B00B85E9D /* WBChatListCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListCellModel.h; sourceTree = "<group>"; };
 		46150BD21FDE7B9B00B85E9D /* WBChatListCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListCellModel.m; sourceTree = "<group>"; };
+		4624A60420187FF500E7B38A /* WBEmotionDisplayBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBEmotionDisplayBoard.h; sourceTree = "<group>"; };
+		4624A60520187FF500E7B38A /* WBEmotionDisplayBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBEmotionDisplayBoard.m; sourceTree = "<group>"; };
+		4624A6082018879200E7B38A /* WBEmojiKeyBoardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBEmojiKeyBoardCell.h; sourceTree = "<group>"; };
+		4624A6092018879200E7B38A /* WBEmojiKeyBoardCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBEmojiKeyBoardCell.m; sourceTree = "<group>"; };
+		4624A60C201887DB00E7B38A /* WBEmotionPageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBEmotionPageModel.h; sourceTree = "<group>"; };
+		4624A60D201887DB00E7B38A /* WBEmotionPageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBEmotionPageModel.m; sourceTree = "<group>"; };
 		4637139F1FBD8C58003C2655 /* WBChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WBChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		463713A21FBD8C58003C2655 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		463713A31FBD8C58003C2655 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -145,6 +159,10 @@
 		463714171FBD8ED9003C2655 /* WBRegisterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WBRegisterController.xib; sourceTree = "<group>"; };
 		4637141C1FBD9033003C2655 /* WBConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBConfig.h; sourceTree = "<group>"; };
 		4637141D1FBD9254003C2655 /* WBServiceSDKHeaders.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBServiceSDKHeaders.h; sourceTree = "<group>"; };
+		464572202019A70000CAE47D /* WBEmojiGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBEmojiGroupCell.h; sourceTree = "<group>"; };
+		464572212019A70000CAE47D /* WBEmojiGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBEmojiGroupCell.m; sourceTree = "<group>"; };
+		464572222019A70000CAE47D /* WBEmojiGroupControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBEmojiGroupControl.h; sourceTree = "<group>"; };
+		464572232019A70000CAE47D /* WBEmojiGroupControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBEmojiGroupControl.m; sourceTree = "<group>"; };
 		465A327F200CB4BD00ABAAAA /* NSError+WBError.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSError+WBError.h"; sourceTree = "<group>"; };
 		465A3280200CB4BD00ABAAAA /* NSError+WBError.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSError+WBError.m"; sourceTree = "<group>"; };
 		465A3284200CB8FE00ABAAAA /* AVIMMessage+WBExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVIMMessage+WBExtension.h"; sourceTree = "<group>"; };
@@ -180,8 +198,8 @@
 		4665520E2011A299007111F6 /* UIImage+WBImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+WBImage.h"; sourceTree = "<group>"; };
 		4665520F2011A299007111F6 /* UIImage+WBImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WBImage.m"; sourceTree = "<group>"; };
 		466552112011A378007111F6 /* WBUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WBUI.bundle; sourceTree = "<group>"; };
-		46870B172012F5570066F65A /* WBKeyBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBKeyBoard.h; sourceTree = "<group>"; };
-		46870B182012F5570066F65A /* WBKeyBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBKeyBoard.m; sourceTree = "<group>"; };
+		46870B172012F5570066F65A /* WBChatBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatBarView.h; sourceTree = "<group>"; };
+		46870B182012F5570066F65A /* WBChatBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatBarView.m; sourceTree = "<group>"; };
 		46870B1D2013026B0066F65A /* TLTalkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTalkButton.m; sourceTree = "<group>"; };
 		46870B1E2013026B0066F65A /* TLTalkButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLTalkButton.h; sourceTree = "<group>"; };
 		46870B262015B8EA0066F65A /* TLAudioPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TLAudioPlayer.h; sourceTree = "<group>"; };
@@ -246,6 +264,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		461504C7201B197D00B495CE /* WBMessageModel */ = {
+			isa = PBXGroup;
+			children = (
+				461504C8201B199700B495CE /* WBMessageModel.h */,
+				461504C9201B199700B495CE /* WBMessageModel.m */,
+			);
+			path = WBMessageModel;
+			sourceTree = "<group>";
+		};
 		46150BC91FDE753300B85E9D /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +306,36 @@
 				465A329E200DA2E200ABAAAA /* ChatList */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		4624A60320187FD900E7B38A /* EmojiBoard */ = {
+			isa = PBXGroup;
+			children = (
+				4645721F2019A70000CAE47D /* EmojiKeyoboardBar */,
+				4624A60B201887CE00E7B38A /* Model */,
+				4624A6072018877900E7B38A /* Cell */,
+				4624A60420187FF500E7B38A /* WBEmotionDisplayBoard.h */,
+				4624A60520187FF500E7B38A /* WBEmotionDisplayBoard.m */,
+			);
+			path = EmojiBoard;
+			sourceTree = "<group>";
+		};
+		4624A6072018877900E7B38A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4624A6082018879200E7B38A /* WBEmojiKeyBoardCell.h */,
+				4624A6092018879200E7B38A /* WBEmojiKeyBoardCell.m */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		4624A60B201887CE00E7B38A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4624A60C201887DB00E7B38A /* WBEmotionPageModel.h */,
+				4624A60D201887DB00E7B38A /* WBEmotionPageModel.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		463713961FBD8C58003C2655 = {
@@ -607,6 +664,17 @@
 			name = Other;
 			sourceTree = "<group>";
 		};
+		4645721F2019A70000CAE47D /* EmojiKeyoboardBar */ = {
+			isa = PBXGroup;
+			children = (
+				464572202019A70000CAE47D /* WBEmojiGroupCell.h */,
+				464572212019A70000CAE47D /* WBEmojiGroupCell.m */,
+				464572222019A70000CAE47D /* WBEmojiGroupControl.h */,
+				464572232019A70000CAE47D /* WBEmojiGroupControl.m */,
+			);
+			path = EmojiKeyoboardBar;
+			sourceTree = "<group>";
+		};
 		465A327E200CB4A200ABAAAA /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -658,6 +726,7 @@
 		465A32A2200DC1E700ABAAAA /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				461504C7201B197D00B495CE /* WBMessageModel */,
 				46B1E1972010714F005DD078 /* Dao */,
 				465A32A3200DC1F600ABAAAA /* WBChatManager.h */,
 				465A32A4200DC1F600ABAAAA /* WBChatManager.m */,
@@ -747,12 +816,13 @@
 		46870B162012F50E0066F65A /* WBKeyBoard */ = {
 			isa = PBXGroup;
 			children = (
+				4624A60320187FD900E7B38A /* EmojiBoard */,
 				46870B322015EA5D0066F65A /* WBKeyBoardTextView */,
 				46870B2E2015EA2D0066F65A /* TLRecorderIndicatorView */,
 				46870B252015B8EA0066F65A /* MediaUtilities */,
 				46870B1C2013024F0066F65A /* TalkButton */,
-				46870B172012F5570066F65A /* WBKeyBoard.h */,
-				46870B182012F5570066F65A /* WBKeyBoard.m */,
+				46870B172012F5570066F65A /* WBChatBarView.h */,
+				46870B182012F5570066F65A /* WBChatBarView.m */,
 			);
 			path = WBKeyBoard;
 			sourceTree = "<group>";
@@ -1124,13 +1194,15 @@
 				463713F81FBD8E71003C2655 /* WBModuleControl.m in Sources */,
 				46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */,
 				465EA93C200F2FDE00BA84C7 /* WBChatListDao.m in Sources */,
-				46870B192012F5570066F65A /* WBKeyBoard.m in Sources */,
+				46870B192012F5570066F65A /* WBChatBarView.m in Sources */,
 				46F142351FBEDD67004B0554 /* WBMeListController.m in Sources */,
 				465A32A1200DA2F500ABAAAA /* WBChatListManager.m in Sources */,
+				4624A60E201887DB00E7B38A /* WBEmotionPageModel.m in Sources */,
 				465EA94D200F473900BA84C7 /* FMDatabase+WBAutoSql.m in Sources */,
 				46A7A8CA200C96C500061340 /* WBUserManager.m in Sources */,
 				46870B352015EA680066F65A /* WBKeyBoardTextView.m in Sources */,
 				4637140B1FBD8E71003C2655 /* UITools.m in Sources */,
+				4624A60620187FF500E7B38A /* WBEmotionDisplayBoard.m in Sources */,
 				46A7A8C8200C96C500061340 /* WBDBClient.m in Sources */,
 				465A3286200CB8FF00ABAAAA /* AVIMMessage+WBExtension.m in Sources */,
 				465A32A9200DDFED00ABAAAA /* WBChatViewController.m in Sources */,
@@ -1151,8 +1223,11 @@
 				463714011FBD8E71003C2655 /* UIView+Frame.m in Sources */,
 				4665520920119606007111F6 /* WBChatMessageTextCellModel.m in Sources */,
 				4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */,
+				464572252019A70100CAE47D /* WBEmojiGroupControl.m in Sources */,
 				46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */,
+				464572242019A70100CAE47D /* WBEmojiGroupCell.m in Sources */,
 				46F142451FBEE33D004B0554 /* WBSearchContactsCell.m in Sources */,
+				461504CA201B199700B495CE /* WBMessageModel.m in Sources */,
 				465A328C200CBDA500ABAAAA /* NSBundle+LCCKExtension.m in Sources */,
 				46B1E19D2010AC86005DD078 /* WBChatMessageBaseCell.m in Sources */,
 				46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */,
@@ -1167,6 +1242,7 @@
 				463714061FBD8E71003C2655 /* WBHUD.m in Sources */,
 				465A32A5200DC1F600ABAAAA /* WBChatManager.m in Sources */,
 				465EA940200F368F00BA84C7 /* WBChatListModel.m in Sources */,
+				4624A60A2018879200E7B38A /* WBEmojiKeyBoardCell.m in Sources */,
 				463714001FBD8E71003C2655 /* NSString+OPSize.m in Sources */,
 				46870B2A2015B8EA0066F65A /* TLAudioPlayer.m in Sources */,
 				46F142291FBEDD34004B0554 /* WBChatListController.m in Sources */,

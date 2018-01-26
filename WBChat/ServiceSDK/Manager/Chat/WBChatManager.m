@@ -10,6 +10,7 @@
 #import "WBCoreConfiguration.h"
 #import "WBChatKit.h"
 #import "WBChatInfoDao.h"
+#import "WBMessageModel.h"
 
 @implementation WBChatManager
 WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatManager)
@@ -76,7 +77,7 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatManager)
  @param callback － 结果回调
  */
 - (void)sendTargetConversation:(AVIMConversation *)targetConversation
-                       message:(AVIMMessage *)message
+                       message:(WBMessageModel *)message
                       callback:(AVIMBooleanResultBlock)callback{
     
     if (!targetConversation) {
@@ -89,7 +90,12 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatManager)
         return;
     }
     
-    [targetConversation sendMessage:message callback:callback];
+    [targetConversation sendMessage:message.content
+                      progressBlock:^(NSInteger progress)
+    {
+        
+    }
+                           callback:callback];
 }
 #pragma mark - 加载聊天记录
 

@@ -23,11 +23,11 @@
 }
 
 
-- (void)setMessageModel:(AVIMTypedMessage *)messageModel{
+- (void)setMessageModel:(WBMessageModel *)messageModel{
     
     [super setMessageModel:messageModel];
     
-    AVIMTextMessage *textMessage = (AVIMTextMessage*)messageModel;
+    AVIMTextMessage *textMessage = (AVIMTextMessage*)messageModel.content;
     self.content = textMessage.text;
     WBChatCellConfig *config = [WBChatCellConfig sharedInstance];
     CGFloat textSpaceL = config.textbubbleContentInset.left;
@@ -48,7 +48,7 @@
 
     
     //收到的会话
-    if (messageModel.ioType == AVIMMessageIOTypeIn) {
+    if (messageModel.content.ioType == AVIMMessageIOTypeIn) {
         //文本气泡frame
         CGFloat textBubleX = headerMarginSpace + headerSize.width + headerBubbleSpace;
         CGFloat textBubleY = headerMarginSpace;

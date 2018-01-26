@@ -34,9 +34,9 @@ typedef NS_ENUM(NSUInteger, WBChatCellType) {
 
 @interface WBChatMessageBaseCellModel : NSObject
 
-+ (instancetype)modelWithMessageModel:(AVIMTypedMessage *)messageModel;
++ (instancetype)modelWithMessageModel:(WBMessageModel *)messageModel;
 
-@property (nonatomic, strong) AVIMTypedMessage *messageModel;
+@property (nonatomic, strong) WBMessageModel *messageModel;
 
 ///< 消息类型
 @property (nonatomic, assign) WBChatCellType cellType;

@@ -67,7 +67,7 @@
     _cellModel = cellModel;
     
     self.chatHeaderView.frame = cellModel.chatUserHeaderViewF;
-    self.chatHeaderView.image = [UIImage imageNamed:@"header_male"];
+    self.chatHeaderView.image = [UIImage wb_userHeaderPlaceholderImage];
     
     self.chatTitleLabel.frame = cellModel.chatTitleF;
     self.chatTitleLabel.text = cellModel.dataModel.conversation.name;

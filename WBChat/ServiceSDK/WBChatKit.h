@@ -10,6 +10,7 @@
 #import <AVOSCloud/AVOSCloud.h>
 #import <AVOSCloudIM/AVOSCloudIM.h>
 #import "WBIMDefine.h"
+@class WBMessageModel;
 @class WBChatListModel;
 
 #define WBIMNotificationConnectivityUpdated @"WBIMNotificationConnectivityUpdated" ///< 连接状态变更的通知
@@ -90,7 +91,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)queryTypedMessagesWithConversation:(AVIMConversation *)conversation
                               queryMessage:(AVIMMessage * _Nullable)queryMessage
                                      limit:(NSInteger)limit
-                                   success:(void (^)(NSArray<AVIMTypedMessage *> *messageArray))successBlock
+                                   success:(void (^)(NSArray<WBMessageModel *> *messageArray))successBlock
                                      error:(void (^)(NSError *error))errorBlock;
 
 #pragma mark - 创建一个Conversation
@@ -113,9 +114,9 @@ NS_ASSUME_NONNULL_BEGIN
  @param message － 消息对象
  */
 - (void)sendTargetConversation:(AVIMConversation *)targetConversation
-                       message:(AVIMMessage *)message
-                       success:(void (^)(void))successBlock
-                         error:(void (^)(NSError *error))errorBlock;
+                       message:(WBMessageModel *)message
+                       success:(void (^)(WBMessageModel *aMessage))successBlock
+                         error:(void (^)(WBMessageModel *aMessage,NSError *error))errorBlock;
 
 
 @end

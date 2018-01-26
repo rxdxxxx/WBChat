@@ -11,8 +11,10 @@
 
 @implementation WBChatMessageBaseCellModel
 
-+ (instancetype)modelWithMessageModel:(AVIMTypedMessage *)messageModel{
-    AVIMTypedMessage *typedMessage = [messageModel wb_getValidTypedMessage];
++ (instancetype)modelWithMessageModel:(WBMessageModel *)messageModel{
+    AVIMTypedMessage *typedMessage = [messageModel.content wb_getValidTypedMessage];
+    
+    // 默认使用发送中
     
     WBChatMessageBaseCellModel *model = nil;
     switch (typedMessage.mediaType) {
@@ -48,7 +50,7 @@
     return model;
 }
 
-- (void)setMessageModel:(AVIMTypedMessage *)messageModel{
+- (void)setMessageModel:(WBMessageModel *)messageModel{
     _messageModel = messageModel;
     
     
@@ -76,7 +78,7 @@
         _messageStatusRectFrame = CGRectZero;
         _myHeaderRectFrame = CGRectZero;
         
-    } else if (messageModel.ioType == AVIMMessageIOTypeIn) {
+    } else if (messageModel.content.ioType == AVIMMessageIOTypeIn) {
         // 收到的消息的状态就是MessageStatusNone
         _headerRectFrame = CGRectMake(headerMarginSpace, headerMarginSpace, headerSize.width, headerSize.height);
         

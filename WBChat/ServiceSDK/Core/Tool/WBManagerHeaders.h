@@ -11,6 +11,7 @@
 #import "WBChatListModel.h"
 #import "WBChatListManager.h"
 
+#import "WBMessageModel.h"
 #import "WBChatManager.h"
 #import "WBBackgroundManager.h"
 
