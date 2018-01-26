@@ -85,17 +85,7 @@
     
     
     
-//    [[WBChatKit sharedInstance] createConversationWithName:@"1811" members:@[@"5a0ea6d22f301e00650e9807"]
-//                                                   success:^(AVIMConversation * _Nonnull convObj)
-//    {
-//        
-//
-//        
-//        
-//    } error:^(NSError * _Nonnull error) {
-//        [WBHUD showErrorMessage:error.wb_localizedDesc toView:self.view];
-//
-//    }];
+
 }
 #pragma mark -  Private Methods
 - (void)setupUI{

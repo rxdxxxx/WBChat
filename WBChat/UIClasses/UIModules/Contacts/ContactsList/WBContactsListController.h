@@ -9,5 +9,4 @@
 #import "WBBaseController.h"
 
 @interface WBContactsListController : WBBaseController
-
 @end

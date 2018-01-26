@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		461504CA201B199700B495CE /* WBMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 461504C9201B199700B495CE /* WBMessageModel.m */; };
+		461504CE201B346A00B495CE /* WBContactsListUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 461504CD201B346A00B495CE /* WBContactsListUserCell.m */; };
 		46150BCD1FDE755700B85E9D /* WBChatListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BCC1FDE755700B85E9D /* WBChatListCell.m */; };
 		46150BD31FDE7B9B00B85E9D /* WBChatListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BD21FDE7B9B00B85E9D /* WBChatListCellModel.m */; };
 		4624A60620187FF500E7B38A /* WBEmotionDisplayBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4624A60520187FF500E7B38A /* WBEmotionDisplayBoard.m */; };
@@ -93,6 +94,8 @@
 		43F765D2FF83BFFC3F877130 /* Pods-WBChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-WBChat/Pods-WBChat.release.xcconfig"; sourceTree = "<group>"; };
 		461504C8201B199700B495CE /* WBMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBMessageModel.h; sourceTree = "<group>"; };
 		461504C9201B199700B495CE /* WBMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBMessageModel.m; sourceTree = "<group>"; };
+		461504CC201B346A00B495CE /* WBContactsListUserCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBContactsListUserCell.h; sourceTree = "<group>"; };
+		461504CD201B346A00B495CE /* WBContactsListUserCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBContactsListUserCell.m; sourceTree = "<group>"; };
 		46150BCB1FDE755700B85E9D /* WBChatListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListCell.h; sourceTree = "<group>"; };
 		46150BCC1FDE755700B85E9D /* WBChatListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListCell.m; sourceTree = "<group>"; };
 		46150BD11FDE7B9B00B85E9D /* WBChatListCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListCellModel.h; sourceTree = "<group>"; };
@@ -271,6 +274,15 @@
 				461504C9201B199700B495CE /* WBMessageModel.m */,
 			);
 			path = WBMessageModel;
+			sourceTree = "<group>";
+		};
+		461504CB201B344800B495CE /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				461504CC201B346A00B495CE /* WBContactsListUserCell.h */,
+				461504CD201B346A00B495CE /* WBContactsListUserCell.m */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		46150BC91FDE753300B85E9D /* Cell */ = {
@@ -993,6 +1005,7 @@
 		46F1422A1FBEDD3C004B0554 /* ContactsList */ = {
 			isa = PBXGroup;
 			children = (
+				461504CB201B344800B495CE /* Cell */,
 				46F1422B1FBEDD46004B0554 /* WBContactsListController.h */,
 				46F1422C1FBEDD46004B0554 /* WBContactsListController.m */,
 			);
@@ -1259,6 +1272,7 @@
 				46870B2B2015B8EA0066F65A /* TLAudioRecorder.m in Sources */,
 				463714021FBD8E71003C2655 /* UIView+Inspectable.m in Sources */,
 				46150BD31FDE7B9B00B85E9D /* WBChatListCellModel.m in Sources */,
+				461504CE201B346A00B495CE /* WBContactsListUserCell.m in Sources */,
 				46A7A8D3200C96D400061340 /* WBUserDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
