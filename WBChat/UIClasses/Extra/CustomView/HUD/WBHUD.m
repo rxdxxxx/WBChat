@@ -7,58 +7,39 @@
 //
 
 #import "WBHUD.h"
-#import <MBProgressHUD.h>
+#import "UIView+WBToast.h"
 
 @implementation WBHUD
 
-+ (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    [hud hideAnimated:YES afterDelay:30];
-    hud.detailsLabel.text = message;
-    hud.removeFromSuperViewOnHide = YES;
-    return hud;
++ (void)showMessage:(NSString *)message toView:(UIView *)view{
+    [view wb_makeToastActivity];
+    [view wb_makeToast:message duration:3 position:CSToastPositionCenter];
 }
 
-+ (BOOL)hideForView:(UIView *)view{
-    return [MBProgressHUD hideHUDForView:view animated:YES];
++ (void)hideForView:(UIView *)view{
+    [view wb_hideToastActivity];
 }
 
-+ (MBProgressHUD *)createCustomHUDFromView:(UIView *)view{
++ (void)createCustomHUDFromView:(UIView *)view{
     
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hideAnimated:YES afterDelay:2];
-    return hud;
+    
 
 }
 
-+ (MBProgressHUD *)showSuccessMessage:(NSString *)message toView:(UIView *)view{
++ (void)showSuccessMessage:(NSString *)message toView:(UIView *)view{
     
+    [view wb_hideToastActivity];
+    [view wb_makeToast:message duration:3 position:CSToastPositionCenter];
+
+    
+}
++ (void)showErrorMessage:(NSString *)message toView:(UIView *)view{
     [self hideForView:view];
-    
-    MBProgressHUD *hud = [self createCustomHUDFromView:view];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_tab_badge_check"]];
-    hud.detailsLabel.text = message;
-    return hud;
-}
-+ (MBProgressHUD *)showErrorMessage:(NSString *)message toView:(UIView *)view{
-    [self hideForView:view];
-
-    MBProgressHUD *hud = [self createCustomHUDFromView:view];
-    hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"ico_notification_warning"]];
-    hud.detailsLabel.text = message;
-    return hud;
-
+    [view wb_makeToast:message duration:3 position:CSToastPositionCenter];
 }
 
-+ (MBProgressHUD *)progressFromView:(UIView *)view{
-    
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.mode = MBProgressHUDModeAnnularDeterminate;
-    hud.removeFromSuperViewOnHide = YES;
-    [hud hideAnimated:YES afterDelay:30];
-    return hud;
++ (void)progressFromView:(UIView *)view{
+    [view wb_makeToastActivity];
 }
 
 

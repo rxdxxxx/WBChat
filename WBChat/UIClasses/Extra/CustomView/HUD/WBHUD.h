@@ -6,14 +6,13 @@
 //  Copyright © 2017年 RedRain. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <MBProgressHUD.h>
+#import <UIKit/UIKit.h>
 
 @interface WBHUD : NSObject
 
-+ (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view;
-+ (BOOL)hideForView:(UIView *)view;
-+ (MBProgressHUD *)showSuccessMessage:(NSString *)message toView:(UIView *)view;
-+ (MBProgressHUD *)showErrorMessage:(NSString *)message toView:(UIView *)view;
-+ (MBProgressHUD *)progressFromView:(UIView *)view;
++ (void)showMessage:(NSString *)message toView:(UIView *)view;
++ (void)hideForView:(UIView *)view;
++ (void)showSuccessMessage:(NSString *)message toView:(UIView *)view;
++ (void)showErrorMessage:(NSString *)message toView:(UIView *)view;
++ (void)progressFromView:(UIView *)view;
 @end

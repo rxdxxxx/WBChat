@@ -6,7 +6,7 @@
 //
 
 
-#import "UIView+Toast.h"
+#import "UIView+WBToast.h"
 #import <QuartzCore/QuartzCore.h>
 #import <objc/runtime.h>
 
@@ -60,9 +60,9 @@ NSString * const CSToastPositionBottom          = @"bottom";
 
 @interface UIView (ToastPrivate)
 
-- (void)hideToast:(UIView *)toast;
-- (void)toastTimerDidFinish:(NSTimer *)timer;
-- (void)handleToastTapped:(UITapGestureRecognizer *)recognizer;
+- (void)wb_hideToast:(UIView *)toast;
+- (void)wb_toastTimerDidFinish:(NSTimer *)timer;
+- (void)wb_handleToastTapped:(UITapGestureRecognizer *)recognizer;
 - (CGPoint)centerPointForPosition:(id)position withToast:(UIView *)toast;
 - (UIView *)viewForMessage:(NSString *)message title:(NSString *)title image:(UIImage *)image;
 - (CGSize)sizeForString:(NSString *)string font:(UIFont *)font constrainedToSize:(CGSize)constrainedSize lineBreakMode:(NSLineBreakMode)lineBreakMode;
@@ -70,57 +70,57 @@ NSString * const CSToastPositionBottom          = @"bottom";
 @end
 
 
-@implementation UIView (Toast)
+@implementation UIView (WBToast)
 
 #pragma mark - Toast Methods
 
-- (void)makeToast:(NSString *)message {
-    [self makeToast:message duration:CSToastDefaultDuration position:nil];
+- (void)wb_makeToast:(NSString *)message {
+    [self wb_makeToast:message duration:CSToastDefaultDuration position:nil];
 }
-- (void)hide
+- (void)wb_hide
 {
     
 }
 
-- (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position {
+- (void)wb_makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position {
     UIView *toast = [self viewForMessage:message title:nil image:nil];
-    [self showToast:toast duration:duration position:position];  
+    [self wb_showToast:toast duration:duration position:position];
 }
 
-- (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position title:(NSString *)title {
+- (void)wb_makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position title:(NSString *)title {
     UIView *toast = [self viewForMessage:message title:title image:nil];
-    [self showToast:toast duration:duration position:position];  
+    [self wb_showToast:toast duration:duration position:position];
 }
 
-- (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position image:(UIImage *)image {
+- (void)wb_makeToast:(NSString *)message duration:(NSTimeInterval)duration position:(id)position image:(UIImage *)image {
     UIView *toast = [self viewForMessage:message title:nil image:image];
-    [self showToast:toast duration:duration position:position];  
+    [self wb_showToast:toast duration:duration position:position];
 }
 
-- (void)makeToast:(NSString *)message duration:(NSTimeInterval)duration  position:(id)position title:(NSString *)title image:(UIImage *)image {
+- (void)wb_makeToast:(NSString *)message duration:(NSTimeInterval)duration  position:(id)position title:(NSString *)title image:(UIImage *)image {
     UIView *toast = [self viewForMessage:message title:title image:image];
-    [self showToast:toast duration:duration position:position];  
+    [self wb_showToast:toast duration:duration position:position];
 }
 
-- (void)showToast:(UIView *)toast {
-    [self showToast:toast duration:CSToastDefaultDuration position:nil];
+- (void)wb_showToast:(UIView *)toast {
+    [self wb_showToast:toast duration:CSToastDefaultDuration position:nil];
 }
 
 
-- (void)showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position {
-    [self showToast:toast duration:duration position:position tapCallback:nil];
+- (void)wb_showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position {
+    [self wb_showToast:toast duration:duration position:position tapCallback:nil];
     
 }
 
 
-- (void)showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position
+- (void)wb_showToast:(UIView *)toast duration:(NSTimeInterval)duration position:(id)position
       tapCallback:(void(^)(void))tapCallback
 {
     toast.center = [self centerPointForPosition:position withToast:toast];
     toast.alpha = 0.0;
     
     if (CSToastHidesOnTap) {
-        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:toast action:@selector(handleToastTapped:)];
+        UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:toast action:@selector(wb_handleToastTapped:)];
         [toast addGestureRecognizer:recognizer];
         toast.userInteractionEnabled = YES;
         toast.exclusiveTouch = YES;
@@ -134,7 +134,7 @@ NSString * const CSToastPositionBottom          = @"bottom";
                      animations:^{
                          toast.alpha = 1.0;
                      } completion:^(BOOL finished) {
-                         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(toastTimerDidFinish:) userInfo:toast repeats:NO];
+                         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:duration target:self selector:@selector(wb_toastTimerDidFinish:) userInfo:toast repeats:NO];
                          // associate the timer with the toast view
                          objc_setAssociatedObject (toast, &CSToastTimerKey, timer, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
                          objc_setAssociatedObject (toast, &CSToastTapCallbackKey, tapCallback, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
@@ -143,7 +143,7 @@ NSString * const CSToastPositionBottom          = @"bottom";
 }
 
 
-- (void)hideToast:(UIView *)toast {
+- (void)wb_hideToast:(UIView *)toast {
     
     [UIView animateWithDuration:CSToastFadeDuration
                           delay:0.0
@@ -157,11 +157,11 @@ NSString * const CSToastPositionBottom          = @"bottom";
 
 #pragma mark - Events
 
-- (void)toastTimerDidFinish:(NSTimer *)timer {
-    [self hideToast:(UIView *)timer.userInfo];
+- (void)wb_toastTimerDidFinish:(NSTimer *)timer {
+    [self wb_hideToast:(UIView *)timer.userInfo];
 }
 
-- (void)handleToastTapped:(UITapGestureRecognizer *)recognizer {
+- (void)wb_handleToastTapped:(UITapGestureRecognizer *)recognizer {
     NSTimer *timer = (NSTimer *)objc_getAssociatedObject(self, &CSToastTimerKey);
     [timer invalidate];
     
@@ -169,16 +169,16 @@ NSString * const CSToastPositionBottom          = @"bottom";
     if (callback) {
         callback();
     }
-    [self hideToast:recognizer.view];
+    [self wb_hideToast:recognizer.view];
 }
 
 #pragma mark - Toast Activity Methods
 
-- (void)makeToastActivity {
-    [self makeToastActivity:CSToastActivityDefaultPosition];
+- (void)wb_makeToastActivity {
+    [self wb_makeToastActivity:CSToastActivityDefaultPosition];
 }
 
-- (void)makeToastActivity:(id)position {
+- (void)wb_makeToastActivity:(id)position {
     // sanity
     UIView *existingActivityView = (UIView *)objc_getAssociatedObject(self, &CSToastActivityViewKey);
     if (existingActivityView != nil) return;
@@ -215,7 +215,7 @@ NSString * const CSToastPositionBottom          = @"bottom";
                      } completion:nil];
 }
 
-- (void)hideToastActivity {
+- (void)wb_hideToastActivity {
     UIView *existingActivityView = (UIView *)objc_getAssociatedObject(self, &CSToastActivityViewKey);
     if (existingActivityView != nil) {
         [UIView animateWithDuration:CSToastFadeDuration
@@ -329,7 +329,7 @@ NSString * const CSToastPositionBottom          = @"bottom";
         messageLabel.numberOfLines = CSToastMaxMessageLines;
         messageLabel.font = [UIFont systemFontOfSize:CSToastFontSize];
         messageLabel.lineBreakMode = NSLineBreakByWordWrapping;
-        messageLabel.textColor = [UIColor whiteColor];
+        messageLabel.textColor = [UIColor blackColor];
         messageLabel.backgroundColor = [UIColor clearColor];
         messageLabel.alpha = 1.0;
         messageLabel.text = message;

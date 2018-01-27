@@ -22,7 +22,6 @@
 #import "UIColor+Hex.h"
 #import "NSString+OPSize.h"
 #import "UIView+NextResponder.h"
-#import <UIImageView+WebCache.h>
 #import "NSDate+Extension.h"
 
 
