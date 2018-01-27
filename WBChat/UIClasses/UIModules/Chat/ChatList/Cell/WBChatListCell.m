@@ -73,7 +73,11 @@
     self.chatTitleLabel.text = cellModel.dataModel.conversation.name;
     
     self.chatTimeLabel.frame = cellModel.chatTimeF;
-    self.chatTimeLabel.text = cellModel.dataModel.conversation.lastMessageAt.wb_chatListTimeString;
+    NSString *timeString = cellModel.dataModel.conversation.lastMessageAt.wb_chatListTimeString;
+    if (timeString.length == 0) {
+        timeString = cellModel.dataModel.conversation.updateAt.wb_chatListTimeString;
+    }
+    self.chatTimeLabel.text = timeString;
     
     self.chatMessageLabel.frame = cellModel.chatMessageF;
     self.chatMessageLabel.text = cellModel.lastMessageString;

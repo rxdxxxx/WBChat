@@ -34,6 +34,9 @@
         case kAVIMMessageMediaTypeRecalled:
             self.lastMessageString = @"[有一条撤回的消息]";
             break;
+        case kAVIMMessageMediaTypeNone:
+            self.lastMessageString = @"";
+            break;
         default:
             self.lastMessageString = @"[不支持的消息类型]";
             break;
