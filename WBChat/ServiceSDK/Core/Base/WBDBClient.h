@@ -7,9 +7,11 @@
 #import "WBSynthesizeSingleton.h"
 #import "WBCoreConfiguration.h"
 
+#define WBDBClientSqlQueue [WBDBClient sharedInstance].sqliteQueue
 
 NS_ASSUME_NONNULL_BEGIN
 @interface WBDBClient : NSObject
+@property (nonatomic, strong) dispatch_queue_t sqliteQueue;
 
 @property (nonatomic, strong) FMDatabaseQueue *dbQueue;
 

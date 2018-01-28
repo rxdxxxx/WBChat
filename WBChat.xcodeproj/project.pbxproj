@@ -78,6 +78,8 @@
 		46B1E19D2010AC86005DD078 /* WBChatMessageBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B1E19C2010AC86005DD078 /* WBChatMessageBaseCell.m */; };
 		46B1E1A02010AEA0005DD078 /* WBChatMessageBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46B1E19F2010AEA0005DD078 /* WBChatMessageBaseCellModel.m */; };
 		46D0CFD2201C30E7005DDA64 /* UIView+WBToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D0CFD1201C30E7005DDA64 /* UIView+WBToast.m */; };
+		46D0CFDB201C5005005DDA64 /* WBMessageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D0CFDA201C5005005DDA64 /* WBMessageManager.m */; };
+		46D0CFE3201DBF92005DDA64 /* UITableView+WBScrollToIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 46D0CFE1201DBF92005DDA64 /* UITableView+WBScrollToIndexPath.m */; };
 		46F142291FBEDD34004B0554 /* WBChatListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142281FBEDD34004B0554 /* WBChatListController.m */; };
 		46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F1422C1FBEDD46004B0554 /* WBContactsListController.m */; };
 		46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142301FBEDD57004B0554 /* WBDiscoverListController.m */; };
@@ -238,6 +240,10 @@
 		46B1E19F2010AEA0005DD078 /* WBChatMessageBaseCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatMessageBaseCellModel.m; sourceTree = "<group>"; };
 		46D0CFD0201C30E7005DDA64 /* UIView+WBToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WBToast.h"; sourceTree = "<group>"; };
 		46D0CFD1201C30E7005DDA64 /* UIView+WBToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WBToast.m"; sourceTree = "<group>"; };
+		46D0CFD9201C5005005DDA64 /* WBMessageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBMessageManager.h; sourceTree = "<group>"; };
+		46D0CFDA201C5005005DDA64 /* WBMessageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBMessageManager.m; sourceTree = "<group>"; };
+		46D0CFE1201DBF92005DDA64 /* UITableView+WBScrollToIndexPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+WBScrollToIndexPath.m"; sourceTree = "<group>"; };
+		46D0CFE2201DBF92005DDA64 /* UITableView+WBScrollToIndexPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+WBScrollToIndexPath.h"; sourceTree = "<group>"; };
 		46F142271FBEDD34004B0554 /* WBChatListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListController.h; sourceTree = "<group>"; };
 		46F142281FBEDD34004B0554 /* WBChatListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListController.m; sourceTree = "<group>"; };
 		46F1422B1FBEDD46004B0554 /* WBContactsListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBContactsListController.h; sourceTree = "<group>"; };
@@ -313,6 +319,7 @@
 		46150BD41FDE809300B85E9D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				46D0CFD8201C4FF2005DDA64 /* Message */,
 				465A32AA200E02B600ABAAAA /* Background */,
 				465A32A2200DC1E700ABAAAA /* Chat */,
 				465A329E200DA2E200ABAAAA /* ChatList */,
@@ -802,6 +809,8 @@
 		46655202201190DD007111F6 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				46D0CFE2201DBF92005DDA64 /* UITableView+WBScrollToIndexPath.h */,
+				46D0CFE1201DBF92005DDA64 /* UITableView+WBScrollToIndexPath.m */,
 				46655204201191AE007111F6 /* WBChatCellConfig.h */,
 				46655205201191AE007111F6 /* WBChatCellConfig.m */,
 			);
@@ -938,6 +947,15 @@
 				46B1E19920107166005DD078 /* WBChatInfoDao.m */,
 			);
 			path = Dao;
+			sourceTree = "<group>";
+		};
+		46D0CFD8201C4FF2005DDA64 /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				46D0CFD9201C5005005DDA64 /* WBMessageManager.h */,
+				46D0CFDA201C5005005DDA64 /* WBMessageManager.m */,
+			);
+			path = Message;
 			sourceTree = "<group>";
 		};
 		46F142211FBEDD04004B0554 /* Main */ = {
@@ -1215,6 +1233,7 @@
 				46870B1F2013026B0066F65A /* TLTalkButton.m in Sources */,
 				4665520C20119DDA007111F6 /* WBChatMessageTextCell.m in Sources */,
 				46B1E1A02010AEA0005DD078 /* WBChatMessageBaseCellModel.m in Sources */,
+				46D0CFE3201DBF92005DDA64 /* UITableView+WBScrollToIndexPath.m in Sources */,
 				46F1423F1FBEE0A3004B0554 /* WBSearchContactsController.m in Sources */,
 				463713FF1FBD8E71003C2655 /* NSDate+Extension.m in Sources */,
 				463714031FBD8E71003C2655 /* UIView+NextResponder.m in Sources */,
@@ -1229,6 +1248,7 @@
 				4637141A1FBD8ED9003C2655 /* WBRegisterController.m in Sources */,
 				464572252019A70100CAE47D /* WBEmojiGroupControl.m in Sources */,
 				46D0CFD2201C30E7005DDA64 /* UIView+WBToast.m in Sources */,
+				46D0CFDB201C5005005DDA64 /* WBMessageManager.m in Sources */,
 				46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */,
 				464572242019A70100CAE47D /* WBEmojiGroupCell.m in Sources */,
 				46F142451FBEE33D004B0554 /* WBSearchContactsCell.m in Sources */,

@@ -19,4 +19,11 @@
     return message;
 }
 
++ (instancetype)createWIthTypedMessage:(AVIMTypedMessage *)message{
+    WBMessageModel *messageModel = [WBMessageModel new];
+    messageModel.status = message.status;
+    messageModel.content = message;
+    return messageModel;
+}
+
 @end

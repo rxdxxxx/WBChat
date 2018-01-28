@@ -15,4 +15,8 @@
 #import "WBChatManager.h"
 #import "WBBackgroundManager.h"
 
+// 收到消息后处理类
+#import "WBMessageManager.h"
+
+
 #endif /* WBManagerHeaders_h */

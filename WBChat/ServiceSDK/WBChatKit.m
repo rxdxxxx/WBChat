@@ -180,6 +180,10 @@
      message:message
      callback:^(BOOL success, NSError * _Nullable error)
      {
+         
+         // 1.更新消息到聊天列表页面
+         [[WBChatListManager sharedInstance] insertConversationToList:targetConversation];
+         
          if (error && errorBlock) {
              message.status = AVIMMessageStatusFailed;
 

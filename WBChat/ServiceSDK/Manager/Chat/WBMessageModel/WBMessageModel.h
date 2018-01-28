@@ -21,4 +21,6 @@
 
 + (instancetype)createWithText:(NSString *)text;
 
++ (instancetype)createWIthTypedMessage:(AVIMTypedMessage *)message;
+
 @end

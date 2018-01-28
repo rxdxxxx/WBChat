@@ -111,6 +111,16 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListManager)
         });
     }];
 }
+#pragma mark - 更新最近一条消息记录到List
+- (void)insertConversationToList:(AVIMConversation *)conversation{
+    if (conversation == nil) {
+        return;
+    }
+    
+    WBChatListModel *listModel = [WBChatListModel createWithConversation:conversation];
+    [[WBChatListDao sharedInstance] insertChatListModel:listModel];
+}
+
 
 #pragma mark - Private Methods
 - (AVIMClient *)client{

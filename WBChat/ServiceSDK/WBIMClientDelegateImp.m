@@ -127,13 +127,9 @@
     if (!message.wb_isValidMessage) {
         return;
     }
-    if (!message.messageId) {
-        WBIMLog(@"🔴类名与方法名：%@（在第%@行），描述：%@", @(__PRETTY_FUNCTION__), @(__LINE__), @"Receive Message , but MessageId is nil");
-        return;
-    }
     
-    
-    
+    // 交给准备的类处理收到的消息
+    [[WBMessageManager sharedInstance] conversation:conversation didReceiveTypedMessage:message];
 }
 
 

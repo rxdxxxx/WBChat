@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "WBServiceSDKHeaders.h"
+
 NS_ASSUME_NONNULL_BEGIN
 @interface WBChatListManager : NSObject<WBDBCreater>
 
@@ -41,5 +42,23 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatListManager)
 - (void)fetchConversationsWithConversationIds:(NSSet *)conversationIds
                                      callback:(void (^_Nullable)(NSArray<AVIMConversation *> * _Nullable conersations,
                                                                  NSError * _Nullable error))callback;
+
+
+#pragma mark - 更新最近一条消息记录到List
+/**
+ 更新最近一条消息记录到List
+
+ @param conversation 最近的会话信息
+ */
+- (void)insertConversationToList:(AVIMConversation *)conversation;
+
+
+/**
+ 根据conversationId, 判断本地有没有对应的会话信息
+
+ @param conversationId conversationId
+ @return 是否已经存在
+ */
+- (BOOL)isExistWithConversationId:(NSString *)conversationId;
 @end
 NS_ASSUME_NONNULL_END

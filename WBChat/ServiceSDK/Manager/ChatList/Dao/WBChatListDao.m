@@ -44,58 +44,60 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
     return ret;
 }
 
-- (BOOL)insertChatListModel:(WBChatListModel *)chatListModel{
-    __block BOOL result = NO;
-    
-    
-    [[WBDBClient sharedInstance].dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
+- (void)insertChatListModel:(WBChatListModel *)chatListModel{
+    dispatch_async(WBDBClientSqlQueue, ^{
         
-        @try {
+        [[WBDBClient sharedInstance].dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
             
-            result = [self updateDB:db listModel:chatListModel];
-            
-            if (result == NO) {
-                *rollback = YES;
-            }
-            
-        }@catch (NSException *exception){
-            
-            result = NO;
-            *rollback = YES;
-            
-        }@finally{
-            
-        }
-        
-    }];
-    return result;
-}
-
-- (BOOL)insertChatListModelArray:(NSArray<WBChatListModel *> *)chatListModelArray{
-    __block BOOL result = NO;
-    [[WBDBClient sharedInstance].dbQueue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
-        @try {
-            for (WBChatListModel *model in chatListModelArray) {
-                result = [self updateDB:db listModel:model];
+            @try {
+                BOOL result = NO;
+                result = [self updateDB:db listModel:chatListModel];
+                
                 if (result == NO) {
                     *rollback = YES;
-                    break;
                 }
+                
+            }@catch (NSException *exception){
+                
+                *rollback = YES;
+                
+            }@finally{
+                
             }
-        }@catch (NSException *exception){
             
-            result = NO;
-            *rollback = YES;
+        }];
+    });
+    
+}
+
+- (void)insertChatListModelArray:(NSArray<WBChatListModel *> *)chatListModelArray{
+    dispatch_async(WBDBClientSqlQueue, ^{
+        
+        [[WBDBClient sharedInstance].dbQueue inTransaction:^(FMDatabase * _Nonnull db, BOOL * _Nonnull rollback) {
+            BOOL result = NO;
             
-        }@finally{
-            
-        }
-    }];
-    return result;
+            @try {
+                for (WBChatListModel *model in chatListModelArray) {
+                    result = [self updateDB:db listModel:model];
+                    if (result == NO) {
+                        *rollback = YES;
+                        break;
+                    }
+                }
+            }@catch (NSException *exception){
+                
+                result = NO;
+                *rollback = YES;
+                
+            }@finally{
+                
+            }
+        }];
+    });
 }
 
 - (void)loadChatListWithClient:(AVIMClient *)client result:(void (^)(NSArray<WBChatListModel *> *modelArray))resultBlock{
-
+    
     __block NSMutableArray *chatListArray = [[NSMutableArray alloc] init];
     
     
@@ -136,7 +138,7 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
             resultBlock(chatListArray);
         }
         @catch (NSException *exception) {
-
+            
         }
         @finally {
             resultBlock(chatListArray);
@@ -144,6 +146,26 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
     }];
 }
 
+- (BOOL)isExistWithConversationId:(NSString *)conversationId{
+    if (conversationId == nil) {
+        return NO;
+    }
+    __block BOOL isExist=NO;
+    [[WBDBClient sharedInstance].dbQueue inDatabase:^(FMDatabase *db) {
+        
+        NSString *selectSQl =@"select conversationID FROM t_ChatList where conversationID = ?;";
+        FMResultSet *set = [db executeQuery:selectSQl withArgumentsInArray:@[conversationId]];
+        if ([set next]) {
+            isExist=YES;
+        }
+        [set close];
+        
+    }];
+    return isExist;
+}
+
+
+#pragma mark - Private
 - (NSData *)dataFromConversation:(AVIMConversation *)conversation {
     AVIMKeyedConversation *keydConversation = [conversation keyedConversation];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:keydConversation];
@@ -152,8 +174,8 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
 
 - (WBChatListModel *)createChatListModelFromResultSet:(FMResultSet *)resultSet client:(AVIMClient *)client {
     WBChatListModel *listModel = [WBChatListModel new];
-
-
+    
+    
     NSData *data = [resultSet dataForColumn:WBChatListDaoKeyData];
     AVIMKeyedConversation *keyedConversation = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     AVIMConversation *conversation = [client conversationWithKeyedConversation:keyedConversation];
@@ -169,7 +191,7 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
     listModel.draft = [resultSet stringForColumn:WBChatInfoDaoKeyDraft];
     listModel.topTime = [resultSet longLongIntForColumn:WBChatInfoDaoKeyTopTime];
     listModel.isTop = listModel.topTime > 0;
-
+    
     return listModel;
 }
 

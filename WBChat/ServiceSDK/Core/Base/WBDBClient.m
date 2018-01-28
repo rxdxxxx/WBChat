@@ -21,6 +21,13 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBDBClient);
     return self;
 }
 
+- (dispatch_queue_t)sqliteQueue{
+    if (!_sqliteQueue) {
+        _sqliteQueue = dispatch_queue_create("com.WBChatKit.sqliteQueue", DISPATCH_QUEUE_SERIAL);
+    }
+    return _sqliteQueue;
+}
+
 #pragma mark - Register
 
 - (void)registerDBCreater:(id)creater {

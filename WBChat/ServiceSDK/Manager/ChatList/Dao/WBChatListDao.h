@@ -20,9 +20,11 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatListDao)
 
 - (BOOL)createDBTable;
 
-- (BOOL)insertChatListModel:(WBChatListModel *)chatListModel;
-- (BOOL)insertChatListModelArray:(NSArray<WBChatListModel *> * )chatListModelArray;
+- (void)insertChatListModel:(WBChatListModel *)chatListModel;
+- (void)insertChatListModelArray:(NSArray<WBChatListModel *> * )chatListModelArray;
 - (void)loadChatListWithClient:(AVIMClient *)client result:(void (^)(NSArray<WBChatListModel *> *modelArray))resultBlock;
+
+- (BOOL)isExistWithConversationId:(NSString *)conversationId;
 
 @end
 NS_ASSUME_NONNULL_END

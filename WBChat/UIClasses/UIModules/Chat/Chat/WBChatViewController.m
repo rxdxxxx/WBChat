@@ -9,6 +9,7 @@
 #import "WBChatViewController.h"
 #import "WBChatMessageBaseCell.h"
 #import "WBChatBarView.h"
+#import "UITableView+WBScrollToIndexPath.h"
 
 @interface WBChatViewController ()<WBChatBarViewDelegate>
 @property (nonatomic, strong) AVIMConversation *conversation;
@@ -25,11 +26,11 @@
     [[WBChatKit sharedInstance] queryTypedMessagesWithConversation:self.conversation
                                                       queryMessage:nil
                                                              limit:20
-                                                           success:^(NSArray<AVIMTypedMessage *> * messageArray)
+                                                           success:^(NSArray<WBMessageModel *> * messageArray)
      {
          NSMutableArray *temp = [NSMutableArray new];
          
-         for (AVIMTypedMessage *message in messageArray) {
+         for (WBMessageModel *message in messageArray) {
              
              WBChatMessageBaseCellModel *cellModel = [WBChatMessageBaseCellModel modelWithMessageModel:message];
              [temp addObject:cellModel];
@@ -37,12 +38,25 @@
          
          self.dataArray = temp;
          [self.tableView reloadData];
+         [self.tableView wb_scrollToBottomAnimated:NO];
          
      } error:^(NSError * _Nonnull error) {
          
      }];
+    [self.tableView wb_scrollToBottomAnimated:NO];
 
 }
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
+    
+    
+    
+}
+
+
 
 - (void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
@@ -82,6 +96,8 @@
         WBMessageModel *message = [WBMessageModel createWithText:sendText];
         [self appendAMessageToTableView:message];
         
+        // 2.1 滚动tableVeiw的代码放在了消息状态变化的通知里面了.不然此处会发生体验不好.
+        [self.tableView wb_scrollToBottomAnimated:NO];
         
         [[WBChatKit sharedInstance] sendTargetConversation:self.conversation
                                                    message:message
@@ -143,9 +159,61 @@
     }];
     
 }
+
+
+- (void)receiveNewMessgae:(NSNotification *)noti{
+    AVIMConversation *conv = noti.userInfo[WBMessageConversationKey];
+    AVIMTypedMessage *tMsg = noti.userInfo[WBMessageMessageKey];
+
+    if (![conv.conversationId isEqualToString:self.conversation.conversationId]) {
+        return;
+    }
+    
+    
+    if (tMsg)
+    {
+        BOOL isBottom = [self isTableViewBottomVisible];
+  
+        
+        // 把收到的消息加入列表,并刷新
+        WBMessageModel *message = [WBMessageModel createWIthTypedMessage:tMsg];
+        [self appendAMessageToTableView:message];
+        
+        if (isBottom) {
+            // 此处动画,需要是NO,不然tableView会乱蹦.导致不能显示到最后一行.
+            [self.tableView wb_scrollToBottomAnimated:NO];
+        }
+    }
+    BOOL isActive = [UIApplication sharedApplication].applicationState == UIApplicationStateActive;
+    // 栈顶的控制器, 是不是当前控制器.
+    if (isActive && self == self.navigationController.topViewController)
+    {
+        // 清除未读记录信息
+        //[TYPublicDialogTool cleanHasReadMessageWithChatID:self.chatID  isInChating:YES];
+    }
+}
 #pragma mark -  GestureRecognizer Action
 #pragma mark -  Btn Click
 #pragma mark -  Private Methods
+- (BOOL)isTableViewBottomVisible{
+    BOOL isScroolBottom = NO;
+    
+    if (self.tableView.visibleCells.count == 0) {
+        return YES;
+    }
+    
+    if (self.tableView.visibleCells.count &&
+        ([self.tableView.visibleCells.lastObject isKindOfClass:[WBChatMessageBaseCell class]])) {
+        
+        
+        WBChatMessageBaseCellModel* lastFrameModel =((WBChatMessageBaseCell*)self.tableView.visibleCells.lastObject).cellModel;
+        if ( lastFrameModel == self.dataArray.lastObject) {
+            isScroolBottom = YES;
+        }
+        
+    }
+    return isScroolBottom;
+}
 - (void)appendAMessageToTableView:(WBMessageModel *)aMessage{
 
     WBChatMessageBaseCellModel *cellModel = [WBChatMessageBaseCellModel modelWithMessageModel:aMessage];
@@ -167,7 +235,9 @@
 - (void)setupUI{
     [self rr_initTitleView:self.conversation.name];
     [self.view addSubview:self.tableView];
-    
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
     
     
     WBChatBarView *keyBoard = [[WBChatBarView alloc] initWithFrame:CGRectMake(0, kWBScreenHeight - 48 - WB_NavHeight - WB_IPHONEX_BOTTOM_SPACE,
@@ -180,8 +250,11 @@
     self.tableView.height_wb = self.chatBar.top_wb;
     
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [WBNotificationCenter addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [WBNotificationCenter addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+    [WBNotificationCenter addObserver:self selector:@selector(receiveNewMessgae:) name:WBMessageNewReceiveNotification object:nil];
+
+    
 }
 #pragma mark -  Public Methods
 + (instancetype)createWithConversation:(AVIMConversation *)conversation{
