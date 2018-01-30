@@ -118,7 +118,13 @@ NS_ASSUME_NONNULL_BEGIN
                        success:(void (^)(WBMessageModel *aMessage))successBlock
                          error:(void (^)(WBMessageModel *aMessage,NSError *error))errorBlock;
 
-
+#pragma mark - 改变某个会话的会话状态
+/**
+ 阅读了某个会话
+ 
+ @param conversation 被阅读的会话
+ */
+- (void)readConversation:(AVIMConversation *)conversation;
 @end
 
 NS_ASSUME_NONNULL_END

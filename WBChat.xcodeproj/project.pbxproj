@@ -61,6 +61,7 @@
 		4665520C20119DDA007111F6 /* WBChatMessageTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4665520B20119DDA007111F6 /* WBChatMessageTextCell.m */; };
 		466552102011A299007111F6 /* UIImage+WBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4665520F2011A299007111F6 /* UIImage+WBImage.m */; };
 		466552122011A378007111F6 /* WBUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 466552112011A378007111F6 /* WBUI.bundle */; };
+		4679FD722020368800057293 /* WBBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4679FD702020368700057293 /* WBBadgeButton.m */; };
 		46870B192012F5570066F65A /* WBChatBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B182012F5570066F65A /* WBChatBarView.m */; };
 		46870B1F2013026B0066F65A /* TLTalkButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B1D2013026B0066F65A /* TLTalkButton.m */; };
 		46870B2A2015B8EA0066F65A /* TLAudioPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B272015B8EA0066F65A /* TLAudioPlayer.m */; };
@@ -201,6 +202,8 @@
 		4665520E2011A299007111F6 /* UIImage+WBImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+WBImage.h"; sourceTree = "<group>"; };
 		4665520F2011A299007111F6 /* UIImage+WBImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WBImage.m"; sourceTree = "<group>"; };
 		466552112011A378007111F6 /* WBUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WBUI.bundle; sourceTree = "<group>"; };
+		4679FD702020368700057293 /* WBBadgeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBBadgeButton.m; sourceTree = "<group>"; };
+		4679FD712020368700057293 /* WBBadgeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBBadgeButton.h; sourceTree = "<group>"; };
 		46870B172012F5570066F65A /* WBChatBarView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatBarView.h; sourceTree = "<group>"; };
 		46870B182012F5570066F65A /* WBChatBarView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatBarView.m; sourceTree = "<group>"; };
 		46870B1D2013026B0066F65A /* TLTalkButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLTalkButton.m; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 		46150BCE1FDE76FC00B85E9D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4679FD712020368700057293 /* WBBadgeButton.h */,
+				4679FD702020368700057293 /* WBBadgeButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1233,6 +1238,7 @@
 				46870B1F2013026B0066F65A /* TLTalkButton.m in Sources */,
 				4665520C20119DDA007111F6 /* WBChatMessageTextCell.m in Sources */,
 				46B1E1A02010AEA0005DD078 /* WBChatMessageBaseCellModel.m in Sources */,
+				4679FD722020368800057293 /* WBBadgeButton.m in Sources */,
 				46D0CFE3201DBF92005DDA64 /* UITableView+WBScrollToIndexPath.m in Sources */,
 				46F1423F1FBEE0A3004B0554 /* WBSearchContactsController.m in Sources */,
 				463713FF1FBD8E71003C2655 /* NSDate+Extension.m in Sources */,

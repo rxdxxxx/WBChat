@@ -7,6 +7,8 @@
 //
 
 #import "WBChatListCell.h"
+#import "WBBadgeButton.h"
+
 @interface WBChatListCell ()
 
 @property (nonatomic, strong) UIImageView *chatHeaderView; ///< 会话的头像
@@ -14,6 +16,7 @@
 @property (nonatomic, strong) UILabel *chatMessageLabel; ///< 最后一天聊天记录
 @property (nonatomic, strong) UILabel *chatTimeLabel; ///< 时间
 @property (nonatomic, strong) UIView *cutLineView; ///< 分割线
+@property (nonatomic, strong) WBBadgeButton *unreadBadgeBtn;
 
 @end
 
@@ -37,6 +40,7 @@
         [self.contentView addSubview:self.chatMessageLabel];
         [self.contentView addSubview:self.chatTimeLabel];
         [self.contentView addSubview:self.cutLineView];
+        [self.contentView addSubview:self.unreadBadgeBtn];
     }
     return self;
 }
@@ -78,6 +82,10 @@
         timeString = cellModel.dataModel.conversation.updateAt.wb_chatListTimeString;
     }
     self.chatTimeLabel.text = timeString;
+    
+    // 5.设置未读数
+    self.unreadBadgeBtn.badgeValue = @(cellModel.dataModel.unreadCount).stringValue;
+    self.unreadBadgeBtn.frame = cellModel.unreadBadgeBtnF;
     
     self.chatMessageLabel.frame = cellModel.chatMessageF;
     self.chatMessageLabel.text = cellModel.lastMessageString;
@@ -134,5 +142,10 @@
     return _cutLineView;
 }
 
-
+- (WBBadgeButton *)unreadBadgeBtn{
+    if (!_unreadBadgeBtn) {
+        _unreadBadgeBtn = [[WBBadgeButton alloc]init];
+    }
+    return _unreadBadgeBtn;
+}
 @end

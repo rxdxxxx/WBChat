@@ -44,9 +44,7 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBMessageManager)
 #pragma mark - Private
 - (void)receiveMessage:(AVIMTypedMessage *)message
           conversation:(AVIMConversation *)conversation {
-    
-    [conversation readInBackground];
-    
+        
     [[WBChatListManager sharedInstance] insertConversationToList:conversation];
     
     [[NSNotificationCenter defaultCenter]

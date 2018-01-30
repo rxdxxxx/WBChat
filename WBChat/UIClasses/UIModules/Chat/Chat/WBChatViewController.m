@@ -47,6 +47,10 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [[WBChatKit sharedInstance] readConversation:self.conversation];
+}
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
@@ -135,7 +139,7 @@
         self.tableView.height_wb = self.chatBar.top_wb ;
         
         // 4,让tableView偏移到最底部.
-        //[self scrollBackToMessageBottom];
+        [self scrollBackToMessageBottom];
         
     } ];
     
@@ -195,6 +199,10 @@
 #pragma mark -  GestureRecognizer Action
 #pragma mark -  Btn Click
 #pragma mark -  Private Methods
+- (void)scrollBackToMessageBottom{
+    
+    [self.tableView wb_scrollToBottomAnimated:NO];
+}
 - (BOOL)isTableViewBottomVisible{
     BOOL isScroolBottom = NO;
     

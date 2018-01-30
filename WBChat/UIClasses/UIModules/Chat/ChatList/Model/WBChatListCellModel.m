@@ -71,6 +71,12 @@
     CGFloat chatMessageW = cellW - chatTitleX - 2 * margin;
     _chatMessageF = CGRectMake(chatTitleX, chatMessageY, chatMessageW, chatMessageH);
     
+    
+    CGFloat unreadBadgeBtnWH = 20;
+    CGFloat unreadBadgeBtnX = CGRectGetMaxX(_chatUserHeaderViewF) - 12;
+    CGFloat unreadBadgeBtnY = CGRectGetMinY(_chatUserHeaderViewF) - 4;
+    _unreadBadgeBtnF = CGRectMake(unreadBadgeBtnX, unreadBadgeBtnY, unreadBadgeBtnWH, unreadBadgeBtnWH);
+    
     CGFloat cutLineH = 1;
     CGFloat cutLineY = cellH - cutLineH;
     CGFloat cutLineW = cellW;

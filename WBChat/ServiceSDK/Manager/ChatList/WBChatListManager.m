@@ -42,15 +42,36 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListManager)
     orConversationQuery.option = AVIMConversationQueryOptionWithMessage;
     [orConversationQuery findConversationsWithCallback:^(NSArray<AVIMConversation *> * _Nullable conversations, NSError * _Nullable error) {
         NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:conversations.count];
-        for (AVIMConversation *conver in conversations) {
-            WBChatListModel *listModel = [WBChatListModel createWithConversation:conver];
-            [tempArray addObject:listModel];
-        }
         
-        // 存储到本地
-        [[WBChatListDao sharedInstance] insertChatListModelArray:tempArray];
+        [self fetchAllConversationsFromLocal:^(NSArray<WBChatListModel *> * _Nullable conersations, NSError * _Nullable error) {
+            
+            // 1.读取数据库中已经有的信息
+            NSMutableDictionary *mDic = [NSMutableDictionary new];
+            // 2.保存成字典,方便查询
+            for (WBChatListModel *listModel in conersations) {
+                mDic[listModel.conversationID] = listModel;
+            }
+            
+            
+            for (AVIMConversation *conver in conversations) {
+                WBChatListModel *listModel = [WBChatListModel createWithConversation:conver];
+                
+                WBChatListModel *dbModel = mDic[conver.conversationId];
+                if (dbModel) {
+                    // 3.从服务器获取的信息, 使用本地的未读消息数量
+                    listModel.unreadCount = [dbModel unreadCount];
+                }
+                
+                [tempArray addObject:listModel];
+            }
+            
+            // 存储到本地
+            [[WBChatListDao sharedInstance] insertChatListModelArray:tempArray];
+            
+            !block ?: ((AVIMArrayResultBlock)block)(tempArray, error);
+        }];
         
-        !block ?: ((AVIMArrayResultBlock)block)(tempArray, error);
+        
     }];
 }
 
@@ -117,10 +138,35 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListManager)
         return;
     }
     
+    // 把最新的信息保存到库中
     WBChatListModel *listModel = [WBChatListModel createWithConversation:conversation];
+    
     [[WBChatListDao sharedInstance] insertChatListModel:listModel];
 }
 
+/**
+ 根据conversationId, 判断本地有没有对应的会话信息
+ 
+ @param conversationId conversationId
+ @return 是否已经存在
+ */
+- (BOOL)isExistWithConversationId:(NSString *)conversationId{
+    return [[WBChatListDao sharedInstance] isExistWithConversationId:conversationId];
+}
+
+#pragma mark - 改变某个会话的会话状态
+/**
+ 阅读了某个会话
+ 
+ @param conversation 被阅读的会话
+ */
+- (void)readConversation:(AVIMConversation *)conversation{
+    // 设置某个会话为已读
+    [conversation readInBackground];
+    
+    // 更新本地数据库
+    [self insertConversationToList:conversation];
+}
 
 #pragma mark - Private Methods
 - (AVIMClient *)client{

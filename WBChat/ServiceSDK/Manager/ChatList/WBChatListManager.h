@@ -60,5 +60,15 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatListManager)
  @return 是否已经存在
  */
 - (BOOL)isExistWithConversationId:(NSString *)conversationId;
+
+#pragma mark - 改变某个会话的会话状态
+/**
+ 阅读了某个会话
+
+ @param conversation 被阅读的会话
+ */
+- (void)readConversation:(AVIMConversation *)conversation;
+
+
 @end
 NS_ASSUME_NONNULL_END

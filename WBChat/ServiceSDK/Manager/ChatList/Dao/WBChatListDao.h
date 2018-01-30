@@ -26,5 +26,8 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatListDao)
 
 - (BOOL)isExistWithConversationId:(NSString *)conversationId;
 
+#pragma mark - 获取到一个AVIMConversation
+- (WBChatListModel *)chatListModelWithConversationId:(NSString *)conversationId client:(AVIMClient *)client;
+
 @end
 NS_ASSUME_NONNULL_END

@@ -197,6 +197,16 @@
      }];
 }
 
+#pragma mark - 改变某个会话的会话状态
+/**
+ 阅读了某个会话
+ 
+ @param conversation 被阅读的会话
+ */
+- (void)readConversation:(AVIMConversation *)conversation{
+    [[WBChatListManager sharedInstance] readConversation:conversation];
+}
+
 @end
 
 

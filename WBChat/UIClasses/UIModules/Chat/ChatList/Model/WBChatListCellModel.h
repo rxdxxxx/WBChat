@@ -16,6 +16,7 @@
 @property (nonatomic, assign) CGRect chatMessageF;
 @property (nonatomic, assign) CGRect chatTimeF;
 @property (nonatomic, assign) CGRect cutLineF;
+@property (nonatomic, assign) CGRect unreadBadgeBtnF;
 
 @property (nonatomic, copy) NSString *lastMessageString;
 

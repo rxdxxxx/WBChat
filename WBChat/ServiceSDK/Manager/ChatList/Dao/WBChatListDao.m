@@ -77,7 +77,10 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
             BOOL result = NO;
             
             @try {
+                
+        
                 for (WBChatListModel *model in chatListModelArray) {
+                    
                     result = [self updateDB:db listModel:model];
                     if (result == NO) {
                         *rollback = YES;
@@ -97,53 +100,26 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
 }
 
 - (void)loadChatListWithClient:(AVIMClient *)client result:(void (^)(NSArray<WBChatListModel *> *modelArray))resultBlock{
-    
-    __block NSMutableArray *chatListArray = [[NSMutableArray alloc] init];
-    
-    
-    [[WBDBClient sharedInstance].dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
+    dispatch_async(WBDBClientSqlQueue, ^{
         
-        @try {
-            // 1. 取置顶会话项
-            NSString *selectSql =
-            [NSString stringWithFormat:
-             @"SELECT a.conversationID, a.data, a.unreadCount, a.lastMessageAt, a.mentioned, a.extend,\
-             b.topTime, b.draft \
-             FROM t_ChatList a left join t_ChatInfo b on (a.conversationID = b.conversationID) \
-             WHERE b.topTime > 0  ORDER BY b.topTime desc"];
+        __block NSMutableArray *chatListArray = [[NSMutableArray alloc] init];
+        
+        
+        [[WBDBClient sharedInstance].dbQueue inDatabase:^(FMDatabase * _Nonnull db) {
             
-            FMResultSet *resultSet = [db executeQuery:selectSql];
-            while ([resultSet next]) {
-                WBChatListModel *listModel = [self createChatListModelFromResultSet:resultSet client:client];
-                [chatListArray addObject:listModel];
+            @try {
+                chatListArray = [self chatListFromDB:db client:client];
+                
+                resultBlock(chatListArray);
             }
-            [resultSet close];
-            
-            // 2. 取置 非 顶会话项
-            selectSql =
-            [NSString stringWithFormat:
-             @"SELECT a.conversationID, a.data, a.unreadCount, a.lastMessageAt, a.mentioned, a.extend,\
-             b.topTime, b.draft \
-             FROM t_ChatList a left join t_ChatInfo b on (a.conversationID = b.conversationID) \
-             WHERE (b.topTime = 0 Or b.topTime not in (select topTime FROM t_ChatInfo WHERE conversationID = \'a.conversationID\'))\
-             order by a.lastMessageAt desc"];
-            
-            resultSet = [db executeQuery:selectSql];
-            while ([resultSet next]) {
-                WBChatListModel *listModel = [self createChatListModelFromResultSet:resultSet client:client];
-                [chatListArray addObject:listModel];
+            @catch (NSException *exception) {
+                
             }
-            [resultSet close];
-            
-            resultBlock(chatListArray);
-        }
-        @catch (NSException *exception) {
-            
-        }
-        @finally {
-            resultBlock(chatListArray);
-        }
-    }];
+            @finally {
+                resultBlock(chatListArray);
+            }
+        }];
+    });
 }
 
 - (BOOL)isExistWithConversationId:(NSString *)conversationId{
@@ -164,6 +140,27 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
     return isExist;
 }
 
+- (WBChatListModel *)chatListModelWithConversationId:(NSString *)conversationId client:(nonnull AVIMClient *)client{
+    if (conversationId == nil) {
+        return nil;
+    }
+    __block WBChatListModel *listModel = nil;
+    [[WBDBClient sharedInstance].dbQueue inDatabase:^(FMDatabase *db) {
+        
+        NSString *selectSQl = [NSString stringWithFormat:
+                               @"SELECT a.conversationID, a.data, a.unreadCount, a.lastMessageAt, a.mentioned, a.extend,\
+                               b.topTime, b.draft \
+                               FROM t_ChatList a left join t_ChatInfo b on (a.conversationID = b.conversationID) \
+                               WHERE a.conversationID = ?"];
+        FMResultSet *resultSet = [db executeQuery:selectSQl withArgumentsInArray:@[conversationId]];
+        if ([resultSet next]) {
+            listModel = [self createChatListModelFromResultSet:resultSet client:client];
+        }
+        [resultSet close];
+        
+    }];
+    return listModel;
+}
 
 #pragma mark - Private
 - (NSData *)dataFromConversation:(AVIMConversation *)conversation {
@@ -176,10 +173,12 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
     WBChatListModel *listModel = [WBChatListModel new];
     
     
-    NSData *data = [resultSet dataForColumn:WBChatListDaoKeyData];
-    AVIMKeyedConversation *keyedConversation = [NSKeyedUnarchiver unarchiveObjectWithData:data];
-    AVIMConversation *conversation = [client conversationWithKeyedConversation:keyedConversation];
-    listModel.conversation = conversation;
+    if (client) {
+        NSData *data = [resultSet dataForColumn:WBChatListDaoKeyData];
+        AVIMKeyedConversation *keyedConversation = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        AVIMConversation *conversation = [client conversationWithKeyedConversation:keyedConversation];
+        listModel.conversation = conversation;
+    }
     
     listModel.conversationID = [resultSet stringForColumn:WBChatListDaoKeyId];
     listModel.unreadCount = [resultSet intForColumn:WBChatListDaoKeyUnreadCount];
@@ -236,6 +235,41 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
         result = [db executeUpdate:sql withArgumentsInArray:@[@(topTime),chatListModel.conversationID]];
     }
     return result;
+}
+
+- (NSMutableArray *)chatListFromDB:(FMDatabase *)db client:(AVIMClient *)client{
+    NSMutableArray *chatListArray = [NSMutableArray new];
+    // 1. 取置顶会话项
+    NSString *selectSql =
+    [NSString stringWithFormat:
+     @"SELECT a.conversationID, a.data, a.unreadCount, a.lastMessageAt, a.mentioned, a.extend,\
+     b.topTime, b.draft \
+     FROM t_ChatList a left join t_ChatInfo b on (a.conversationID = b.conversationID) \
+     WHERE b.topTime > 0  ORDER BY b.topTime desc"];
+    
+    FMResultSet *resultSet = [db executeQuery:selectSql];
+    while ([resultSet next]) {
+        WBChatListModel *listModel = [self createChatListModelFromResultSet:resultSet client:client];
+        [chatListArray addObject:listModel];
+    }
+    [resultSet close];
+    
+    // 2. 取置 非 顶会话项
+    selectSql =
+    [NSString stringWithFormat:
+     @"SELECT a.conversationID, a.data, a.unreadCount, a.lastMessageAt, a.mentioned, a.extend,\
+     b.topTime, b.draft \
+     FROM t_ChatList a left join t_ChatInfo b on (a.conversationID = b.conversationID) \
+     WHERE (b.topTime = 0 Or b.topTime not in (select topTime FROM t_ChatInfo WHERE conversationID = \'a.conversationID\'))\
+     order by a.lastMessageAt desc"];
+    
+    resultSet = [db executeQuery:selectSql];
+    while ([resultSet next]) {
+        WBChatListModel *listModel = [self createChatListModelFromResultSet:resultSet client:client];
+        [chatListArray addObject:listModel];
+    }
+    [resultSet close];
+    return chatListArray;
 }
 
 @end

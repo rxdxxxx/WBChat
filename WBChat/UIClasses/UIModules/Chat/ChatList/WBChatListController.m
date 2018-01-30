@@ -78,6 +78,9 @@
 - (void)conversationDidLoadFromServer:(NSNotification *)notifi{
     [self reloadListData];
 }
+- (void)receiveNewMessage:(NSNotification *)notifi{
+    [self reloadListData];
+}
 #pragma mark -  GestureRecognizer Action
 #pragma mark -  Btn Click
 - (void)sendMessageClick{
@@ -100,6 +103,8 @@
 
     [self notificationName:WBIMNotificationConnectivityUpdated action:@selector(connectivityUpdated:)];
     [self notificationName:WBIMNotificationDidLoadFromServer action:@selector(conversationDidLoadFromServer:)];
+    [self notificationName:WBMessageNewReceiveNotification action:@selector(receiveNewMessage:)];
+    
 }
 
 - (void)notificationName:(NSString *)name action:(SEL)action{
