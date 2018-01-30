@@ -56,8 +56,7 @@
     [super viewWillDisappear:animated];
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
-    
-    
+    [[WBChatKit sharedInstance] readConversation:self.conversation];
 }
 
 
@@ -176,25 +175,28 @@
     
     if (tMsg)
     {
-        BOOL isBottom = [self isTableViewBottomVisible];
-  
-        
         // 把收到的消息加入列表,并刷新
-        WBMessageModel *message = [WBMessageModel createWIthTypedMessage:tMsg];
-        [self appendAMessageToTableView:message];
+        do_dispatch_async_mainQueue(^{
+            BOOL isBottom = [self isTableViewBottomVisible];
+
+            WBMessageModel *message = [WBMessageModel createWIthTypedMessage:tMsg];
+            [self appendAMessageToTableView:message];
+            
+            if (isBottom) {
+                // 此处动画,需要是NO,不然tableView会乱蹦.导致不能显示到最后一行.
+                [self.tableView wb_scrollToBottomAnimated:NO];
+            }
+            
+            BOOL isActive = [UIApplication sharedApplication].applicationState == UIApplicationStateActive;
+            // 栈顶的控制器, 是不是当前控制器.
+            if (isActive && self == self.navigationController.topViewController){
+                // 清除未读记录信息
+                [[WBChatKit sharedInstance] readConversation:self.conversation];
+            }
+        });
         
-        if (isBottom) {
-            // 此处动画,需要是NO,不然tableView会乱蹦.导致不能显示到最后一行.
-            [self.tableView wb_scrollToBottomAnimated:NO];
-        }
     }
-    BOOL isActive = [UIApplication sharedApplication].applicationState == UIApplicationStateActive;
-    // 栈顶的控制器, 是不是当前控制器.
-    if (isActive && self == self.navigationController.topViewController)
-    {
-        // 清除未读记录信息
-        //[TYPublicDialogTool cleanHasReadMessageWithChatID:self.chatID  isInChating:YES];
-    }
+
 }
 #pragma mark -  GestureRecognizer Action
 #pragma mark -  Btn Click

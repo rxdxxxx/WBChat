@@ -187,8 +187,10 @@
 
 #pragma mark - scrollViewDelegate
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    double pageNo = scrollView.contentOffset.x / scrollView.frame.size.width;
-    self.pageControl.currentPage = (int)(pageNo + 0.5);
+    if (scrollView.dragging) {
+        double pageNo = scrollView.contentOffset.x / scrollView.frame.size.width;
+        self.pageControl.currentPage = (int)(pageNo + 0.5);
+    }
 }
 
 #pragma mark -  CustomDelegate
@@ -214,6 +216,10 @@
 #pragma mark -  Notification Callback
 #pragma mark -  GestureRecognizer Action
 #pragma mark -  Btn Click
+- (void)pageControlValueChange:(UIPageControl *)sender{
+    [self.collectionView setContentOffset:CGPointMake(sender.currentPage * WBKeyBoardSCREEN_WIDTH_emoji, 0) animated:YES];
+}
+
 #pragma mark -  Private Methods
 - (void)setupUI{
     
@@ -249,6 +255,7 @@
         _pageControl.currentPage = 0;
         [_pageControl setPageIndicatorTintColor:[UIColor colorWithWhite:0.5 alpha:0.3]];
         [_pageControl setCurrentPageIndicatorTintColor:[UIColor grayColor]];
+        [_pageControl addTarget:self action:@selector(pageControlValueChange:) forControlEvents:UIControlEventValueChanged];
 
     }
     return _pageControl;
