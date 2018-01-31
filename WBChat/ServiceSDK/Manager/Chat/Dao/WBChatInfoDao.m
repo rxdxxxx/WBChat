@@ -28,4 +28,24 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatInfoDao)
     return ret;
 }
 
+
+/**
+ 根据conversationId,删除一个本地的会话
+ */
+- (BOOL)deleteConversation:(NSString *)conversationId{
+    __block BOOL isExist=NO;
+    
+    [[WBDBClient sharedInstance].dbQueue inDatabase:^(FMDatabase *db) {
+        
+        NSString *selectSQl =@"DELETE FROM t_ChatInfo where conversationID = ?;";
+        FMResultSet *set = [db executeQuery:selectSQl withArgumentsInArray:@[conversationId]];
+        if ([set next]) {
+            isExist=YES;
+        }
+        [set close];
+        
+    }];
+    return isExist;
+    
+}
 @end

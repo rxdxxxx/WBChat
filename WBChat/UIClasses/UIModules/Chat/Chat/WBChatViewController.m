@@ -243,7 +243,7 @@
 }
 
 - (void)setupUI{
-    [self rr_initTitleView:self.conversation.name];
+    
     [self.view addSubview:self.tableView];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

@@ -18,14 +18,14 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatListManager)
 /**
  拉取服务器端的所有对话
  */
-- (void)fetchAllConversationsFromServer:(void(^_Nullable)(NSArray<WBChatListModel *> * _Nullable conersations,
+- (void)fetchAllConversationsFromServer:(void(^_Nullable)(NSArray<WBChatListModel *> * _Nullable conversations,
                                                           NSError * _Nullable error))block;
 #pragma mark - 拉取本地的所有对话
 
 /**
  拉取服务器端的所有对话
  */
-- (void)fetchAllConversationsFromLocal:(void(^_Nullable)(NSArray<WBChatListModel *> * _Nullable conersations,
+- (void)fetchAllConversationsFromLocal:(void(^_Nullable)(NSArray<WBChatListModel *> * _Nullable conversations,
                                                          NSError * _Nullable error))block;
 #pragma mark - 根据 conversationId 获取对话
 /**
@@ -40,7 +40,7 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatListManager)
  *  根据 conversationId数组 获取多个指定的会话信息
  */
 - (void)fetchConversationsWithConversationIds:(NSSet *)conversationIds
-                                     callback:(void (^_Nullable)(NSArray<AVIMConversation *> * _Nullable conersations,
+                                     callback:(void (^_Nullable)(NSArray<AVIMConversation *> * _Nullable conversations,
                                                                  NSError * _Nullable error))callback;
 
 
@@ -60,6 +60,14 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatListManager)
  @return 是否已经存在
  */
 - (BOOL)isExistWithConversationId:(NSString *)conversationId;
+
+#pragma mark - 删除一个会话
+/**
+ 删除一个会话
+
+ @param conversationId 会话id
+ */
+- (void)deleteConversation:(NSString *)conversationId;
 
 #pragma mark - 改变某个会话的会话状态
 /**

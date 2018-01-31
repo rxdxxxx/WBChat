@@ -8,7 +8,7 @@
 
 #import "WBChatListManager.h"
 #import "WBChatListDao.h"
-
+#import "WBChatInfoDao.h"
 
 @implementation WBChatListManager
 WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListManager)
@@ -152,6 +152,20 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListManager)
  */
 - (BOOL)isExistWithConversationId:(NSString *)conversationId{
     return [[WBChatListDao sharedInstance] isExistWithConversationId:conversationId];
+}
+
+
+#pragma mark - 删除一个会话
+- (void)deleteConversation:(NSString *)conversationId{
+    
+    WBChatListModel *listModel = [[WBChatListDao sharedInstance] chatListModelWithConversationId:conversationId client:self.client];
+    if (listModel) {
+        // 清除之前的未读数, 以及聊天记录
+        [listModel.conversation readInBackground];
+    }
+    
+    // 列表
+    [[WBChatListDao sharedInstance] deleteConversation:conversationId];
 }
 
 #pragma mark - 改变某个会话的会话状态

@@ -8,6 +8,11 @@
 
 #import "WBChatListCellModel.h"
 #import "WBConfig.h"
+@interface WBChatListCellModel ()
+@property (nonatomic, assign) BOOL didSearchName;
+@end
+
+
 @implementation WBChatListCellModel
 
 - (void)handleLastMessageString:(WBChatListModel *)dataModel {
@@ -40,6 +45,25 @@
         default:
             self.lastMessageString = @"[不支持的消息类型]";
             break;
+    }
+}
+
+- (void)handleTitle:(WBChatListModel *)dataModel{
+    NSArray *member = dataModel.conversation.members;
+    if (member.count == 2 ) {
+        if (!self.didSearchName) {
+            NSString *otherObjectId = member.firstObject;
+            if ([otherObjectId isEqualToString:[AVUser currentUser].objectId]) {
+                otherObjectId = member.lastObject;
+            }
+            AVQuery *query = [AVQuery queryWithClassName:@"_User"];
+            [query getObjectInBackgroundWithId:otherObjectId block:^(AVObject *object, NSError *error) {
+                self.didSearchName = YES;
+                self.title = ((AVUser *)object).username;
+            }];
+        }
+    }else{
+        self.title = dataModel.conversation.name;
     }
 }
 
@@ -83,6 +107,7 @@
     _cutLineF = CGRectMake(0, cutLineY, cutLineW, cutLineH);
     
     [self handleLastMessageString:dataModel];
+    [self handleTitle:dataModel];
 
 }
 

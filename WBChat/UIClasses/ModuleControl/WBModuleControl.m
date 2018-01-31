@@ -52,6 +52,9 @@
 }
 
 + (void)quit{
+    [[WBChatKit sharedInstance] closeWithCallback:^(BOOL succeeded, NSError * _Nonnull error) {
+        
+    }];
     
     UIViewController *vc = [[WBLoginController alloc] init];
     

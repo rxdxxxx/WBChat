@@ -24,6 +24,7 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBMessageManager)
         ![[WBChatListManager sharedInstance]
           isExistWithConversationId:conversation.conversationId]) {
             
+            // 拉取服务器最新数据。
             [conversation fetchWithCallback:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
                     

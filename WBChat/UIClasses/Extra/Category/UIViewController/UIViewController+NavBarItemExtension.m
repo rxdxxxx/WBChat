@@ -63,7 +63,7 @@
     
     // 返回按钮
     self.rrBackButton = [self rr_initBtn];
-    [self.rrBackButton setImage:[UIImage imageNamed:@"ico_nav_back"] forState:UIControlStateNormal];
+//    [self.rrBackButton setImage:[UIImage imageNamed:@"ico_nav_back"] forState:UIControlStateNormal];
     [self.rrBackButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [self.rrBackButton addTarget:self action:@selector(rr_backAction:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -286,7 +286,7 @@
     
     [Button setBackgroundImage:[UIImage imageNamed:@"btn_nav"] forState:UIControlStateNormal];
     [Button setBackgroundImage:[UIImage imageNamed:@"btn_navbtn_nav_pressed"] forState:UIControlStateHighlighted];
-    [Button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [Button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [Button setTitleColor:[UIColor colorWithRed:1.000 green:1.000 blue:1.000 alpha:0.50] forState:UIControlStateDisabled];
     Button.titleLabel.textAlignment = NSTextAlignmentCenter;
     UIBarButtonItem *ButtonItem = [[UIBarButtonItem alloc] initWithCustomView:Button];

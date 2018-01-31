@@ -207,6 +207,11 @@
     [[WBChatListManager sharedInstance] readConversation:conversation];
 }
 
+#pragma mark - 删除一个会话
+- (void)deleteConversation:(NSString *)conversationId{
+    [[WBChatListManager sharedInstance] deleteConversation:conversationId];
+}
+
 @end
 
 

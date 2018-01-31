@@ -140,6 +140,30 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListDao)
     return isExist;
 }
 
+/**
+ 根据conversationId,删除一个本地的会话
+ */
+- (BOOL)deleteConversation:(NSString *)conversationId{
+    __block BOOL isExist=NO;
+
+    [[WBDBClient sharedInstance].dbQueue inDatabase:^(FMDatabase *db) {
+        
+        NSString *selectSQl =@"DELETE FROM t_ChatList where conversationID = ?;";
+        FMResultSet *set = [db executeQuery:selectSQl withArgumentsInArray:@[conversationId]];
+        if ([set next]) {
+            isExist=YES;
+        }
+        [set close];
+
+    }];
+    return isExist;
+
+}
+#pragma mark - 获取到一个AVIMConversation
+
+/**
+ 单独获取某个WBChatListModel对象
+ */
 - (WBChatListModel *)chatListModelWithConversationId:(NSString *)conversationId client:(nonnull AVIMClient *)client{
     if (conversationId == nil) {
         return nil;

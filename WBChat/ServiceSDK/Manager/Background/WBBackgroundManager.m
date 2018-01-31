@@ -33,13 +33,13 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBBackgroundManager)
     
     if ([WBChatKit sharedInstance].connectStatus == AVIMClientStatusOpened) {
         
-        [[WBChatListManager sharedInstance] fetchAllConversationsFromServer:^(NSArray<AVIMConversation *> * _Nullable conersations,
-                                                                              NSError * _Nullable error)
-        {
-            if (error == nil) {
-                [self pushNotificationName:WBIMNotificationDidLoadFromServer];
-            }
-        }];
+//        [[WBChatListManager sharedInstance] fetchAllConversationsFromServer:^(NSArray<AVIMConversation *> * _Nullable conersations,
+//                                                                              NSError * _Nullable error)
+//        {
+//            if (error == nil) {
+//                [self pushNotificationName:WBIMNotificationDidLoadFromServer];
+//            }
+//        }];
     }
 }
 

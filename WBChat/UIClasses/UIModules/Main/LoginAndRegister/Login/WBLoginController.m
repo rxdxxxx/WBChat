@@ -20,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    
 
 }
 
@@ -70,6 +73,16 @@
                      completion:nil]; ;
     
 }
+
+- (IBAction)quickLogin:(UIButton *)sender {
+    
+    self.userNameTextField.text = sender.titleLabel.text;
+    self.passwordTextField.text = @"qqqq1111";
+    [self loginBtnClick:nil];
+    
+}
+
+
 
 #pragma mark -  Private Methods
 #pragma mark -  Public Methods

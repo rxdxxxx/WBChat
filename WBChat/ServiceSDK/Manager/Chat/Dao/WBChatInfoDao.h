@@ -19,4 +19,8 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatInfoDao)
 
 - (BOOL)createDBTable;
 
+/**
+ 根据conversationId,删除一个本地的会话
+ */
+- (BOOL)deleteConversation:(NSString *)conversationId;
 @end

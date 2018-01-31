@@ -49,9 +49,35 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    WBChatViewController *vc = [WBChatViewController createWithConversation:self.dataArray[indexPath.row].dataModel.conversation];
+    WBChatListCellModel *cellModle = self.dataArray[indexPath.row];
+    
+    WBChatViewController *vc = [WBChatViewController createWithConversation:cellModle.dataModel.conversation];
+    [vc rr_initTitleView:cellModle.title]; 
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+
+- (NSArray<UITableViewRowAction *> *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    WBChatListCellModel *cellModel = nil;
+    if ((NSUInteger)indexPath.row < self.dataArray.count) {
+        cellModel = self.dataArray[indexPath.row];
+    }
+    else {
+        return nil;
+    }
+    UITableViewRowAction *actionItemDelete = [UITableViewRowAction
+                                              rowActionWithStyle:UITableViewRowActionStyleNormal
+                                              title:@"删除"
+                                              handler:^(UITableViewRowAction *action, NSIndexPath *indexPath) {
+                                                  AVIMConversation *conversation = cellModel.dataModel.conversation;
+                                                  [[WBChatKit sharedInstance] deleteConversation:conversation.conversationId];
+                                                  [self reloadListData];                                                  
+                                              }];
+    actionItemDelete.backgroundColor = [UIColor redColor];
+    return @[ actionItemDelete ];
+}
+
 
 #pragma mark -  CustomDelegate
 #pragma mark -  Event Response
@@ -96,8 +122,6 @@
 
     [self.view addSubview:self.tableView];
     self.tableView.rowHeight = [WBChatListCell cellHeight];
-    [self rr_initNavRightBtnWithTitle:@"发送" target:self
-                               action:@selector(sendMessageClick)];
 }
 - (void)setupObserver{
 

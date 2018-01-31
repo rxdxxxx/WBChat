@@ -18,7 +18,10 @@
 @property (nonatomic, assign) CGRect cutLineF;
 @property (nonatomic, assign) CGRect unreadBadgeBtnF;
 
+
+
 @property (nonatomic, copy) NSString *lastMessageString;
+@property (nonatomic, copy) NSString *title;
 
 @property (nonatomic, strong) WBChatListModel *dataModel;
 

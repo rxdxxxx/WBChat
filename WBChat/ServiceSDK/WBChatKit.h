@@ -125,6 +125,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param conversation 被阅读的会话
  */
 - (void)readConversation:(AVIMConversation *)conversation;
+
+#pragma mark - 删除一个会话
+/**
+ 删除一个会话
+
+ @param conversationId 会话id
+ */
+- (void)deleteConversation:(NSString *)conversationId;
 @end
 
 NS_ASSUME_NONNULL_END

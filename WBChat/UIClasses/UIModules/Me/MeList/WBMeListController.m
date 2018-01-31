@@ -18,9 +18,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self rr_initTitleView:@"我"];
+    
+    [self rr_initNavRightBtnWithTitle:@"退出" target:self
+                               action:@selector(logOut)];
 
+    UILabel *name = [[UILabel alloc] init];
+    name.text = [AVUser currentUser].username;
+    [name sizeToFit];
+    name.centerX_wb = self.view.centerX_wb;
+    name.centerY_wb = self.view.centerY_wb;
+    [self.view addSubview:name];
 }
-
+- (void)logOut{
+    [WBModuleControl quit];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
