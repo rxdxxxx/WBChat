@@ -41,32 +41,37 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatListManager)
     orConversationQuery.cachePolicy = chachePolicy;
     orConversationQuery.option = AVIMConversationQueryOptionWithMessage;
     [orConversationQuery findConversationsWithCallback:^(NSArray<AVIMConversation *> * _Nullable conversations, NSError * _Nullable error) {
-        NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:conversations.count];
         
-        [self fetchAllConversationsFromLocal:^(NSArray<WBChatListModel *> * _Nullable conersations, NSError * _Nullable error) {
+        [self fetchAllConversationsFromLocal:^(NSArray<WBChatListModel *> * _Nullable localConversations, NSError * _Nullable error) {
+            NSMutableArray *tempArray = [NSMutableArray arrayWithCapacity:conversations.count];
+
             
-            // 1.读取数据库中已经有的信息
+            // 1.把远端的信息保存成字典模式
             NSMutableDictionary *mDic = [NSMutableDictionary new];
-            // 2.保存成字典,方便查询
-            for (WBChatListModel *listModel in conersations) {
-                mDic[listModel.conversationID] = listModel;
-            }
-            
-            
             for (AVIMConversation *conver in conversations) {
-                WBChatListModel *listModel = [WBChatListModel createWithConversation:conver];
-                
-                WBChatListModel *dbModel = mDic[conver.conversationId];
-                if (dbModel) {
-                    // 3.从服务器获取的信息, 使用本地的未读消息数量
-                    listModel.unreadCount = [dbModel unreadCount];
-                }
-                
-                [tempArray addObject:listModel];
+                mDic[conver.conversationId] = conver;
             }
             
-            // 存储到本地
-            [[WBChatListDao sharedInstance] insertChatListModelArray:tempArray];
+            
+            
+            // 2.以本地的最近联系人列表为准, 更新信息
+            for (WBChatListModel *localListModel in localConversations) {
+                AVIMConversation *conver = mDic[localListModel.conversationID];
+                if (conver) {
+                    WBChatListModel *listModel = [WBChatListModel createWithConversation:conver];
+                    // 2.1.从服务器获取的信息, 使用本地的未读消息数量
+                    listModel.unreadCount = [localListModel unreadCount];
+                    [tempArray addObject:listModel];
+                }
+            }
+
+            
+            // 3.存储到本地
+            if (tempArray.count) {
+                [[WBChatListDao sharedInstance] insertChatListModelArray:tempArray];
+            }
+            
+            // PS: 远端的最近联系人列表和本地是有区别的, 本地列表的新增是通过收到消息插入的.
             
             !block ?: ((AVIMArrayResultBlock)block)(tempArray, error);
         }];
