@@ -13,6 +13,7 @@
 #import "UIView+NextResponder.h"
 #import "WBKeyBoardTextView.h"
 #import "WBEmotionDisplayBoard.h"
+#import "WBPlusDisplayBoard.h"
 
 #define     WBKeyBoardRGBAColor(r, g, b, a)       [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:a]
 
@@ -60,7 +61,9 @@
 
 
 @property (nonatomic, strong) WBEmotionDisplayBoard *emojiBoard;
-@property (nonatomic, strong) UIView *moreBoard;
+@property (nonatomic, strong) WBPlusDisplayBoard *moreBoard;
+
+
 @end
 
 
@@ -217,7 +220,7 @@
         animate = NO;
     }
     
-    // 关闭掉动画,此处头像乱移动的问题.
+    
     [CATransaction begin];
     [CATransaction setDisableActions:!animate];
     // 工具条的Y值 == 键盘的Y值 - 工具条的高度
@@ -379,6 +382,7 @@
         
         [self setActivity:NO];
         [self changeKeyboardWithView:self.moreBoard nextState:WBChatBarStatusMore];
+        [self.moreBoard reloadData];
         self.status = WBChatBarStatusMore;
     }
 }
@@ -454,6 +458,14 @@
 }
 #pragma mark -  Public Methods
 #pragma mark -  Getters and Setters
+- (void)setDelegate:(id<WBChatBarViewDelegate>)delegate{
+    _delegate = delegate;
+    self.moreBoard.delegate = delegate;
+}
+- (void)setDataSource:(id<WBChatBarViewDataSource>)dataSource{
+    _dataSource = dataSource;
+    self.moreBoard.dataSource = dataSource;
+}
 
 #pragma mark - Getter
 - (UIButton *)modeButton
@@ -568,11 +580,9 @@
     }
     return _emojiBoard;
 }
-- (UIView *)moreBoard{
+- (WBPlusDisplayBoard *)moreBoard{
     if (!_moreBoard) {
-        
-        _moreBoard = [[UIView alloc] initWithFrame:CGRectMake(0, 0,self.width_wb, 200)];
-        _moreBoard.backgroundColor = [UIColor blueColor];
+        _moreBoard = [WBPlusDisplayBoard createPlusBoard];
     }
     return _moreBoard;
     

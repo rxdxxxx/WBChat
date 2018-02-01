@@ -10,11 +10,13 @@
 #import "WBChatMessageBaseCell.h"
 #import "WBChatBarView.h"
 #import "UITableView+WBScrollToIndexPath.h"
+#import "WBSelectPhotoTool.h"
 
-@interface WBChatViewController ()<WBChatBarViewDelegate>
+@interface WBChatViewController ()<WBChatBarViewDelegate,WBChatBarViewDataSource,WBSelectPhotoToolDelegate>
 @property (nonatomic, strong) AVIMConversation *conversation;
 @property (nonatomic, strong) NSMutableArray<WBChatMessageBaseCellModel *> *dataArray;
 @property (nonatomic, strong) WBChatBarView *chatBar;
+@property (nonatomic, strong) WBSelectPhotoTool *photoTool;
 @end
 
 @implementation WBChatViewController
@@ -92,7 +94,35 @@
 }
 
 #pragma mark -  CustomDelegate
+#pragma mark - WBChatBarViewDataSource
+- (NSArray<NSDictionary *> *)plusBoardItemInfos:(WBChatBarView *)keyBoardView{
+    return @[PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_pic"],@"相册",@(WBPlusBoardButtonTypePhotoAlbum)),
+             PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_camera"],@"相机",@(WBPlusBoardButtonTypeCamera)),
+             PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_location"],@"位置",@(WBPlusBoardButtonTypeLocation))];
+}
+
 #pragma mark - WBChatBarViewDelegate
+- (void)chatBar:(WBChatBarView *)chatBar didSelectItemInfo:(NSDictionary *)itemInfo{
+    switch ([itemInfo[kPlusBoardType] integerValue]) {
+        case WBPlusBoardButtonTypePhotoAlbum:{
+            [self.photoTool visitPhotoLibraryInController:self];
+        }
+            break;
+        case WBPlusBoardButtonTypeCamera:{
+            [self.photoTool visitCameraInController:self];
+
+        }
+            break;
+        case WBPlusBoardButtonTypeLocation:{
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 - (void)chatBar:(WBChatBarView *)keyBoardView sendText:(NSString *)sendText{
     if (sendText.length > 0) {
         
@@ -117,7 +147,15 @@
         
     }
 }
+#pragma mark - WBSelectPhotoToolDelegate
 
+- (void)toolWillSelectImage:(WBSelectPhotoTool *)tool{
+    
+}
+
+- (void)tool:(WBSelectPhotoTool *)tool didSelectImage:(UIImage *)image{
+    
+}
 
 #pragma mark -  Event Response
 #pragma mark -  Notification Callback
@@ -255,6 +293,7 @@
     [self.view addSubview:keyBoard];
     self.chatBar = keyBoard;
     self.chatBar.delegate = self;
+    self.chatBar.dataSource = self;
     
     //3,缩小tableView的高度
     self.tableView.height_wb = self.chatBar.top_wb;
@@ -279,6 +318,14 @@
         _dataArray = [NSMutableArray new];
     }
     return _dataArray;
+}
+
+- (WBSelectPhotoTool *)photoTool{
+    if (!_photoTool) {
+        _photoTool = [WBSelectPhotoTool new];
+        _photoTool.delegate = self;
+    }
+    return _photoTool;
 }
 @end
 
