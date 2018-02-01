@@ -114,12 +114,9 @@
     if (!message.wb_isValidMessage) {
         return;
     }
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
-        
-        AVIMTypedMessage *typedMessage = [message wb_getValidTypedMessage];
-        [self conversation:conversation didReceiveTypedMessage:typedMessage];
-       
-    });
+    
+    AVIMTypedMessage *typedMessage = [message wb_getValidTypedMessage];
+    [self conversation:conversation didReceiveTypedMessage:typedMessage];
 }
 
 /*!
@@ -131,9 +128,9 @@
     if (!message.wb_isValidMessage) {
         return;
     }
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+    dispatch_async(WBDBClientSqlQueue, ^{
         
-        [conversation setValue:message forKey:@"lastMessage"];
+        [conversation setValue:message forKeyPath:@"lastMessage"];
         
         // 交给准备的类处理收到的消息
         [[WBMessageManager sharedInstance] conversation:conversation didReceiveTypedMessage:message];
