@@ -97,8 +97,9 @@
 #pragma mark - WBChatBarViewDataSource
 - (NSArray<NSDictionary *> *)plusBoardItemInfos:(WBChatBarView *)keyBoardView{
     return @[PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_pic"],@"相册",@(WBPlusBoardButtonTypePhotoAlbum)),
-             PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_camera"],@"相机",@(WBPlusBoardButtonTypeCamera)),
-             PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_location"],@"位置",@(WBPlusBoardButtonTypeLocation))];
+             PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_camera"],@"相机",@(WBPlusBoardButtonTypeCamera))];
+    
+//    PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_location"],@"位置",@(WBPlusBoardButtonTypeLocation))
 }
 
 #pragma mark - WBChatBarViewDelegate

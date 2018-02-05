@@ -22,6 +22,8 @@
 
 @end
 @implementation WBChatMessageImageCell
+#pragma mark -  Life Cycle
+
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -32,6 +34,7 @@
     if (cell == nil) {
         cell = [[WBChatMessageImageCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ID];
     }
+    cell.tableView = tableView;
     return cell;
 }
 
@@ -45,11 +48,34 @@
         
         [self.dialogCellImageView addSubview:self.picProcessImageView];
         [self.dialogCellImageView addSubview:self.picProcessLabel];
-        
+
+        [WBNotificationCenter addObserver:self selector:@selector(uploadFileProgressNotify:) name:WBIMNotificationMessageUploadProgress object:nil];
+
     }
     return self;
 }
 
+
+#pragma mark -  UITableViewDelegate
+#pragma mark -  CustomDelegate
+#pragma mark -  Event Response
+#pragma mark -  Notification Callback
+- (void)uploadFileProgressNotify:(NSNotification *)notifi{
+    NSDictionary *userInfo = notifi.userInfo;
+    WBMessageModel *message = userInfo[@"message"];
+    if ([self.tableView.visibleCells containsObject:self] && self.cellModel.messageModel == message) {
+        NSNumber *progress = userInfo[@"progress"];
+        self.picProcessLabel.text = [NSString stringWithFormat:@"%.0f%%",progress.floatValue];
+    }
+}
+#pragma mark -  GestureRecognizer Action
+#pragma mark -  Btn Click
+#pragma mark -  Private Methods
+- (void)setupUI{
+    
+}
+#pragma mark -  Public Methods
+#pragma mark -  Getters and Setters
 
 - (void)setCellModel:(WBChatMessageBaseCellModel *)cellModel{
     [super setCellModel:cellModel];

@@ -15,6 +15,8 @@
 
 #define WBIMNotificationConnectivityUpdated @"WBIMNotificationConnectivityUpdated" ///< 连接状态变更的通知
 
+#define WBIMNotificationMessageUploadProgress @"WBIMNotificationMessageUploadProgress" ///< 文件上传进度
+
 
 void do_dispatch_async_mainQueue(dispatch_block_t _Nullable task);
 

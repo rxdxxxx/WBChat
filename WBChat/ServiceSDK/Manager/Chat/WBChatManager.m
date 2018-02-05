@@ -93,7 +93,11 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatManager)
     [targetConversation sendMessage:message.content
                       progressBlock:^(NSInteger progress)
     {
-        
+        [[NSNotificationCenter defaultCenter] postNotificationName:WBIMNotificationMessageUploadProgress
+                                                            object:nil
+                                                          userInfo:@{@"message":message,
+                                                                     @"progress":@(progress)
+                                                                     }];
     }
                            callback:callback];
 }

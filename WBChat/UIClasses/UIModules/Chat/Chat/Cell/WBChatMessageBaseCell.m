@@ -41,7 +41,12 @@
         cell = [WBChatMessageBaseCell new];
     }
     
+    // 关闭掉动画,此处头像乱移动的问题.
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
     cell.cellModel = cellModel;
+    [CATransaction commit];
+
     return cell;
 }
 
