@@ -19,8 +19,20 @@
 @property (nonatomic, strong) AVIMTypedMessage *content;
 
 
++ (instancetype)createWIthTypedMessage:(AVIMTypedMessage *)message;
+
+
+
+/**
+ 发送消息时,创建模型
+
+ @param text 发送内容
+ */
 + (instancetype)createWithText:(NSString *)text;
 
-+ (instancetype)createWIthTypedMessage:(AVIMTypedMessage *)message;
+
+
+@property (nonatomic, strong) UIImage *thumbImage;
++ (instancetype)createWithImage:(UIImage *)image;
 
 @end

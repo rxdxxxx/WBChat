@@ -8,6 +8,7 @@
 
 #import "WBChatMessageBaseCell.h"
 #import "WBChatMessageTextCell.h"
+#import "WBChatMessageImageCell.h"
 
 @interface WBChatMessageBaseCell ()
 
@@ -30,7 +31,8 @@
             cell = [WBChatMessageTextCell cellWithTableView:tableView];
         }
             break;
-            
+        case WBChatCellTypeImage:
+            cell = [WBChatMessageImageCell cellWithTableView:tableView];
         default:
             break;
     }

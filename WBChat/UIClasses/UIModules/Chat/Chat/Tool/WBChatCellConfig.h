@@ -22,13 +22,6 @@
 @property (nonatomic, assign) CGFloat headerBubbleSpace; ///< 头像和气泡的距离 默认: 12
 
 
-@property (nonatomic, strong) UIFont *textFont; // 默认使用字体: 17
-@property (nonatomic, assign) UIEdgeInsets textbubbleContentInset; ///< 文本气泡内部文字距离气泡边界的距离
-@property (nonatomic, assign) CGFloat bubbleClosedAngleWidth; ///< 气泡前面尖角的宽度 默认: 5
-@property (nonatomic, assign) CGFloat textMaxWidth; ///< 文本的最大宽度
-
-
-
 @property (nonatomic, assign) CGSize userNameSize; ///< 展示的用户名称 默认: {200,15}
 
 @property (nonatomic, assign) CGSize messageStatusIconSize; ///< 消息的状态图片 默认: {20,20}
@@ -36,6 +29,16 @@
 
 @property (nonatomic, assign) CGSize messageStatusLabelSize; ///< 消息的状态文字 默认: {40,20}
 @property (nonatomic, assign) CGFloat messageStatusLabelToBubble; ///< 消息的状态文字和气泡的距离 默认: 5
+
+// 文字消息相关
+@property (nonatomic, strong) UIFont *textFont; // 默认使用字体: 17
+@property (nonatomic, assign) UIEdgeInsets textbubbleContentInset; ///< 文本气泡内部文字距离气泡边界的距离
+@property (nonatomic, assign) CGFloat bubbleClosedAngleWidth; ///< 气泡前面尖角的宽度 默认: 5
+@property (nonatomic, assign) CGFloat textMaxWidth; ///< 文本的最大宽度
+
+// 图片消息相关
+@property (nonatomic, assign) CGSize imageProgressSize;
+
 
 
 @end

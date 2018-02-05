@@ -127,9 +127,7 @@
          }else if(successBlock){
              NSMutableArray *temp = [NSMutableArray new];
              for (AVIMTypedMessage *imMessage in array) {
-                 WBMessageModel *message = [WBMessageModel new];
-                 message.status = imMessage.status;
-                 message.content = imMessage;
+                 WBMessageModel *message = [WBMessageModel createWIthTypedMessage:imMessage];
                  [temp addObject:message];
              }
              successBlock(temp);
@@ -173,28 +171,35 @@
                        success:(nonnull void (^)(WBMessageModel *aMessage))successBlock
                          error:(nonnull void (^)(WBMessageModel *aMessage,NSError * _Nonnull))errorBlock{
     
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^(void) {
+        [[WBChatManager sharedInstance]
+         sendTargetConversation:targetConversation
+         message:message
+         callback:^(BOOL success, NSError * _Nullable error)
+         {
+             
+             // 1.更新消息到聊天列表页面
+             [[WBChatListManager sharedInstance] insertConversationToList:targetConversation];
+             
+             dispatch_async(dispatch_get_main_queue(), ^(void) {
+                 if (error && errorBlock) {
+                     message.status = AVIMMessageStatusFailed;
+                     
+                     errorBlock(message,error);
+                     
+                 }else if(successBlock){
+                     
+                     message.status = AVIMMessageStatusSent;
+                     successBlock(message);
+                 }
+             });
+             
+         }];
+        
+        
+    });
     
-    
-    [[WBChatManager sharedInstance]
-     sendTargetConversation:targetConversation
-     message:message
-     callback:^(BOOL success, NSError * _Nullable error)
-     {
-         
-         // 1.更新消息到聊天列表页面
-         [[WBChatListManager sharedInstance] insertConversationToList:targetConversation];
-         
-         if (error && errorBlock) {
-             message.status = AVIMMessageStatusFailed;
 
-             errorBlock(message,error);
-             
-         }else if(successBlock){
-             
-             message.status = AVIMMessageStatusSent;
-             successBlock(message);
-         }
-     }];
 }
 
 #pragma mark - 改变某个会话的会话状态

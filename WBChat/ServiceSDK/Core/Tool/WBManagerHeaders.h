@@ -18,5 +18,10 @@
 // 收到消息后处理类
 #import "WBMessageManager.h"
 
+// 文件处理
+#import "WBFileManager.h"
+#import "WBPathManager.h"
+#import "WBNamedTool.h"
+
 
 #endif /* WBManagerHeaders_h */

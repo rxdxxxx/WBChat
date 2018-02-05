@@ -110,7 +110,6 @@
             break;
         case WBPlusBoardButtonTypeCamera:{
             [self.photoTool visitCameraInController:self];
-
         }
             break;
         case WBPlusBoardButtonTypeLocation:{
@@ -154,7 +153,21 @@
 }
 
 - (void)tool:(WBSelectPhotoTool *)tool didSelectImage:(UIImage *)image{
+    WBMessageModel *message = [WBMessageModel createWithImage:image];
+    [self appendAMessageToTableView:message];
+    [self.tableView wb_scrollToBottomAnimated:NO];
     
+    
+    [[WBChatKit sharedInstance] sendTargetConversation:self.conversation
+                                               message:message
+                                               success:^(WBMessageModel * _Nonnull aMessage)
+    {
+        [self refershAMessageState:aMessage];
+
+    } error:^(WBMessageModel * _Nonnull aMessage, NSError * _Nonnull error) {
+        [self refershAMessageState:aMessage];
+
+    }];
 }
 
 #pragma mark -  Event Response

@@ -11,6 +11,8 @@
 		461504CE201B346A00B495CE /* WBContactsListUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 461504CD201B346A00B495CE /* WBContactsListUserCell.m */; };
 		46150BCD1FDE755700B85E9D /* WBChatListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BCC1FDE755700B85E9D /* WBChatListCell.m */; };
 		46150BD31FDE7B9B00B85E9D /* WBChatListCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46150BD21FDE7B9B00B85E9D /* WBChatListCellModel.m */; };
+		461F26362027FE17001B70A2 /* WBChatMessageImageCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 461F26352027FE17001B70A2 /* WBChatMessageImageCellModel.m */; };
+		461F26392028071E001B70A2 /* WBChatMessageImageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 461F26382028071E001B70A2 /* WBChatMessageImageCell.m */; };
 		4624A60620187FF500E7B38A /* WBEmotionDisplayBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4624A60520187FF500E7B38A /* WBEmotionDisplayBoard.m */; };
 		4624A60A2018879200E7B38A /* WBEmojiKeyBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4624A6092018879200E7B38A /* WBEmojiKeyBoardCell.m */; };
 		4624A60E201887DB00E7B38A /* WBEmotionPageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4624A60D201887DB00E7B38A /* WBEmotionPageModel.m */; };
@@ -61,6 +63,10 @@
 		466552102011A299007111F6 /* UIImage+WBImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4665520F2011A299007111F6 /* UIImage+WBImage.m */; };
 		466552122011A378007111F6 /* WBUI.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 466552112011A378007111F6 /* WBUI.bundle */; };
 		466DB3DC202310B5000FAFF0 /* WBSelectPhotoTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 466DB3DB202310B5000FAFF0 /* WBSelectPhotoTool.m */; };
+		4673121F20244F31005ED701 /* WBFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4673121E20244F31005ED701 /* WBFileManager.m */; };
+		4673122220245378005ED701 /* WBPathManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4673122120245378005ED701 /* WBPathManager.m */; };
+		4673122520245B7A005ED701 /* WBNamedTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4673122420245B7A005ED701 /* WBNamedTool.m */; };
+		46731228202468B1005ED701 /* UIImage+WBScaleExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 46731226202468B0005ED701 /* UIImage+WBScaleExtension.m */; };
 		4679FD722020368800057293 /* WBBadgeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4679FD702020368700057293 /* WBBadgeButton.m */; };
 		4685CEE92021A7B00047BDD1 /* WBPlusDisplayBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 4685CEE82021A7B00047BDD1 /* WBPlusDisplayBoard.m */; };
 		4685CEED2021B0840047BDD1 /* WBPlusBoardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4685CEEC2021B0840047BDD1 /* WBPlusBoardCell.m */; };
@@ -105,6 +111,10 @@
 		46150BCC1FDE755700B85E9D /* WBChatListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListCell.m; sourceTree = "<group>"; };
 		46150BD11FDE7B9B00B85E9D /* WBChatListCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatListCellModel.h; sourceTree = "<group>"; };
 		46150BD21FDE7B9B00B85E9D /* WBChatListCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatListCellModel.m; sourceTree = "<group>"; };
+		461F26342027FE17001B70A2 /* WBChatMessageImageCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatMessageImageCellModel.h; sourceTree = "<group>"; };
+		461F26352027FE17001B70A2 /* WBChatMessageImageCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatMessageImageCellModel.m; sourceTree = "<group>"; };
+		461F26372028071E001B70A2 /* WBChatMessageImageCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatMessageImageCell.h; sourceTree = "<group>"; };
+		461F26382028071E001B70A2 /* WBChatMessageImageCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatMessageImageCell.m; sourceTree = "<group>"; };
 		4624A60420187FF500E7B38A /* WBEmotionDisplayBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBEmotionDisplayBoard.h; sourceTree = "<group>"; };
 		4624A60520187FF500E7B38A /* WBEmotionDisplayBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBEmotionDisplayBoard.m; sourceTree = "<group>"; };
 		4624A6082018879200E7B38A /* WBEmojiKeyBoardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBEmojiKeyBoardCell.h; sourceTree = "<group>"; };
@@ -205,6 +215,14 @@
 		466552112011A378007111F6 /* WBUI.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = WBUI.bundle; sourceTree = "<group>"; };
 		466DB3DA202310B5000FAFF0 /* WBSelectPhotoTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSelectPhotoTool.h; sourceTree = "<group>"; };
 		466DB3DB202310B5000FAFF0 /* WBSelectPhotoTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSelectPhotoTool.m; sourceTree = "<group>"; };
+		4673121D20244F31005ED701 /* WBFileManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBFileManager.h; sourceTree = "<group>"; };
+		4673121E20244F31005ED701 /* WBFileManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBFileManager.m; sourceTree = "<group>"; };
+		4673122020245378005ED701 /* WBPathManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBPathManager.h; sourceTree = "<group>"; };
+		4673122120245378005ED701 /* WBPathManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBPathManager.m; sourceTree = "<group>"; };
+		4673122320245B7A005ED701 /* WBNamedTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBNamedTool.h; sourceTree = "<group>"; };
+		4673122420245B7A005ED701 /* WBNamedTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBNamedTool.m; sourceTree = "<group>"; };
+		46731226202468B0005ED701 /* UIImage+WBScaleExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+WBScaleExtension.m"; sourceTree = "<group>"; };
+		46731227202468B0005ED701 /* UIImage+WBScaleExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+WBScaleExtension.h"; sourceTree = "<group>"; };
 		4679FD702020368700057293 /* WBBadgeButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBBadgeButton.m; sourceTree = "<group>"; };
 		4679FD712020368700057293 /* WBBadgeButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBBadgeButton.h; sourceTree = "<group>"; };
 		4685CEE72021A7B00047BDD1 /* WBPlusDisplayBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBPlusDisplayBoard.h; sourceTree = "<group>"; };
@@ -331,6 +349,7 @@
 		46150BD41FDE809300B85E9D /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				4673121C20244F1D005ED701 /* File */,
 				46D0CFD8201C4FF2005DDA64 /* Message */,
 				465A32AA200E02B600ABAAAA /* Background */,
 				465A32A2200DC1E700ABAAAA /* Chat */,
@@ -712,6 +731,8 @@
 		465A3283200CB8C600ABAAAA /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				46731227202468B0005ED701 /* UIImage+WBScaleExtension.h */,
+				46731226202468B0005ED701 /* UIImage+WBScaleExtension.m */,
 				465A328B200CBDA500ABAAAA /* NSBundle+LCCKExtension.h */,
 				465A328A200CBDA500ABAAAA /* NSBundle+LCCKExtension.m */,
 				465A327F200CB4BD00ABAAAA /* NSError+WBError.h */,
@@ -776,6 +797,8 @@
 				46B1E19C2010AC86005DD078 /* WBChatMessageBaseCell.m */,
 				4665520A20119DDA007111F6 /* WBChatMessageTextCell.h */,
 				4665520B20119DDA007111F6 /* WBChatMessageTextCell.m */,
+				461F26372028071E001B70A2 /* WBChatMessageImageCell.h */,
+				461F26382028071E001B70A2 /* WBChatMessageImageCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -787,6 +810,8 @@
 				46B1E19F2010AEA0005DD078 /* WBChatMessageBaseCellModel.m */,
 				4665520720119606007111F6 /* WBChatMessageTextCellModel.h */,
 				4665520820119606007111F6 /* WBChatMessageTextCellModel.m */,
+				461F26342027FE17001B70A2 /* WBChatMessageImageCellModel.h */,
+				461F26352027FE17001B70A2 /* WBChatMessageImageCellModel.m */,
 			);
 			path = CellModel;
 			sourceTree = "<group>";
@@ -836,6 +861,19 @@
 				466DB3DB202310B5000FAFF0 /* WBSelectPhotoTool.m */,
 			);
 			path = SelectPhotoTool;
+			sourceTree = "<group>";
+		};
+		4673121C20244F1D005ED701 /* File */ = {
+			isa = PBXGroup;
+			children = (
+				4673121D20244F31005ED701 /* WBFileManager.h */,
+				4673121E20244F31005ED701 /* WBFileManager.m */,
+				4673122020245378005ED701 /* WBPathManager.h */,
+				4673122120245378005ED701 /* WBPathManager.m */,
+				4673122320245B7A005ED701 /* WBNamedTool.h */,
+				4673122420245B7A005ED701 /* WBNamedTool.m */,
+			);
+			path = File;
 			sourceTree = "<group>";
 		};
 		4685CEE62021A78F0047BDD1 /* PlusBoard */ = {
@@ -1247,6 +1285,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				463713F81FBD8E71003C2655 /* WBModuleControl.m in Sources */,
+				4673122520245B7A005ED701 /* WBNamedTool.m in Sources */,
+				46731228202468B1005ED701 /* UIImage+WBScaleExtension.m in Sources */,
 				46F1422D1FBEDD46004B0554 /* WBContactsListController.m in Sources */,
 				465EA93C200F2FDE00BA84C7 /* WBChatListDao.m in Sources */,
 				46870B192012F5570066F65A /* WBChatBarView.m in Sources */,
@@ -1286,6 +1326,7 @@
 				46D0CFDB201C5005005DDA64 /* WBMessageManager.m in Sources */,
 				46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */,
 				464572242019A70100CAE47D /* WBEmojiGroupCell.m in Sources */,
+				461F26362027FE17001B70A2 /* WBChatMessageImageCellModel.m in Sources */,
 				46F142451FBEE33D004B0554 /* WBSearchContactsCell.m in Sources */,
 				461504CA201B199700B495CE /* WBMessageModel.m in Sources */,
 				465A328C200CBDA500ABAAAA /* NSBundle+LCCKExtension.m in Sources */,
@@ -1296,10 +1337,12 @@
 				465A32AD200E02D400ABAAAA /* WBBackgroundManager.m in Sources */,
 				463713FD1FBD8E71003C2655 /* WBNavigationController.m in Sources */,
 				463713B21FBD8C58003C2655 /* main.m in Sources */,
+				4673121F20244F31005ED701 /* WBFileManager.m in Sources */,
 				466552102011A299007111F6 /* UIImage+WBImage.m in Sources */,
 				463713FC1FBD8E71003C2655 /* WBBaseController.m in Sources */,
 				463714061FBD8E71003C2655 /* WBHUD.m in Sources */,
 				465A32A5200DC1F600ABAAAA /* WBChatManager.m in Sources */,
+				461F26392028071E001B70A2 /* WBChatMessageImageCell.m in Sources */,
 				465EA940200F368F00BA84C7 /* WBChatListModel.m in Sources */,
 				4624A60A2018879200E7B38A /* WBEmojiKeyBoardCell.m in Sources */,
 				466DB3DC202310B5000FAFF0 /* WBSelectPhotoTool.m in Sources */,
@@ -1308,6 +1351,7 @@
 				46F142291FBEDD34004B0554 /* WBChatListController.m in Sources */,
 				46655206201191AE007111F6 /* WBChatCellConfig.m in Sources */,
 				46A7A8C9200C96C500061340 /* WBCoreRegister.m in Sources */,
+				4673122220245378005ED701 /* WBPathManager.m in Sources */,
 				463713A41FBD8C58003C2655 /* AppDelegate.m in Sources */,
 				465A3298200CC08500ABAAAA /* NSObject+WBExtension.m in Sources */,
 				463714081FBD8E71003C2655 /* WBTableEmptyView.m in Sources */,

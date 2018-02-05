@@ -8,7 +8,7 @@
 
 #import "WBChatMessageBaseCellModel.h"
 #import "WBChatMessageTextCellModel.h"
-
+#import "WBChatMessageImageCellModel.h"
 @implementation WBChatMessageBaseCellModel
 
 + (instancetype)modelWithMessageModel:(WBMessageModel *)messageModel{
@@ -22,7 +22,8 @@
              model = [WBChatMessageTextCellModel new];
             break;
         case kAVIMMessageMediaTypeImage:
-            
+            model = [WBChatMessageImageCellModel new];
+
             break;
         case kAVIMMessageMediaTypeAudio:
             
@@ -47,6 +48,7 @@
         model = [WBChatMessageBaseCellModel new];
     }
     model.messageModel = messageModel;
+    
     return model;
 }
 

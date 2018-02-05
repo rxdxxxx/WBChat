@@ -7,6 +7,8 @@
 
 #import "UIImage+WBImage.h"
 #import "NSString+OPSize.h"
+#import "UIImage+WBScaleExtension.h"
+
 
 #import "WBIMDefine.h"
 

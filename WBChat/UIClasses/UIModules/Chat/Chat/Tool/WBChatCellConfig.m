@@ -41,6 +41,9 @@
         
         self.messageStatusLabelSize = CGSizeMake(40, 20);
         self.messageStatusLabelToBubble = 5;
+        
+        
+        self.imageProgressSize = CGSizeMake(20, 20);
     }
     return self;
 }
