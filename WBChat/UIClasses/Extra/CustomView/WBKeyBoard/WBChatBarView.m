@@ -246,9 +246,9 @@
     return nil;
 }
 
-- (void)receiveEmojiInfo:(NSNotification *)notication{
-    if (notication.object == [self viewController]){
-        NSString *text = notication.userInfo[@"text"];
+- (void)receiveEmojiInfo:(NSNotification *)notification{
+    if (notification.object == [self viewController]){
+        NSString *text = notification.userInfo[@"text"];
         // delete
         if ([text isEqualToString:@"-1"]) {
             [self.textView deleteBackward];
@@ -258,9 +258,16 @@
         
     }
 }
-- (void)receiveKeyBoardSendClick:(NSNotification *)notication{
-    if (notication.object == [self viewController]){
+- (void)receiveKeyBoardSendClick:(NSNotification *)notification{
+    if (notification.object == [self viewController]){
         [self sendCurrentText];
+    }
+}
+
+- (void)audioCompleteFinishNotification:(NSNotification *)notification{
+    NSDictionary *userInfo = notification.userInfo;
+    if ([self.delegate respondsToSelector:@selector(chatBar:recoderAudioPath:duration:)]) {
+        [self.delegate chatBar:self recoderAudioPath:userInfo[@"path"] duration:userInfo[@"duration"]];
     }
 }
 
@@ -440,6 +447,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveEmojiInfo:) name:WBEmotionDisplayBoardDidSelectEmojiNotifi object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiveKeyBoardSendClick:) name:WBEmotionDisplayBoardSendClickNotifi object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(audioCompleteFinishNotification:) name:WBAudioCompleteFinishNotification object:nil];
 
 }
 - (void)p_initImage

@@ -86,12 +86,32 @@
     self.dialogCellImageView.frame = imageFrameModel.imageRectFrame;
     self.tempChatModel = imageFrameModel.messageModel;
 
-    if (self.tempChatModel.thumbImage) {
+    
+    NSString *imageLocalPath = imageFrameModel.messageModel.imagePath;
+    BOOL isLocalPath = ![imageLocalPath hasPrefix:@"http"];
+    UIImage *image = nil;
+    if (isLocalPath) {
+        NSData *imageData = [NSData dataWithContentsOfFile:imageLocalPath];
+        image = [UIImage imageWithData:imageData];
+    }
+    
+    if (image && isLocalPath) {
+        self.dialogCellImageView.image = image;
+    }
+    else if (imageLocalPath.length && self.tempChatModel.thumbImage){
+        [[WBChatCellConfig sharedInstance].imageLoad imageView:self.dialogCellImageView
+                                                     urlString:imageLocalPath
+                                              placeholderImage:self.tempChatModel.thumbImage];
+    }
+    else if (self.tempChatModel.thumbImage) {
         self.dialogCellImageView.image = self.tempChatModel.thumbImage;
+    }
+    else{
+        self.dialogCellImageView.image = [UIImage wb_resourceImageNamed:@"Placeholder_Image"];
     }
     
     
-    //apply mask to image layer￼
+    //apply mask to image layer
     self.cutMaskBorderLayer.frame = self.dialogCellImageView.bounds;
     self.cutMaskBorderLayer.contents = (__bridge id)self.bubbleImageView.image.CGImage;
     self.dialogCellImageView.layer.mask = self.cutMaskBorderLayer;

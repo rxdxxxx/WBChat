@@ -9,7 +9,7 @@
 #import "WBChatMessageBaseCell.h"
 #import "WBChatMessageTextCell.h"
 #import "WBChatMessageImageCell.h"
-
+#import "WBChatMessageVoiceCell.h"
 @interface WBChatMessageBaseCell ()
 
 ///对方的头像
@@ -33,6 +33,10 @@
             break;
         case WBChatCellTypeImage:
             cell = [WBChatMessageImageCell cellWithTableView:tableView];
+            break;
+        case WBChatCellTypeVoice:
+            cell = [WBChatMessageVoiceCell cellWithTableView:tableView];
+            break;
         default:
             break;
     }

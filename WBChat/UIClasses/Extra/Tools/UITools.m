@@ -17,21 +17,48 @@
     view.layer.shadowOpacity = 0.6;
 }
 //压缩内存
-+ (NSData *)compressOriginalImage:(UIImage *)image toMaxDataSizeKBytes:(CGFloat)size{
-    NSData * data = UIImageJPEGRepresentation(image, 1.0);
-    CGFloat dataKBytes = data.length/1000.0;
-    CGFloat maxQuality = 0.9f;
-    CGFloat lastData = dataKBytes;
-    while (dataKBytes > size && maxQuality > 0.01f) {
-        maxQuality = maxQuality - 0.01f;
-        data = UIImageJPEGRepresentation(image, maxQuality);
-        dataKBytes = data.length / 1000.0;
-        if (lastData == dataKBytes) {
++ (NSData *)compressOriginalImage:(UIImage *)image toMaxDataSizeKBytes:(CGFloat)maxLength{
+    maxLength = maxLength * 1024;
+    // Compress by quality
+    CGFloat compression = 1;
+    NSData *data = UIImageJPEGRepresentation(image, compression);
+    //NSLog(@"Before compressing quality, image size = %ld KB",data.length/1024);
+    if (data.length < maxLength) return data;
+    
+    CGFloat max = 1;
+    CGFloat min = 0;
+    for (int i = 0; i < 6; ++i) {
+        compression = (max + min) / 2;
+        data = UIImageJPEGRepresentation(image, compression);
+        //NSLog(@"Compression = %.1f", compression);
+        //NSLog(@"In compressing quality loop, image size = %ld KB", data.length / 1024);
+        if (data.length < maxLength * 0.9) {
+            min = compression;
+        } else if (data.length > maxLength) {
+            max = compression;
+        } else {
             break;
-        }else{
-            lastData = dataKBytes;
         }
     }
+    //NSLog(@"After compressing quality, image size = %ld KB", data.length / 1024);
+    if (data.length < maxLength) return data;
+    UIImage *resultImage = [UIImage imageWithData:data];
+    // Compress by size
+    NSUInteger lastDataLength = 0;
+    while (data.length > maxLength && data.length != lastDataLength) {
+        lastDataLength = data.length;
+        CGFloat ratio = (CGFloat)maxLength / data.length;
+        //NSLog(@"Ratio = %.1f", ratio);
+        CGSize size = CGSizeMake((NSUInteger)(resultImage.size.width * sqrtf(ratio)),
+                                 (NSUInteger)(resultImage.size.height * sqrtf(ratio))); // Use NSUInteger to prevent white blank
+        UIGraphicsBeginImageContext(size);
+        [resultImage drawInRect:CGRectMake(0, 0, size.width, size.height)];
+        resultImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        data = UIImageJPEGRepresentation(resultImage, compression);
+        //NSLog(@"In compressing size loop, image size = %ld KB", data.length / 1024);
+    }
+    //NSLog(@"After compressing size loop, image size = %ld KB", data.length / 1024);
     return data;
 }
 
@@ -43,7 +70,7 @@
         return nil;
     }
     
-    NSData *imgData = [UITools compressOriginalImage:image toMaxDataSizeKBytes:50];
+    NSData *imgData = [UITools compressOriginalImage:image toMaxDataSizeKBytes:size];
     return [imgData base64EncodedStringWithOptions:0];
 }
 

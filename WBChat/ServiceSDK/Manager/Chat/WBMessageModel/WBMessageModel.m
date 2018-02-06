@@ -38,8 +38,37 @@
             NSDictionary *info = message.attributes;
             NSString *encodedImgString = info[kMessageThumbImageKey];
             messageModel.thumbImage = [UIImage imageWithData:[[NSData alloc] initWithBase64EncodedString:encodedImgString options:0]];
+            
+            
+            AVIMImageMessage *imageMsg = (AVIMImageMessage*)message;
+            NSString *pathForFile = imageMsg.file.localPath;
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            NSString *imagePath;
+            if ([fileManager fileExistsAtPath:pathForFile]){
+                imagePath = imageMsg.file.localPath;
+            }else{
+                imagePath = imageMsg.file.url;
+            }
+            
+            messageModel.imagePath = imagePath;
+            
         }
             break;
+        case kAVIMMessageMediaTypeAudio:{
+            AVIMAudioMessage *audioMsg = (AVIMAudioMessage*)message;
+            messageModel.voiceDuration = @(audioMsg.duration).stringValue;
+            
+            
+            NSString *pathForFile = audioMsg.file.localPath;
+            NSFileManager *fileManager = [NSFileManager defaultManager];
+            NSString *aPath;
+            if ([fileManager fileExistsAtPath:pathForFile]){
+                aPath = audioMsg.file.localPath;
+            }else{
+                aPath = audioMsg.file.url;
+            }
+            messageModel.audioPath = aPath;
+        }break;
             
         default:
             break;
@@ -69,11 +98,7 @@
     [WBFileManager saveImageData:normalData toImagePath:imageFilePath];
     
     // 3.压缩图
-    NSString *imageThumbName = [WBNamedTool namedWithType:(WBResNamedTypeImageThumb)];
-    NSString *imageThumbFilePath = [[WBPathManager imagePath] stringByAppendingPathComponent:imageThumbName];
     NSData *thumbData = [normalImage wb_compressWithMaxKBytes:3];
-    [WBFileManager saveImageData:thumbData toImagePath:imageThumbFilePath];
-    
     
     WBMessageModel *messageModel = [WBMessageModel new];
     messageModel.status = AVIMMessageStatusSending;
@@ -87,5 +112,17 @@
     return messageModel;
 
 }
+
++ (instancetype)createWithAudioPath:(NSString *)audioPath duration:(NSNumber *)duration{
+    AVIMAudioMessage *audioMsg = [AVIMAudioMessage messageWithText:nil attachedFilePath:audioPath attributes:nil];
+
+    WBMessageModel *messageModel = [WBMessageModel new];
+    messageModel.status = AVIMMessageStatusSending;
+    messageModel.content = audioMsg;
+    messageModel.voiceDuration = duration.stringValue;
+    return messageModel;
+
+}
+
 
 @end

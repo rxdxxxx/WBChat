@@ -24,6 +24,8 @@
 {
     self = [super init];
     if (self) {
+        self.imageLoad = [[WBImageLoad alloc] init];
+        
         self.headerImageSize = CGSizeMake(43, 43);
         self.headerMarginSpace = 15;
         self.headerBubbleSpace = 12;
@@ -44,6 +46,8 @@
         
         
         self.imageProgressSize = CGSizeMake(20, 20);
+        
+        self.voiceWaveSize = CGSizeMake(16, 16);
     }
     return self;
 }

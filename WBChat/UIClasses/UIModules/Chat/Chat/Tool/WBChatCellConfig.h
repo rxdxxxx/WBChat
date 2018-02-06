@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "WBConst.h"
-
+#import "WBImageLoad.h"
 
 @interface WBChatCellConfig : NSObject
 
 + (instancetype)sharedInstance;
+
+@property (nonatomic, strong) WBImageLoad *imageLoad;
 
 @property (nonatomic, assign) CGFloat normalSpace; ///< 控件间的距离 默认: 5
 
@@ -39,6 +41,7 @@
 // 图片消息相关
 @property (nonatomic, assign) CGSize imageProgressSize;
 
-
+// 语音相关
+@property (nonatomic, assign) CGSize voiceWaveSize;
 
 @end

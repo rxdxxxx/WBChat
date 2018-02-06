@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#define WBAudioCompleteFinishNotification  @"WBAudioCompleteFinishNotification"
+
 NS_ASSUME_NONNULL_BEGIN
 @interface TLTalkButton : UIView
 

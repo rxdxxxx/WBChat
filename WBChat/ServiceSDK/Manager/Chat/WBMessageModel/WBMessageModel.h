@@ -32,7 +32,24 @@
 
 
 
-@property (nonatomic, strong) UIImage *thumbImage;
+/**
+ 生成适配的发送model
+
+ @param image 需要发送的image
+ */
 + (instancetype)createWithImage:(UIImage *)image;
+
+@property (nonatomic, strong) UIImage *thumbImage;
+@property (nonatomic, copy) NSString *imagePath;
+
+
+/**
+ 生成音频model
+
+ @param audioPath 音频路径
+ */
++ (instancetype)createWithAudioPath:(NSString *)audioPath duration:(NSNumber *)duration;
+@property (nonatomic, copy) NSString *audioPath;
+@property (nonatomic, copy) NSString *voiceDuration;
 
 @end

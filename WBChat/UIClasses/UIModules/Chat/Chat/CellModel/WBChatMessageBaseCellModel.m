@@ -9,6 +9,7 @@
 #import "WBChatMessageBaseCellModel.h"
 #import "WBChatMessageTextCellModel.h"
 #import "WBChatMessageImageCellModel.h"
+#import "WBChatMessageVoiceCellModel.h"
 @implementation WBChatMessageBaseCellModel
 
 + (instancetype)modelWithMessageModel:(WBMessageModel *)messageModel{
@@ -26,7 +27,7 @@
 
             break;
         case kAVIMMessageMediaTypeAudio:
-            
+            model = [WBChatMessageVoiceCellModel new];
             break;
         case kAVIMMessageMediaTypeVideo:
             

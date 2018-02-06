@@ -108,6 +108,11 @@
                 return;
             }
             [self.recorderIndicatorView removeFromSuperview];
+            if (filePath) {
+                [[NSNotificationCenter defaultCenter] postNotificationName:WBAudioCompleteFinishNotification object:nil userInfo:@{@"path":filePath,
+                                                                                                                                   @"duration":@(time)
+                                                                                                                                   }];
+            }
             
         } cancelBlock:^{
             [self.recorderIndicatorView removeFromSuperview];

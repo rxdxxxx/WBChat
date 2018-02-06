@@ -132,21 +132,19 @@
         // 2.1 滚动tableVeiw的代码放在了消息状态变化的通知里面了.不然此处会发生体验不好.
         [self.tableView wb_scrollToBottomAnimated:NO];
         
-        [[WBChatKit sharedInstance] sendTargetConversation:self.conversation
-                                                   message:message
-                                                   success:^(WBMessageModel * _Nonnull aMessage)
-        {
-            
-            [self refershAMessageState:aMessage];
-            
-        } error:^(WBMessageModel * _Nonnull aMessage, NSError * _Nonnull error) {
-            
-            [self refershAMessageState:aMessage];
-            
-        }];
-        
+        [self sendMessage:message];
     }
 }
+- (void)chatBar:(WBChatBarView *)keyBoardView recoderAudioPath:(NSString *)audioPath duration:(NSNumber *)duration{
+    
+    WBMessageModel *message = [WBMessageModel createWithAudioPath:audioPath duration:duration];
+    [self appendAMessageToTableView:message];
+    // 2.1 滚动tableVeiw的代码放在了消息状态变化的通知里面了.不然此处会发生体验不好.
+    [self.tableView wb_scrollToBottomAnimated:NO];
+    
+    [self sendMessage:message];
+}
+
 #pragma mark - WBSelectPhotoToolDelegate
 
 - (void)toolWillSelectImage:(WBSelectPhotoTool *)tool{
@@ -158,17 +156,7 @@
     [self appendAMessageToTableView:message];
     [self.tableView wb_scrollToBottomAnimated:NO];
     
-    
-    [[WBChatKit sharedInstance] sendTargetConversation:self.conversation
-                                               message:message
-                                               success:^(WBMessageModel * _Nonnull aMessage)
-    {
-        [self refershAMessageState:aMessage];
-
-    } error:^(WBMessageModel * _Nonnull aMessage, NSError * _Nonnull error) {
-        [self refershAMessageState:aMessage];
-
-    }];
+    [self sendMessage:message];
 }
 
 #pragma mark -  Event Response
@@ -253,6 +241,20 @@
 #pragma mark -  GestureRecognizer Action
 #pragma mark -  Btn Click
 #pragma mark -  Private Methods
+- (void)sendMessage:(WBMessageModel *)message{
+    
+    [[WBChatKit sharedInstance] sendTargetConversation:self.conversation
+                                               message:message
+                                               success:^(WBMessageModel * _Nonnull aMessage)
+     {
+         [self refershAMessageState:aMessage];
+         
+     } error:^(WBMessageModel * _Nonnull aMessage, NSError * _Nonnull error) {
+         [self refershAMessageState:aMessage];
+         
+     }];
+}
+
 - (void)scrollBackToMessageBottom{
     
     [self.tableView wb_scrollToBottomAnimated:NO];

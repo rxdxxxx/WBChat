@@ -9,8 +9,13 @@
 
 #import "TLAudioRecorder.h"
 #import <AVFoundation/AVFoundation.h>
-
-#define     PATH_RECFILE        [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)[0] stringByAppendingString:@"/rec.caf"]
+#if __has_include(<lame/lame.h>)
+#import <lame/lame.h>
+#else
+#import "lame.h"
+#endif
+#import "WBPathManager.h"
+#define     PATH_RECFILE        [self cafPath]
 
 @interface TLAudioRecorder () <AVAudioRecorderDelegate>
 
@@ -73,7 +78,8 @@
     CGFloat time = self.recorder.currentTime;
     [self.recorder stop];
     if (self.completeBlock) {
-        self.completeBlock(PATH_RECFILE, time);
+        NSString *localMp3Path = [self audio_PCMtoMP3];
+        self.completeBlock(localMp3Path, time);
         self.completeBlock = nil;
     }
 }
@@ -96,6 +102,75 @@
     }
 }
 
+#pragma mark - Private
+
+- (NSString *)audio_PCMtoMP3
+{
+    NSString *cafFilePath = [self cafPath];
+    NSString *mp3FilePath = [[self mp3Path] stringByAppendingPathComponent:[self randomMP3FileName]];
+    
+    ////NSLog(@"MP3转换开始");
+    @try {
+        int read, write;
+        
+        FILE *pcm = fopen([cafFilePath cStringUsingEncoding:1], "rb");  //source 被转换的音频文件位置
+        fseek(pcm, 4*1024, SEEK_CUR);                                   //skip file header
+        FILE *mp3 = fopen([mp3FilePath cStringUsingEncoding:1], "wb");  //output 输出生成的Mp3文件位置
+        
+        const int PCM_SIZE = 8192;
+        const int MP3_SIZE = 8192;
+        short int pcm_buffer[PCM_SIZE*2];
+        unsigned char mp3_buffer[MP3_SIZE];
+        
+        lame_t lame = lame_init();
+        lame_set_in_samplerate(lame, 8000.00f);
+        lame_set_VBR(lame, vbr_default);
+        lame_init_params(lame);
+        
+        do {
+            read = (int)fread(pcm_buffer, 2*sizeof(short int), PCM_SIZE, pcm);
+            if (read == 0)
+                write = lame_encode_flush(lame, mp3_buffer, MP3_SIZE);
+            else
+                write = lame_encode_buffer_interleaved(lame, pcm_buffer, read, mp3_buffer, MP3_SIZE);
+            
+            fwrite(mp3_buffer, write, 1, mp3);
+            
+        } while (read != 0);
+        
+        lame_close(lame);
+        fclose(mp3);
+        fclose(pcm);
+    }
+    @catch (NSException *exception) {
+        //NSLog(@"%@",[exception description]);
+        mp3FilePath = nil;
+    }
+    @finally {
+        [[AVAudioSession sharedInstance] setCategory: AVAudioSessionCategoryPlayback error: nil];
+        //NSLog(@"MP3转换结束");
+        return mp3FilePath;
+    }
+    
+    
+}
+- (NSString *)cafPath {
+    NSString *cafPath = [NSTemporaryDirectory() stringByAppendingPathComponent:@"tmp.caf"];
+    return cafPath;
+}
+
+- (NSString *)mp3Path {
+    NSString *mp3Path = [WBPathManager voicePath];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:mp3Path]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:mp3Path withIntermediateDirectories:YES attributes:nil error:nil];
+    }
+    return mp3Path;
+}
+- (NSString *)randomMP3FileName {
+    NSTimeInterval timeInterval = [[NSDate date] timeIntervalSince1970];
+    NSString *fileName = [NSString stringWithFormat:@"record_%.0f.mp3",timeInterval];
+    return fileName;
+}
 #pragma mark - # Getter
 - (AVAudioRecorder *)recorder
 {
@@ -111,15 +186,16 @@
             [session setActive:YES error:nil];
         }
         
-        // 设置录音的一些参数
-        NSMutableDictionary *setting = [NSMutableDictionary dictionary];
-        setting[AVFormatIDKey] = @(kAudioFormatAppleIMA4);              // 音频格式
-        setting[AVSampleRateKey] = @(44100);                            // 录音采样率(Hz)
-        setting[AVNumberOfChannelsKey] = @(1);                          // 音频通道数 1 或 2
-        setting[AVLinearPCMBitDepthKey] = @(8);                         // 线性音频的位深度
-        setting[AVEncoderAudioQualityKey] = [NSNumber numberWithInt:AVAudioQualityHigh];        //录音的质量
         
-        _recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:self.recFilePath] settings:setting error:NULL];
+        NSDictionary *settings = @{AVFormatIDKey: @(kAudioFormatLinearPCM),
+                                   AVSampleRateKey: @8000.00f,
+                                   AVNumberOfChannelsKey: @2,
+                                   AVLinearPCMBitDepthKey: @16,
+                                   AVLinearPCMIsNonInterleaved: @NO,
+                                   AVLinearPCMIsFloatKey: @NO,
+                                   AVLinearPCMIsBigEndianKey: @NO};
+        
+        _recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL fileURLWithPath:self.recFilePath] settings:settings error:NULL];
         _recorder.delegate = self;
         _recorder.meteringEnabled = YES;
     }

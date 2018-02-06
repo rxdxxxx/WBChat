@@ -41,13 +41,26 @@ typedef NS_ENUM(NSInteger, WBChatBarStatus) {
  */
 @protocol WBChatBarViewDelegate <NSObject>
 
+
+/**
+ 点击键盘发送,回调的方法
+
+ @param sendText 发送的消息内容
+ */
 - (void)chatBar:(WBChatBarView *)keyBoardView sendText:(NSString *)sendText;
 
 
 /**
+ 录音完成后,返回音频路径
+
+ @param audioPath 音频文件的路径
+ */
+- (void)chatBar:(WBChatBarView *)keyBoardView recoderAudioPath:(NSString *)audioPath duration:(NSNumber *)duration;
+
+/**
  点击plusBoard后, 返回对应的数据
  
- @param iteminfo 点击对应的item, 返回此Item对应的数据.
+ @param itemInfo 点击对应的item, 返回此Item对应的数据.
  每一个Dictionary的内容:
  @{
     @"icon": UIImage,
