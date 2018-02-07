@@ -47,16 +47,17 @@
     self.bubbleImageView.frame = voiceCellFrameModel.voiceBubbleFrame;
     
     
-    self.voiceTimeNumLabel.frame = voiceCellFrameModel.voiceTimeNumLabelFrame;
-    
     AVIMAudioMessage *audioM = (AVIMAudioMessage*)voiceCellFrameModel.messageModel.content;
-    self.voiceTimeNumLabel.text = [NSString stringWithFormat:@"%.0f'",audioM.duration];
+    self.voiceTimeNumLabel.text = [NSString stringWithFormat:@"%.0f'",voiceCellFrameModel.messageModel.voiceDuration.floatValue];
+    self.voiceTimeNumLabel.frame = voiceCellFrameModel.voiceTimeNumLabelFrame;
+    self.voiceTimeNumLabel.textColor = audioM.ioType == AVIMMessageIOTypeIn ? [UIColor blackColor] : [UIColor whiteColor];
     
     UIImageView *waveImageView = [voiceCellFrameModel messageVoiceAnimationImageViewWithBubbleMessageType:(audioM.ioType != AVIMMessageIOTypeIn)];
     [self.voiceWaveImageView removeFromSuperview];
     [self.bubbleImageView addSubview:waveImageView];
     waveImageView.frame = voiceCellFrameModel.voiceWaveImageFrame;
     self.voiceWaveImageView = waveImageView;
+    
 }
 
 
@@ -76,6 +77,7 @@
         _voiceTimeNumLabel = [[UILabel alloc] init];
         _voiceTimeNumLabel.font = [UIFont systemFontOfSize:14];
         _voiceTimeNumLabel.textColor = [UIColor blackColor];
+        _voiceTimeNumLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _voiceTimeNumLabel;
 }

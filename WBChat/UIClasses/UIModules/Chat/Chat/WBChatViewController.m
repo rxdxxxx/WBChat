@@ -85,8 +85,11 @@
     return cellModel.cellHeight;
 }
 
+#pragma mark -  UIScrollViewDelegate
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
     [self.view endEditing:YES];
+    
+    [self.chatBar stateToInit];
     
     if ([[UIMenuController sharedMenuController] isMenuVisible]) {
         [[UIMenuController sharedMenuController] setMenuVisible:NO animated:YES];

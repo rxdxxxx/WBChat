@@ -30,7 +30,7 @@
     CGSize headerSize = config.headerImageSize;
     CGFloat headerBubbleSpace = config.headerBubbleSpace;
     CGSize waveSize = config.voiceWaveSize;
-    CGFloat normalSpace = config.normalSpace;
+//    CGFloat normalSpace = config.normalSpace;
 
     
     CGFloat MAX_MESSAGE_WIDTH = kWBScreenWidth * 0.58;
@@ -39,7 +39,7 @@
     width = MIN(width, kWBScreenWidth * 0.75);
     CGSize voiceSize = CGSizeMake(width, height);
     
-    CGFloat timeWidth = [[NSString stringWithFormat:@"%.0f'",((AVIMAudioMessage *)messageModel.content).duration] lcg_sizeWithFont:[UIFont systemFontOfSize:14]].width;
+    CGFloat timeWidth = 2 + [[NSString stringWithFormat:@"%.0f'",messageModel.voiceDuration.floatValue] lcg_sizeWithFont:[UIFont systemFontOfSize:14]].width;
     
     //区分收到的消息及发送的消息
     if (messageModel.content.ioType == AVIMMessageIOTypeIn) {
@@ -56,6 +56,7 @@
         
         
     } else {
+        // 气泡
         _voiceBubbleFrame = CGRectMake(kWBScreenWidth - headerMarginSpace - headerSize.width - headerBubbleSpace - voiceSize.width, headerMarginSpace, voiceSize.width, voiceSize.height);
         
         // 波浪
@@ -68,18 +69,18 @@
                                              timeWidth, waveSize.height);
         
 
-//
-//        //发送消息状态frame
-//        self.messageStatusRectFrame = CGRectMake(_imageRectFrame.origin.x - config.messageStatusIconToBubble - config.messageStatusIconSize.width,
-//                                                 _imageRectFrame.origin.y + (_imageRectFrame.size.height - config.messageStatusIconSize.width)/2,
-//                                                 config.messageStatusIconSize.width,
-//                                                 config.messageStatusIconSize.height);
-//
-//        //发送消息已读未读
-//        self.messageReadStateRectFrame = CGRectMake(CGRectGetMinX(_imageRectFrame) - config.messageStatusLabelSize.width,
-//                                                    CGRectGetMaxY(_imageRectFrame) - config.messageStatusLabelSize.height,
-//                                                    config.messageStatusLabelSize.width,
-//                                                    config.messageStatusLabelSize.height);
+
+        // 发送消息状态frame
+        self.messageStatusRectFrame = CGRectMake(_voiceBubbleFrame.origin.x - config.messageStatusIconToBubble - config.messageStatusIconSize.width,
+                                                 _voiceBubbleFrame.origin.y + (_voiceBubbleFrame.size.height - config.messageStatusIconSize.width)/2,
+                                                 config.messageStatusIconSize.width,
+                                                 config.messageStatusIconSize.height);
+
+        // 发送消息已读未读
+        self.messageReadStateRectFrame = CGRectMake(CGRectGetMinX(_voiceBubbleFrame) - config.messageStatusLabelSize.width,
+                                                    CGRectGetMaxY(_voiceBubbleFrame) - config.messageStatusLabelSize.height,
+                                                    config.messageStatusLabelSize.width,
+                                                    config.messageStatusLabelSize.height);
     }
     self.cellHeight = CGRectGetMaxY(_voiceBubbleFrame);
     
@@ -98,25 +99,19 @@
     NSMutableArray *images = [NSMutableArray arrayWithCapacity:4];
     for (NSInteger i = 0; i < 4; i ++) {
         NSString *imageName = [imageSepatorName stringByAppendingFormat:@"VoiceNodePlaying00%ld", (long)i];
-        UIImage *image = [self imageInBundleForImageName:imageName];
+        UIImage *image = [UIImage wb_resourceImageNamed:imageName];
         if (image)
             [images addObject:image];
     }
     
     messageVoiceAniamtionImageView.image = ({
         NSString *imageName = [imageSepatorName stringByAppendingString:@"VoiceNodePlaying"];
-        UIImage *image = [self imageInBundleForImageName:imageName];
+        UIImage *image = [UIImage wb_resourceImageNamed:imageName];
         image;});
     messageVoiceAniamtionImageView.animationImages = images;
     messageVoiceAniamtionImageView.animationDuration = 1.0;
     [messageVoiceAniamtionImageView stopAnimating];
     return messageVoiceAniamtionImageView;
 }
-
-- (UIImage *)imageInBundleForImageName:(NSString *)imageName {
-    UIImage *image = [UIImage wb_resourceImageNamed:imageName];
-    return  image;
-}
-
 
 @end

@@ -96,5 +96,9 @@
     }
 }
 
+- (void)setCellHeight:(CGFloat)cellHeight{
+    _cellHeight = ceilf(cellHeight);
+    
+}
 
 @end

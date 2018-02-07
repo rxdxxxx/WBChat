@@ -465,6 +465,21 @@
     
 }
 #pragma mark -  Public Methods
+- (void)stateToInit{
+    
+    [self.moreButton setImage:kMoreImage forState:UIControlStateNormal];
+    [self.moreButton setImage:kMoreImageHL forState:UIControlStateHighlighted];
+    
+    [self.emojiButton setImage:kEmojiImage forState:UIControlStateNormal];
+    [self.emojiButton setImage:kEmojiImageHL forState:UIControlStateHighlighted];
+    
+    self.status = WBChatBarStatusKeyboard;
+
+    self.textView.inputView = nil;
+    self.switchTextView.inputView = nil;
+}
+
+
 #pragma mark -  Getters and Setters
 - (void)setDelegate:(id<WBChatBarViewDelegate>)delegate{
     _delegate = delegate;

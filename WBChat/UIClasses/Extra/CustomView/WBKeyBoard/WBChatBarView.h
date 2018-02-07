@@ -18,4 +18,6 @@
 @property (nonatomic, weak) id<WBChatBarViewDelegate> delegate;
 @property (nonatomic, weak) id<WBChatBarViewDataSource> dataSource;
 
+- (void)stateToInit;
+
 @end
