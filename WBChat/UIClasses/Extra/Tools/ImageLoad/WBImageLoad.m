@@ -7,11 +7,12 @@
 //
 
 #import "WBImageLoad.h"
+#import "UIImageView+WebCache.h"
 
 @implementation WBImageLoad
 
 - (void)imageView:(UIImageView *)imageView urlString:(NSString *)urlString placeholderImage:(UIImage *)placeholderImage{
-    imageView.image = placeholderImage;
+    [imageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:placeholderImage];
 }
 
 
