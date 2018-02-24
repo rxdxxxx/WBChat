@@ -25,7 +25,7 @@
     return [[self userResourcePath] stringByAppendingPathComponent:kWBVoicePathName];
 }
 
-+ (NSString *)vodioPath{
++ (NSString *)videoPath{
     return [[self userResourcePath] stringByAppendingPathComponent:kWBVideoPathName];
 }
 

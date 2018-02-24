@@ -15,7 +15,7 @@
 
 + (NSString *)voicePath;
 
-+ (NSString *)vodioPath;
++ (NSString *)videoPath;
 
 + (NSString *)filePath;
 

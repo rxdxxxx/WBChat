@@ -120,6 +120,7 @@
     messageModel.status = AVIMMessageStatusSending;
     messageModel.content = audioMsg;
     messageModel.voiceDuration = duration.stringValue;
+    messageModel.audioPath = audioPath;
     return messageModel;
 
 }

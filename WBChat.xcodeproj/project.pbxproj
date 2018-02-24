@@ -77,6 +77,7 @@
 		46870B2B2015B8EA0066F65A /* TLAudioRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B292015B8EA0066F65A /* TLAudioRecorder.m */; };
 		46870B312015EA2E0066F65A /* TLRecorderIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B302015EA2D0066F65A /* TLRecorderIndicatorView.m */; };
 		46870B352015EA680066F65A /* WBKeyBoardTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46870B342015EA680066F65A /* WBKeyBoardTextView.m */; };
+		4696395120410FA00050773C /* WBVoicePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4696395020410FA00050773C /* WBVoicePlayer.m */; };
 		46A7A8B2200C796100061340 /* WBChatKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B1200C796100061340 /* WBChatKit.m */; };
 		46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B4200C7F4000061340 /* WBIMClientDelegateImp.m */; };
 		46A7A8BC200C921900061340 /* Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46A7A8BB200C921900061340 /* Other.bundle */; };
@@ -246,6 +247,8 @@
 		46870B302015EA2D0066F65A /* TLRecorderIndicatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TLRecorderIndicatorView.m; sourceTree = "<group>"; };
 		46870B332015EA680066F65A /* WBKeyBoardTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBKeyBoardTextView.h; sourceTree = "<group>"; };
 		46870B342015EA680066F65A /* WBKeyBoardTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBKeyBoardTextView.m; sourceTree = "<group>"; };
+		4696394F20410FA00050773C /* WBVoicePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBVoicePlayer.h; sourceTree = "<group>"; };
+		4696395020410FA00050773C /* WBVoicePlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBVoicePlayer.m; sourceTree = "<group>"; };
 		46A7A8B0200C796100061340 /* WBChatKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatKit.h; sourceTree = "<group>"; };
 		46A7A8B1200C796100061340 /* WBChatKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatKit.m; sourceTree = "<group>"; };
 		46A7A8B3200C7F4000061340 /* WBIMClientDelegateImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBIMClientDelegateImp.h; sourceTree = "<group>"; };
@@ -868,6 +871,8 @@
 				46D0CFE1201DBF92005DDA64 /* UITableView+WBScrollToIndexPath.m */,
 				46655204201191AE007111F6 /* WBChatCellConfig.h */,
 				46655205201191AE007111F6 /* WBChatCellConfig.m */,
+				4696394F20410FA00050773C /* WBVoicePlayer.h */,
+				4696395020410FA00050773C /* WBVoicePlayer.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1376,6 +1381,7 @@
 				465A328C200CBDA500ABAAAA /* NSBundle+LCCKExtension.m in Sources */,
 				46B1E19D2010AC86005DD078 /* WBChatMessageBaseCell.m in Sources */,
 				46F142311FBEDD57004B0554 /* WBDiscoverListController.m in Sources */,
+				4696395120410FA00050773C /* WBVoicePlayer.m in Sources */,
 				46B1E19A20107166005DD078 /* WBChatInfoDao.m in Sources */,
 				465A3281200CB4BD00ABAAAA /* NSError+WBError.m in Sources */,
 				465A32AD200E02D400ABAAAA /* WBBackgroundManager.m in Sources */,

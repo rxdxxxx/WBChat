@@ -30,4 +30,6 @@
 
 - (BOOL)isLegalExpressCode:(NSString *)expressCode;
 
+- (NSString *)wb_MD5String;
+
 @end
