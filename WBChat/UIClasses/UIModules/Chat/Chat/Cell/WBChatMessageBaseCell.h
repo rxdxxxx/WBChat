@@ -27,8 +27,6 @@
 @property (nonatomic, strong) WBChatMessageBaseCellModel *cellModel;
 
 
-@property (nonatomic, strong) UILabel *timeLabel;
-
 ///气泡
 @property (nonatomic, strong) UIImageView *bubbleImageView;
 

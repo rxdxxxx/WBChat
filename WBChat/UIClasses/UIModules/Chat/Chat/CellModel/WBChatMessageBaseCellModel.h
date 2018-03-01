@@ -62,4 +62,6 @@ typedef NS_ENUM(NSUInteger, WBChatCellType) {
 
 @property (nonatomic, assign) BOOL showName;
 
+- (int64_t)cellTimeStamp;
+
 @end

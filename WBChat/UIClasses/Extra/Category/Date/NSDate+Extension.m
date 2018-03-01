@@ -10,10 +10,11 @@
 
 @implementation NSDate (Extension)
 
+
 /**
  *  判断某个时间是否为今年
  */
-- (BOOL)isThisYear
+- (BOOL)wb_isThisYear
 {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     // 获得某个时间的年月日时分秒
@@ -25,7 +26,7 @@
 /**
  *  判断某个时间是否为昨天
  */
-- (BOOL)isYesterday
+- (BOOL)wb_isYesterday
 {
     NSDate *now = [NSDate date];
     
@@ -55,7 +56,7 @@
 /**
  *  判断某个时间是否为今天
  */
-- (BOOL)isToday
+- (BOOL)wb_isToday
 {
     NSDate *now = [NSDate date];
     NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
@@ -99,12 +100,12 @@
     NSDate *createDate = self;
     
     // 当前时间
-    if ([createDate isToday]) { // 今天
+    if ([createDate wb_isToday]) { // 今天
         
         fmt.dateFormat = @"HH:mm";
         return [fmt stringFromDate:createDate];
         
-    } else if ([createDate isYesterday]) { // 昨天
+    } else if ([createDate wb_isYesterday]) { // 昨天
         
         return @"昨天";
         
@@ -112,6 +113,30 @@
         fmt.dateFormat = @"MM月dd日";
         return [fmt stringFromDate:createDate];
     }
+}
+
+
++ (BOOL)wb_miniteInterval:(NSInteger)miniteInterval firstTime:(long long)firstTime secondTime:(long long)secondTime{
+    
+    BOOL outFiftten = NO;
+    
+    NSDateFormatter *dateFormatter=[[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    if (firstTime > 10000000000) {
+        firstTime /= 1000;
+    }
+    if (secondTime > 10000000000) {
+        secondTime /= 1000;
+    }
+    NSDate *firstDate = [NSDate dateWithTimeIntervalSince1970:firstTime];
+    NSDate *secondDate = [NSDate dateWithTimeIntervalSince1970:secondTime];
+    
+    NSTimeInterval time=[secondDate timeIntervalSinceDate:firstDate];
+    
+    if (fabs(time / 60) > miniteInterval) {
+        outFiftten = YES;
+    }
+    return outFiftten;
 }
 
 @end

@@ -10,6 +10,7 @@
 #import "WBChatMessageTextCell.h"
 #import "WBChatMessageImageCell.h"
 #import "WBChatMessageVoiceCell.h"
+#import "WBChatMessageTimeCell.h"
 @interface WBChatMessageBaseCell ()
 
 ///对方的头像
@@ -36,6 +37,10 @@
             break;
         case WBChatCellTypeVoice:
             cell = [WBChatMessageVoiceCell cellWithTableView:tableView];
+            break;
+            
+        case WBChatCellTypeTime:
+            cell = [WBChatMessageTimeCell cellWithTableView:tableView];
             break;
         default:
             break;
@@ -273,16 +278,4 @@
     return _usernameLabel;
 }
 
-- (UILabel *)timeLabel{
-    if (_timeLabel == nil) {
-        _timeLabel = [[UILabel alloc] init];
-        [_timeLabel setFont:[UIFont systemFontOfSize:12.0f]];
-        [_timeLabel setTextColor:[UIColor whiteColor]];
-        [_timeLabel setBackgroundColor:[UIColor grayColor]];
-        [_timeLabel setAlpha:0.7f];
-        [_timeLabel.layer setMasksToBounds:YES];
-        [_timeLabel.layer setCornerRadius:5.0f];
-    }
-    return _timeLabel;
-}
 @end

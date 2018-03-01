@@ -20,4 +20,10 @@
  @return 格式化后的字符床
  */
 - (NSString *)wb_chatListTimeString;
+
+
+- (BOOL)wb_isThisYear;
+- (BOOL)wb_isYesterday;
+- (BOOL)wb_isToday;
++ (BOOL)wb_miniteInterval:(NSInteger)miniteInterval firstTime:(long long)firstTime secondTime:(long long)secondTime;
 @end

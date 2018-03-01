@@ -32,6 +32,7 @@
         self.textbubbleContentInset = UIEdgeInsetsMake(13, 6, 13, 6);
         self.bubbleClosedAngleWidth = 5;
         self.userNameSize = CGSizeMake(200, 15);
+        self.timeFont = [UIFont systemFontOfSize:12];
         self.textFont = [UIFont systemFontOfSize:15];
         
         CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;

@@ -135,6 +135,8 @@
 		46F142451FBEE33D004B0554 /* WBSearchContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142431FBEE33D004B0554 /* WBSearchContactsCell.m */; };
 		46F142461FBEE33D004B0554 /* WBSearchContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F142441FBEE33D004B0554 /* WBSearchContactsCell.xib */; };
 		46FCED3A2047E4360013274F /* WBShowBigImageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FCED392047E4360013274F /* WBShowBigImageTool.m */; };
+		46FCED3F2047FE040013274F /* WBChatMessageTimeCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FCED3E2047FE040013274F /* WBChatMessageTimeCellModel.m */; };
+		46FCED422047FE3C0013274F /* WBChatMessageTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FCED412047FE3C0013274F /* WBChatMessageTimeCell.m */; };
 		CC954399DD4E3F8779D46DD5 /* libPods-WBChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB2E1EDE282F0959103425C /* libPods-WBChat.a */; };
 /* End PBXBuildFile section */
 
@@ -400,6 +402,10 @@
 		46F142441FBEE33D004B0554 /* WBSearchContactsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBSearchContactsCell.xib; sourceTree = "<group>"; };
 		46FCED382047E4360013274F /* WBShowBigImageTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBShowBigImageTool.h; sourceTree = "<group>"; };
 		46FCED392047E4360013274F /* WBShowBigImageTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBShowBigImageTool.m; sourceTree = "<group>"; };
+		46FCED3D2047FE040013274F /* WBChatMessageTimeCellModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatMessageTimeCellModel.h; sourceTree = "<group>"; };
+		46FCED3E2047FE040013274F /* WBChatMessageTimeCellModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatMessageTimeCellModel.m; sourceTree = "<group>"; };
+		46FCED402047FE3C0013274F /* WBChatMessageTimeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatMessageTimeCell.h; sourceTree = "<group>"; };
+		46FCED412047FE3C0013274F /* WBChatMessageTimeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatMessageTimeCell.m; sourceTree = "<group>"; };
 		AC27F697A94A6865283FF794 /* Pods-WBChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WBChat/Pods-WBChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -927,6 +933,8 @@
 				461F26382028071E001B70A2 /* WBChatMessageImageCell.m */,
 				46B799C92029A691009857A3 /* WBChatMessageVoiceCell.h */,
 				46B799CA2029A691009857A3 /* WBChatMessageVoiceCell.m */,
+				46FCED402047FE3C0013274F /* WBChatMessageTimeCell.h */,
+				46FCED412047FE3C0013274F /* WBChatMessageTimeCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -942,6 +950,8 @@
 				461F26352027FE17001B70A2 /* WBChatMessageImageCellModel.m */,
 				46B799C62029A455009857A3 /* WBChatMessageVoiceCellModel.h */,
 				46B799C72029A455009857A3 /* WBChatMessageVoiceCellModel.m */,
+				46FCED3D2047FE040013274F /* WBChatMessageTimeCellModel.h */,
+				46FCED3E2047FE040013274F /* WBChatMessageTimeCellModel.m */,
 			);
 			path = CellModel;
 			sourceTree = "<group>";
@@ -1553,6 +1563,8 @@
 				469639B0204147010050773C /* UIImage+MultiFormat.m in Sources */,
 				463713FF1FBD8E71003C2655 /* NSDate+Extension.m in Sources */,
 				463714031FBD8E71003C2655 /* UIView+NextResponder.m in Sources */,
+				46FCED3F2047FE040013274F /* WBChatMessageTimeCellModel.m in Sources */,
+				46FCED422047FE3C0013274F /* WBChatMessageTimeCell.m in Sources */,
 				463713F91FBD8E71003C2655 /* WBTabBar.m in Sources */,
 				469639A5204147010050773C /* SDWebImageDownloaderOperation.m in Sources */,
 				4637140A1FBD8E71003C2655 /* QRCodeMaker.m in Sources */,

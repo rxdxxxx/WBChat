@@ -11,6 +11,7 @@
 #import "WBChatBarView.h"
 #import "UITableView+WBScrollToIndexPath.h"
 #import "WBSelectPhotoTool.h"
+#import "WBChatMessageTimeCellModel.h"
 
 @interface WBChatViewController ()<WBChatBarViewDelegate,WBChatBarViewDataSource,WBSelectPhotoToolDelegate>
 @property (nonatomic, strong) AVIMConversation *conversation;
@@ -38,7 +39,7 @@
              [temp addObject:cellModel];
         }
          
-         self.dataArray = temp;
+         self.dataArray = [self appendTimerStampIntoMessageArray:temp];
          [self.tableView reloadData];
          [self.tableView wb_scrollToBottomAnimated:NO];
          
@@ -48,6 +49,8 @@
     [self.tableView wb_scrollToBottomAnimated:NO];
 
 }
+
+
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
@@ -299,6 +302,48 @@
     }
 }
 
+- (NSMutableArray *)appendTimerStampIntoMessageArray:(NSArray *)localMessages{
+    
+    NSMutableArray *messagesArray = [[NSMutableArray alloc]initWithCapacity:20];
+    
+    if (localMessages.count == 0) {
+        return messagesArray;
+    }
+    
+    //当前会话中的消息<kNum条
+    for (NSInteger i = 0; i < localMessages.count; i++) {
+        
+        WBChatMessageBaseCellModel *firstModel = localMessages[i];
+        
+        //第一条消息的时间和第一条数据插入数组
+        if (messagesArray.count <= 0) {
+            
+            WBChatMessageTimeCellModel *timeFM = [WBChatMessageTimeCellModel modelWithTimeStamp:firstModel.cellTimeStamp];
+            [messagesArray addObject:timeFM];
+            
+            [messagesArray addObject:firstModel];
+            
+        }
+        
+        //比较当前消息和下一条消息的时间
+        NSInteger j = i + 1;
+        if(j < localMessages.count){
+            
+            WBChatMessageBaseCellModel *secondModel = localMessages[j];
+            
+            // 3.1,处理时间
+            //判断两条会话时间，是否在1分钟
+            BOOL outFifteen = [NSDate wb_miniteInterval:1 firstTime:firstModel.cellTimeStamp secondTime:secondModel.cellTimeStamp];
+            if (outFifteen) {
+                WBChatMessageTimeCellModel *timeFM = [WBChatMessageTimeCellModel modelWithTimeStamp:secondModel.cellTimeStamp];
+                [messagesArray addObject:timeFM];
+            }
+            [messagesArray addObject:secondModel];
+        }
+    }
+    
+    return messagesArray;
+}
 - (void)setupUI{
     
     [self.view addSubview:self.tableView];

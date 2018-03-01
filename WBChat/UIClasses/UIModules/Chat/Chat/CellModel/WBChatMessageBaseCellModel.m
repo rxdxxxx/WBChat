@@ -101,4 +101,7 @@
     
 }
 
+- (int64_t)cellTimeStamp{
+    return self.messageModel.content.sendTimestamp ? : self.messageModel.content.readTimestamp;
+}
 @end
