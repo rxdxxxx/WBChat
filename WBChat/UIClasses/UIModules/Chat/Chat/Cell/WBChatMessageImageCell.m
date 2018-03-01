@@ -8,6 +8,7 @@
 
 #import "WBChatMessageImageCell.h"
 #import "WBChatMessageImageCellModel.h"
+#import "WBShowBigImageTool.h"
 
 @interface WBChatMessageImageCell()
 
@@ -45,6 +46,9 @@
         
         [self.contentView addSubview:self.dialogCellImageView];
         
+        UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapImageAction:)];
+        self.dialogCellImageView.userInteractionEnabled = YES;
+        [self.dialogCellImageView addGestureRecognizer:tapGesture];
         
         [self.dialogCellImageView addSubview:self.picProcessImageView];
         [self.dialogCellImageView addSubview:self.picProcessLabel];
@@ -69,6 +73,10 @@
     }
 }
 #pragma mark -  GestureRecognizer Action
+- (void)tapImageAction:(UITapGestureRecognizer *)tap{
+    CGRect coverFrame = [self.dialogCellImageView convertRect:self.dialogCellImageView.bounds toView:nil];
+    [WBShowBigImageTool showWithImage:self.dialogCellImageView.image orgFrame:coverFrame];
+}
 #pragma mark -  Btn Click
 #pragma mark -  Private Methods
 - (void)setupUI{

@@ -134,6 +134,7 @@
 		46F142401FBEE0A3004B0554 /* WBSearchContactsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F1423E1FBEE0A3004B0554 /* WBSearchContactsController.xib */; };
 		46F142451FBEE33D004B0554 /* WBSearchContactsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 46F142431FBEE33D004B0554 /* WBSearchContactsCell.m */; };
 		46F142461FBEE33D004B0554 /* WBSearchContactsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46F142441FBEE33D004B0554 /* WBSearchContactsCell.xib */; };
+		46FCED3A2047E4360013274F /* WBShowBigImageTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FCED392047E4360013274F /* WBShowBigImageTool.m */; };
 		CC954399DD4E3F8779D46DD5 /* libPods-WBChat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EB2E1EDE282F0959103425C /* libPods-WBChat.a */; };
 /* End PBXBuildFile section */
 
@@ -397,6 +398,8 @@
 		46F142421FBEE33D004B0554 /* WBSearchContactsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBSearchContactsCell.h; sourceTree = "<group>"; };
 		46F142431FBEE33D004B0554 /* WBSearchContactsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBSearchContactsCell.m; sourceTree = "<group>"; };
 		46F142441FBEE33D004B0554 /* WBSearchContactsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WBSearchContactsCell.xib; sourceTree = "<group>"; };
+		46FCED382047E4360013274F /* WBShowBigImageTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBShowBigImageTool.h; sourceTree = "<group>"; };
+		46FCED392047E4360013274F /* WBShowBigImageTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBShowBigImageTool.m; sourceTree = "<group>"; };
 		AC27F697A94A6865283FF794 /* Pods-WBChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WBChat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WBChat/Pods-WBChat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -970,6 +973,8 @@
 				46655205201191AE007111F6 /* WBChatCellConfig.m */,
 				4696394F20410FA00050773C /* WBVoicePlayer.h */,
 				4696395020410FA00050773C /* WBVoicePlayer.m */,
+				46FCED382047E4360013274F /* WBShowBigImageTool.h */,
+				46FCED392047E4360013274F /* WBShowBigImageTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -1529,6 +1534,7 @@
 				469639A9204147010050773C /* SDWebImageManager.m in Sources */,
 				4637140B1FBD8E71003C2655 /* UITools.m in Sources */,
 				4624A60620187FF500E7B38A /* WBEmotionDisplayBoard.m in Sources */,
+				46FCED3A2047E4360013274F /* WBShowBigImageTool.m in Sources */,
 				46A7A8C8200C96C500061340 /* WBDBClient.m in Sources */,
 				469639A8204147010050773C /* SDWebImageImageIOCoder.m in Sources */,
 				465A3286200CB8FF00ABAAAA /* AVIMMessage+WBExtension.m in Sources */,
