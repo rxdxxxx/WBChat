@@ -12,6 +12,7 @@
 #import "UITableView+WBScrollToIndexPath.h"
 #import "WBSelectPhotoTool.h"
 #import "WBChatMessageTimeCellModel.h"
+#import "UIScrollView+WBRefresh.h"
 
 @interface WBChatViewController ()<WBChatBarViewDelegate,WBChatBarViewDataSource,WBSelectPhotoToolDelegate>
 @property (nonatomic, strong) AVIMConversation *conversation;
@@ -26,30 +27,64 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupUI];
+    
+    [self loadMoreMessage];
+    [self.tableView wb_scrollToBottomAnimated:NO];
+    
+
+    __weak typeof(self)weakSelf = self;
+    [self.tableView wb_addRefreshHeaderViewWithBlock:^{
+        [weakSelf loadMoreMessage];
+
+    }];
+    
+}
+
+- (void)loadMoreMessage{
+    
+    AVIMMessage *lastMessage = nil;
+    for (WBChatMessageBaseCellModel *cellModel in self.dataArray) {
+        if (cellModel.messageModel.content != nil) {
+            lastMessage = cellModel.messageModel.content;
+            break;
+        }
+    }
+    
     [[WBChatKit sharedInstance] queryTypedMessagesWithConversation:self.conversation
-                                                      queryMessage:nil
+                                                      queryMessage:lastMessage
                                                              limit:20
                                                            success:^(NSArray<WBMessageModel *> * messageArray)
      {
-         NSMutableArray *temp = [NSMutableArray new];
+//         [self.tableView.mj_header endRefreshing];
          
+         NSMutableArray *temp = [NSMutableArray new];
          for (WBMessageModel *message in messageArray) {
-             
              WBChatMessageBaseCellModel *cellModel = [WBChatMessageBaseCellModel modelWithMessageModel:message];
              [temp addObject:cellModel];
-        }
+         }
          
-         self.dataArray = [self appendTimerStampIntoMessageArray:temp];
-         [self.tableView reloadData];
-         [self.tableView wb_scrollToBottomAnimated:NO];
+         NSMutableArray *newLoadMessage = [self appendTimerStampIntoMessageArray:temp];
+
+         NSUInteger loadMoreMessageCount = newLoadMessage.count;
+         
+         if (self.dataArray.count) {
+             [newLoadMessage addObjectsFromArray:self.dataArray];
+             self.dataArray = newLoadMessage;
+             [self.tableView reloadData];
+             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:loadMoreMessageCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];             
+             
+         }else{
+             self.dataArray = newLoadMessage;
+             [self.tableView reloadData];
+             [self.tableView wb_scrollToBottomAnimated:NO];
+         }
+         
+         [self.tableView wb_endRefreshing];
          
      } error:^(NSError * _Nonnull error) {
          
      }];
-    [self.tableView wb_scrollToBottomAnimated:NO];
-
 }
-
 
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -105,7 +140,7 @@
     return @[PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_pic"],@"相册",@(WBPlusBoardButtonTypePhotoAlbum)),
              PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_camera"],@"相机",@(WBPlusBoardButtonTypeCamera))];
     
-//    PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_location"],@"位置",@(WBPlusBoardButtonTypeLocation))
+    //    PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_location"],@"位置",@(WBPlusBoardButtonTypeLocation))
 }
 
 #pragma mark - WBChatBarViewDelegate
@@ -213,7 +248,7 @@
 - (void)receiveNewMessgae:(NSNotification *)noti{
     AVIMConversation *conv = noti.userInfo[WBMessageConversationKey];
     AVIMTypedMessage *tMsg = noti.userInfo[WBMessageMessageKey];
-
+    
     if (![conv.conversationId isEqualToString:self.conversation.conversationId]) {
         return;
     }
@@ -224,7 +259,7 @@
         // 把收到的消息加入列表,并刷新
         do_dispatch_async_mainQueue(^{
             BOOL isBottom = [self isTableViewBottomVisible];
-
+            
             WBMessageModel *message = [WBMessageModel createWIthTypedMessage:tMsg];
             [self appendAMessageToTableView:message];
             
@@ -242,7 +277,7 @@
         });
         
     }
-
+    
 }
 #pragma mark -  GestureRecognizer Action
 #pragma mark -  Btn Click
@@ -285,7 +320,7 @@
     return isScroolBottom;
 }
 - (void)appendAMessageToTableView:(WBMessageModel *)aMessage{
-
+    
     WBChatMessageBaseCellModel *cellModel = [WBChatMessageBaseCellModel modelWithMessageModel:aMessage];
     [self.dataArray addObject:cellModel];
     [self.tableView reloadData];
@@ -295,7 +330,7 @@
     for (NSInteger i = self.dataArray.count - 1; i >=0 ; i--) {
         WBChatMessageBaseCellModel *cellModel = self.dataArray[i];
         if (cellModel.messageModel == aMessage) {
-//            NSInteger index = [self.dataArray indexOfObject:cellModel];
+            //            NSInteger index = [self.dataArray indexOfObject:cellModel];
             [self.tableView reloadData];
             break;
         }
@@ -332,8 +367,8 @@
             WBChatMessageBaseCellModel *secondModel = localMessages[j];
             
             // 3.1,处理时间
-            //判断两条会话时间，是否在1分钟
-            BOOL outFifteen = [NSDate wb_miniteInterval:1 firstTime:firstModel.cellTimeStamp secondTime:secondModel.cellTimeStamp];
+            //判断两条会话时间，是否在3分钟
+            BOOL outFifteen = [NSDate wb_miniteInterval:3 firstTime:firstModel.cellTimeStamp secondTime:secondModel.cellTimeStamp];
             if (outFifteen) {
                 WBChatMessageTimeCellModel *timeFM = [WBChatMessageTimeCellModel modelWithTimeStamp:secondModel.cellTimeStamp];
                 [messagesArray addObject:timeFM];
@@ -349,11 +384,11 @@
     [self.view addSubview:self.tableView];
     self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 10, 0);
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-
+    
     
     
     WBChatBarView *keyBoard = [[WBChatBarView alloc] initWithFrame:CGRectMake(0, kWBScreenHeight - 48 - WB_NavHeight - WB_IPHONEX_BOTTOM_SPACE,
-                                                                        kWBScreenWidth, 48)];
+                                                                              kWBScreenWidth, 48)];
     [self.view addSubview:keyBoard];
     self.chatBar = keyBoard;
     self.chatBar.delegate = self;
@@ -366,7 +401,7 @@
     [WBNotificationCenter addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [WBNotificationCenter addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
     [WBNotificationCenter addObserver:self selector:@selector(receiveNewMessgae:) name:WBMessageNewReceiveNotification object:nil];
-
+    
     
 }
 #pragma mark -  Public Methods
