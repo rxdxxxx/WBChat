@@ -13,12 +13,14 @@
 #import "WBSelectPhotoTool.h"
 #import "WBChatMessageTimeCellModel.h"
 #import "UIScrollView+WBRefresh.h"
+#import "WBImageBrowserView.h"
 
-@interface WBChatViewController ()<WBChatBarViewDelegate,WBChatBarViewDataSource,WBSelectPhotoToolDelegate>
+@interface WBChatViewController ()<WBChatBarViewDelegate,WBChatBarViewDataSource,WBSelectPhotoToolDelegate,WBChatMessageCellDelegate>
 @property (nonatomic, strong) AVIMConversation *conversation;
 @property (nonatomic, strong) NSMutableArray<WBChatMessageBaseCellModel *> *dataArray;
 @property (nonatomic, strong) WBChatBarView *chatBar;
 @property (nonatomic, strong) WBSelectPhotoTool *photoTool;
+@property (nonatomic, strong) WBImageBrowserView *pictureBrowserView;
 @end
 
 @implementation WBChatViewController
@@ -55,7 +57,6 @@
                                                              limit:20
                                                            success:^(NSArray<WBMessageModel *> * messageArray)
      {
-//         [self.tableView.mj_header endRefreshing];
          
          NSMutableArray *temp = [NSMutableArray new];
          for (WBMessageModel *message in messageArray) {
@@ -115,6 +116,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     WBChatMessageBaseCell *cell = [WBChatMessageBaseCell cellWithTableView:tableView
                                                                  cellModel:self.dataArray[indexPath.row]];
+    cell.delegate = self;
     return cell;
 }
 
@@ -135,6 +137,21 @@
 }
 
 #pragma mark -  CustomDelegate
+#pragma mark - WBImageBrowserViewDelegate
+#pragma mark - WBChatMessageCellDelegate
+- (void)cell:(WBChatMessageBaseCell *)cell tapImageViewModel:(WBChatMessageBaseCellModel *)cellModel{
+    
+    NSMutableArray *imageMessageArray = [NSMutableArray array];
+    for (WBChatMessageBaseCellModel *cellModel in self.dataArray) {
+        if (cellModel.cellType == WBChatCellTypeImage) {
+            [imageMessageArray addObject:cellModel.messageModel];
+        }
+    }
+    
+    WBImageBrowserView *pictureBrowserView = [WBImageBrowserView browserWithImageArray:imageMessageArray];
+    pictureBrowserView.startIndex = [imageMessageArray indexOfObject:cellModel.messageModel] + 1;  //开始索引
+}
+
 #pragma mark - WBChatBarViewDataSource
 - (NSArray<NSDictionary *> *)plusBoardItemInfos:(WBChatBarView *)keyBoardView{
     return @[PlusBoardItemDicInfo([UIImage wb_resourceImageNamed:@"chat_bar_icons_pic"],@"相册",@(WBPlusBoardButtonTypePhotoAlbum)),

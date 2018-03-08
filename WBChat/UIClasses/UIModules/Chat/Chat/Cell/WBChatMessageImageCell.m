@@ -74,8 +74,11 @@
 }
 #pragma mark -  GestureRecognizer Action
 - (void)tapImageAction:(UITapGestureRecognizer *)tap{
-    CGRect coverFrame = [self.dialogCellImageView convertRect:self.dialogCellImageView.bounds toView:nil];
-    [WBShowBigImageTool showWithImage:self.dialogCellImageView.image orgFrame:coverFrame];
+    if([self.delegate respondsToSelector:@selector(cell:tapImageViewModel:)]){
+        [self.delegate cell:self tapImageViewModel:self.cellModel];
+    }
+//    CGRect coverFrame = [self.dialogCellImageView convertRect:self.dialogCellImageView.bounds toView:nil];
+//    [WBShowBigImageTool showWithImage:self.dialogCellImageView.image orgFrame:coverFrame];
 }
 #pragma mark -  Btn Click
 #pragma mark -  Private Methods

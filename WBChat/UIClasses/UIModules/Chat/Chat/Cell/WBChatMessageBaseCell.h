@@ -9,6 +9,13 @@
 #import <UIKit/UIKit.h>
 #import "WBChatMessageBaseCellModel.h"
 #import "UIView+Frame.h"
+@class WBChatMessageBaseCell;
+
+@protocol WBChatMessageCellDelegate <NSObject>
+
+- (void)cell:(WBChatMessageBaseCell *)cell tapImageViewModel:(WBChatMessageBaseCellModel *)cellModel;
+
+@end
 
 @interface WBChatMessageBaseCell : UITableViewCell
 
@@ -23,6 +30,7 @@
  */
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 
+@property (nonatomic, weak) id<WBChatMessageCellDelegate> delegate;
 
 @property (nonatomic, strong) WBChatMessageBaseCellModel *cellModel;
 

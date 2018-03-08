@@ -112,6 +112,8 @@
 		469639B5204147010050773C /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 46963997204147010050773C /* UIView+WebCacheOperation.m */; };
 		469639BA20414B510050773C /* FLAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 469639B620414B500050773C /* FLAnimatedImage.m */; };
 		469639BB20414B510050773C /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 469639B720414B500050773C /* FLAnimatedImageView.m */; };
+		469E33A520511744002D9F4C /* WBImageBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 469E33A220511743002D9F4C /* WBImageBrowserCell.m */; };
+		469E33A620511744002D9F4C /* WBImageBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 469E33A420511743002D9F4C /* WBImageBrowserView.m */; };
 		46A7A8B2200C796100061340 /* WBChatKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B1200C796100061340 /* WBChatKit.m */; };
 		46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B4200C7F4000061340 /* WBIMClientDelegateImp.m */; };
 		46A7A8BC200C921900061340 /* Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46A7A8BB200C921900061340 /* Other.bundle */; };
@@ -355,6 +357,10 @@
 		469639B720414B500050773C /* FLAnimatedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FLAnimatedImageView.m; sourceTree = "<group>"; };
 		469639B820414B500050773C /* FLAnimatedImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImage.h; sourceTree = "<group>"; };
 		469639B920414B500050773C /* FLAnimatedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FLAnimatedImageView.h; sourceTree = "<group>"; };
+		469E33A120511743002D9F4C /* WBImageBrowserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageBrowserCell.h; sourceTree = "<group>"; };
+		469E33A220511743002D9F4C /* WBImageBrowserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageBrowserCell.m; sourceTree = "<group>"; };
+		469E33A320511743002D9F4C /* WBImageBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageBrowserView.h; sourceTree = "<group>"; };
+		469E33A420511743002D9F4C /* WBImageBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageBrowserView.m; sourceTree = "<group>"; };
 		46A7A8B0200C796100061340 /* WBChatKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatKit.h; sourceTree = "<group>"; };
 		46A7A8B1200C796100061340 /* WBChatKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatKit.m; sourceTree = "<group>"; };
 		46A7A8B3200C7F4000061340 /* WBIMClientDelegateImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBIMClientDelegateImp.h; sourceTree = "<group>"; };
@@ -1195,8 +1201,20 @@
 		469E339A2050E1DB002D9F4C /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				469E33A020511743002D9F4C /* WBImageBrowser */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		469E33A020511743002D9F4C /* WBImageBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				469E33A120511743002D9F4C /* WBImageBrowserCell.h */,
+				469E33A220511743002D9F4C /* WBImageBrowserCell.m */,
+				469E33A320511743002D9F4C /* WBImageBrowserView.h */,
+				469E33A420511743002D9F4C /* WBImageBrowserView.m */,
+			);
+			path = WBImageBrowser;
 			sourceTree = "<group>";
 		};
 		46A7A8B6200C890600061340 /* WBDefine */ = {
@@ -1566,12 +1584,14 @@
 				4624A60E201887DB00E7B38A /* WBEmotionPageModel.m in Sources */,
 				465EA94D200F473900BA84C7 /* FMDatabase+WBAutoSql.m in Sources */,
 				46A7A8CA200C96C500061340 /* WBUserManager.m in Sources */,
+				469E33A520511744002D9F4C /* WBImageBrowserCell.m in Sources */,
 				46870B352015EA680066F65A /* WBKeyBoardTextView.m in Sources */,
 				469639A9204147010050773C /* SDWebImageManager.m in Sources */,
 				4637140B1FBD8E71003C2655 /* UITools.m in Sources */,
 				4624A60620187FF500E7B38A /* WBEmotionDisplayBoard.m in Sources */,
 				46FCED3A2047E4360013274F /* WBShowBigImageTool.m in Sources */,
 				46A7A8C8200C96C500061340 /* WBDBClient.m in Sources */,
+				469E33A620511744002D9F4C /* WBImageBrowserView.m in Sources */,
 				469639A8204147010050773C /* SDWebImageImageIOCoder.m in Sources */,
 				465A3286200CB8FF00ABAAAA /* AVIMMessage+WBExtension.m in Sources */,
 				4685CEE92021A7B00047BDD1 /* WBPlusDisplayBoard.m in Sources */,
