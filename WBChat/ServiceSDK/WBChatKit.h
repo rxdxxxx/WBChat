@@ -12,7 +12,7 @@
 #import "WBIMDefine.h"
 @class WBMessageModel;
 @class WBChatListModel;
-
+@class WBChatInfoModel;
 #define WBIMNotificationConnectivityUpdated @"WBIMNotificationConnectivityUpdated" ///< 连接状态变更的通知
 
 #define WBIMNotificationMessageUploadProgress @"WBIMNotificationMessageUploadProgress" ///< 文件上传进度
@@ -135,6 +135,13 @@ NS_ASSUME_NONNULL_BEGIN
  @param conversationId 会话id
  */
 - (void)deleteConversation:(NSString *)conversationId;
+
+#pragma mark - 获取会话的信息
+- (WBChatInfoModel *)chatInfoWithID:(NSString *)conversationId;
+
+#pragma mark - 草稿
+- (BOOL)saveConversation:(NSString *)conversationId draft:(NSString *)draft;
+
 @end
 
 NS_ASSUME_NONNULL_END

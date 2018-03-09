@@ -114,6 +114,7 @@
 		469639BB20414B510050773C /* FLAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 469639B720414B500050773C /* FLAnimatedImageView.m */; };
 		469E33A520511744002D9F4C /* WBImageBrowserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 469E33A220511743002D9F4C /* WBImageBrowserCell.m */; };
 		469E33A620511744002D9F4C /* WBImageBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 469E33A420511743002D9F4C /* WBImageBrowserView.m */; };
+		469FA89720522F9E00A44763 /* WBChatInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 469FA89620522F9E00A44763 /* WBChatInfoModel.m */; };
 		46A7A8B2200C796100061340 /* WBChatKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B1200C796100061340 /* WBChatKit.m */; };
 		46A7A8B5200C7F4000061340 /* WBIMClientDelegateImp.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A7A8B4200C7F4000061340 /* WBIMClientDelegateImp.m */; };
 		46A7A8BC200C921900061340 /* Other.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 46A7A8BB200C921900061340 /* Other.bundle */; };
@@ -361,6 +362,8 @@
 		469E33A220511743002D9F4C /* WBImageBrowserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageBrowserCell.m; sourceTree = "<group>"; };
 		469E33A320511743002D9F4C /* WBImageBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBImageBrowserView.h; sourceTree = "<group>"; };
 		469E33A420511743002D9F4C /* WBImageBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBImageBrowserView.m; sourceTree = "<group>"; };
+		469FA89520522F9E00A44763 /* WBChatInfoModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatInfoModel.h; sourceTree = "<group>"; };
+		469FA89620522F9E00A44763 /* WBChatInfoModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatInfoModel.m; sourceTree = "<group>"; };
 		46A7A8B0200C796100061340 /* WBChatKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBChatKit.h; sourceTree = "<group>"; };
 		46A7A8B1200C796100061340 /* WBChatKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WBChatKit.m; sourceTree = "<group>"; };
 		46A7A8B3200C7F4000061340 /* WBIMClientDelegateImp.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WBIMClientDelegateImp.h; sourceTree = "<group>"; };
@@ -450,6 +453,8 @@
 			children = (
 				461504C8201B199700B495CE /* WBMessageModel.h */,
 				461504C9201B199700B495CE /* WBMessageModel.m */,
+				469FA89520522F9E00A44763 /* WBChatInfoModel.h */,
+				469FA89620522F9E00A44763 /* WBChatInfoModel.m */,
 			);
 			path = WBMessageModel;
 			sourceTree = "<group>";
@@ -1598,6 +1603,7 @@
 				465A32A9200DDFED00ABAAAA /* WBChatViewController.m in Sources */,
 				463713FE1FBD8E71003C2655 /* UIColor+Hex.m in Sources */,
 				46A7A8B2200C796100061340 /* WBChatKit.m in Sources */,
+				469FA89720522F9E00A44763 /* WBChatInfoModel.m in Sources */,
 				469639A1204147010050773C /* SDWebImageCoderHelper.m in Sources */,
 				46870B1F2013026B0066F65A /* TLTalkButton.m in Sources */,
 				4665520C20119DDA007111F6 /* WBChatMessageTextCell.m in Sources */,

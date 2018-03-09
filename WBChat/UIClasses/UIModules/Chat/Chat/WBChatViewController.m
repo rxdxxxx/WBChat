@@ -42,55 +42,12 @@
     
 }
 
-- (void)loadMoreMessage{
-    
-    AVIMMessage *lastMessage = nil;
-    for (WBChatMessageBaseCellModel *cellModel in self.dataArray) {
-        if (cellModel.messageModel.content != nil) {
-            lastMessage = cellModel.messageModel.content;
-            break;
-        }
-    }
-    
-    [[WBChatKit sharedInstance] queryTypedMessagesWithConversation:self.conversation
-                                                      queryMessage:lastMessage
-                                                             limit:20
-                                                           success:^(NSArray<WBMessageModel *> * messageArray)
-     {
-         
-         NSMutableArray *temp = [NSMutableArray new];
-         for (WBMessageModel *message in messageArray) {
-             WBChatMessageBaseCellModel *cellModel = [WBChatMessageBaseCellModel modelWithMessageModel:message];
-             [temp addObject:cellModel];
-         }
-         
-         NSMutableArray *newLoadMessage = [self appendTimerStampIntoMessageArray:temp];
-
-         NSUInteger loadMoreMessageCount = newLoadMessage.count;
-         
-         if (self.dataArray.count) {
-             [newLoadMessage addObjectsFromArray:self.dataArray];
-             self.dataArray = newLoadMessage;
-             [self.tableView reloadData];
-             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:loadMoreMessageCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];             
-             
-         }else{
-             self.dataArray = newLoadMessage;
-             [self.tableView reloadData];
-             [self.tableView wb_scrollToBottomAnimated:NO];
-         }
-         
-         [self.tableView wb_endRefreshing];
-         
-     } error:^(NSError * _Nonnull error) {
-         
-     }];
-}
-
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [[WBChatKit sharedInstance] readConversation:self.conversation];
+    WBChatInfoModel *infoModel = [[WBChatKit sharedInstance] chatInfoWithID:self.conversation.conversationId];
+    self.chatBar.chatText = infoModel.draft;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -98,6 +55,8 @@
     [[[UIApplication sharedApplication] keyWindow] endEditing:YES];
     
     [[WBChatKit sharedInstance] readConversation:self.conversation];
+    BOOL restlt = [[WBChatKit sharedInstance] saveConversation:self.conversation.conversationId draft:self.chatBar.chatText];
+    NSLog(@"%@",@(restlt));
 }
 
 
@@ -185,21 +144,12 @@
     if (sendText.length > 0) {
         
         WBMessageModel *message = [WBMessageModel createWithText:sendText];
-        [self appendAMessageToTableView:message];
-        
-        // 2.1 滚动tableVeiw的代码放在了消息状态变化的通知里面了.不然此处会发生体验不好.
-        [self.tableView wb_scrollToBottomAnimated:NO];
-        
         [self sendMessage:message];
     }
 }
 - (void)chatBar:(WBChatBarView *)keyBoardView recoderAudioPath:(NSString *)audioPath duration:(NSNumber *)duration{
     
     WBMessageModel *message = [WBMessageModel createWithAudioPath:audioPath duration:duration];
-    [self appendAMessageToTableView:message];
-    // 2.1 滚动tableVeiw的代码放在了消息状态变化的通知里面了.不然此处会发生体验不好.
-    [self.tableView wb_scrollToBottomAnimated:NO];
-    
     [self sendMessage:message];
 }
 
@@ -211,9 +161,6 @@
 
 - (void)tool:(WBSelectPhotoTool *)tool didSelectImage:(UIImage *)image{
     WBMessageModel *message = [WBMessageModel createWithImage:image];
-    [self appendAMessageToTableView:message];
-    [self.tableView wb_scrollToBottomAnimated:NO];
-    
     [self sendMessage:message];
 }
 
@@ -299,7 +246,58 @@
 #pragma mark -  GestureRecognizer Action
 #pragma mark -  Btn Click
 #pragma mark -  Private Methods
+- (void)loadMoreMessage{
+    
+    AVIMMessage *lastMessage = nil;
+    for (WBChatMessageBaseCellModel *cellModel in self.dataArray) {
+        if (cellModel.messageModel.content != nil) {
+            lastMessage = cellModel.messageModel.content;
+            break;
+        }
+    }
+    
+    [[WBChatKit sharedInstance] queryTypedMessagesWithConversation:self.conversation
+                                                      queryMessage:lastMessage
+                                                             limit:20
+                                                           success:^(NSArray<WBMessageModel *> * messageArray)
+     {
+         
+         NSMutableArray *temp = [NSMutableArray new];
+         for (WBMessageModel *message in messageArray) {
+             WBChatMessageBaseCellModel *cellModel = [WBChatMessageBaseCellModel modelWithMessageModel:message];
+             [temp addObject:cellModel];
+         }
+         
+         NSMutableArray *newLoadMessage = [self appendTimerStampIntoMessageArray:temp];
+         
+         NSUInteger loadMoreMessageCount = newLoadMessage.count;
+         
+         if (self.dataArray.count) {
+             [newLoadMessage addObjectsFromArray:self.dataArray];
+             self.dataArray = newLoadMessage;
+             [self.tableView reloadData];
+             [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:loadMoreMessageCount inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+             
+         }else{
+             self.dataArray = newLoadMessage;
+             [self.tableView reloadData];
+             [self.tableView wb_scrollToBottomAnimated:NO];
+         }
+         
+         [self.tableView wb_endRefreshing];
+         
+     } error:^(NSError * _Nonnull error) {
+         
+     }];
+}
+
 - (void)sendMessage:(WBMessageModel *)message{
+    
+    [self appendAMessageToTableView:message];
+    
+    // 2.1 滚动tableVeiw的代码放在了消息状态变化的通知里面了.不然此处会发生体验不好.
+    [self.tableView wb_scrollToBottomAnimated:NO];
+    
     
     [[WBChatKit sharedInstance] sendTargetConversation:self.conversation
                                                message:message

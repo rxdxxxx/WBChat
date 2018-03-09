@@ -97,5 +97,20 @@
     return ret;
 }
 
+- (NSMutableAttributedString *)wb_makeSearchString:(NSString *)search color:(UIColor *)color{
+    
+    NSMutableAttributedString* str = [[NSMutableAttributedString alloc] initWithString:self];
+    if (search == nil) {
+        
+    } else {
+        NSRange range = [self rangeOfString:search options:NSCaseInsensitiveSearch];
+        if (range.location == NSNotFound) {
+            return str;
+        }
+        [str addAttribute:NSForegroundColorAttributeName value:color range:range];
+    }
+    return str;
+}
+
 
 @end

@@ -88,7 +88,7 @@
     self.unreadBadgeBtn.frame = cellModel.unreadBadgeBtnF;
     
     self.chatMessageLabel.frame = cellModel.chatMessageF;
-    self.chatMessageLabel.text = cellModel.lastMessageString;
+    self.chatMessageLabel.attributedText = cellModel.lastMessageString;
     
     self.cutLineView.frame = cellModel.cutLineF;
 }

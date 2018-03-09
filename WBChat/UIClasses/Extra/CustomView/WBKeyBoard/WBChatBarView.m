@@ -481,6 +481,13 @@
 
 
 #pragma mark -  Getters and Setters
+- (void)setChatText:(NSString *)chatText{
+    self.textView.text = chatText;
+}
+- (NSString *)chatText{
+    return self.textView.text;
+}
+
 - (void)setDelegate:(id<WBChatBarViewDelegate>)delegate{
     _delegate = delegate;
     self.moreBoard.delegate = delegate;

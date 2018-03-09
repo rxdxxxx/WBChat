@@ -216,6 +216,15 @@
 - (void)deleteConversation:(NSString *)conversationId{
     [[WBChatListManager sharedInstance] deleteConversation:conversationId];
 }
+#pragma mark - 获取会话的信息
+- (WBChatInfoModel *)chatInfoWithID:(NSString *)conversationId{
+    return [[WBChatManager sharedInstance] chatInfoWithID:conversationId];
+}
+
+#pragma mark - 草稿
+- (BOOL)saveConversation:(NSString *)conversationId draft:(NSString *)draft{
+    return [[WBChatManager sharedInstance] saveConversation:conversationId draft:draft];
+}
 
 @end
 

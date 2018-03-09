@@ -133,8 +133,14 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatManager)
         }
     });
 }
-
-
+#pragma mark - 获取会话的信息
+- (WBChatInfoModel *)chatInfoWithID:(NSString *)conversationId{
+    return [[WBChatInfoDao sharedInstance] chatInfoWithID:conversationId];
+}
+#pragma mark - 草稿
+- (BOOL)saveConversation:(NSString *)conversationId draft:(NSString *)draft{
+    return [[WBChatInfoDao sharedInstance] saveConversation:conversationId draft:draft];
+}
 
 #pragma mark - Private Methods
 - (AVIMClient *)client{

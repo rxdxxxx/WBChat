@@ -20,7 +20,7 @@
 
 
 
-@property (nonatomic, copy) NSString *lastMessageString;
+@property (nonatomic, copy) NSAttributedString *lastMessageString;
 @property (nonatomic, copy) NSString *title;
 
 @property (nonatomic, strong) WBChatListModel *dataModel;

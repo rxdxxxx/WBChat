@@ -16,36 +16,46 @@
 @implementation WBChatListCellModel
 
 - (void)handleLastMessageString:(WBChatListModel *)dataModel {
+    if (dataModel.draft.length) {
+        self.lastMessageString = [[NSString stringWithFormat:@"[草稿]%@", dataModel.draft]
+                                  wb_makeSearchString:@"[草稿]"
+                                  color:[UIColor redColor]];;
+        return;
+    }
+    
+    
     AVIMTypedMessage *typedMessage = [dataModel.conversation.lastMessage wb_getValidTypedMessage];
+    NSString *lastString = @"";
     switch (typedMessage.mediaType) {
         case kAVIMMessageMediaTypeText:
-            self.lastMessageString = typedMessage.text;
+            lastString = typedMessage.text;
             break;
         case kAVIMMessageMediaTypeImage:
-            self.lastMessageString = @"[图片]";
+            lastString = @"[图片]";
             break;
         case kAVIMMessageMediaTypeAudio:
-            self.lastMessageString = @"[语音]";
+            lastString = @"[语音]";
             break;
         case kAVIMMessageMediaTypeVideo:
-            self.lastMessageString = @"[视频]";
+            lastString = @"[视频]";
             break;
         case kAVIMMessageMediaTypeLocation:
-            self.lastMessageString = @"[位置]";
+            lastString = @"[位置]";
             break;
         case kAVIMMessageMediaTypeFile:
-            self.lastMessageString = @"[文件]";
+            lastString = @"[文件]";
             break;
         case kAVIMMessageMediaTypeRecalled:
-            self.lastMessageString = @"[有一条撤回的消息]";
+            lastString = @"[有一条撤回的消息]";
             break;
         case kAVIMMessageMediaTypeNone:
-            self.lastMessageString = @"";
+            lastString = @"";
             break;
         default:
-            self.lastMessageString = @"[不支持的消息类型]";
+            lastString = @"[不支持的消息类型]";
             break;
     }
+    self.lastMessageString = [[NSAttributedString alloc] initWithString:lastString];
 }
 
 - (void)handleTitle:(WBChatListModel *)dataModel{

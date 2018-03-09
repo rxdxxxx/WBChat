@@ -18,6 +18,9 @@
 @property (nonatomic, weak) id<WBChatBarViewDelegate> delegate;
 @property (nonatomic, weak) id<WBChatBarViewDataSource> dataSource;
 
+@property (nonatomic, copy) NSString *chatText;
+
+
 - (void)stateToInit;
 
 @end

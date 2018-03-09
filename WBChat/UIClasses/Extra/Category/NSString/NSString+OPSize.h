@@ -32,4 +32,5 @@
 
 - (NSString *)wb_MD5String;
 
+- (NSMutableAttributedString *)wb_makeSearchString:(NSString *)search color:(UIColor *)color;
 @end

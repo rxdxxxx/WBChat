@@ -10,6 +10,7 @@
 #import "WBCoreConfiguration.h"
 #import <AVOSCloud/AVOSCloud.h>
 #import <AVOSCloudIM/AVOSCloudIM.h>
+#import "WBChatInfoModel.h"
 
 @class WBMessageModel;
 
@@ -56,6 +57,10 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS_HEADER(WBChatManager)
                                      limit:(NSInteger)limit
                                      block:(AVIMArrayResultBlock)block;
 
+#pragma mark - 获取会话的信息
+- (WBChatInfoModel *)chatInfoWithID:(NSString *)conversationId;
 
+#pragma mark - 草稿
+- (BOOL)saveConversation:(NSString *)conversationId draft:(NSString *)draft;
 @end
 NS_ASSUME_NONNULL_END

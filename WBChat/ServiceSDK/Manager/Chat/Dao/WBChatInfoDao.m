@@ -18,7 +18,7 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatInfoDao)
     conversationID          VARCHAR(63) PRIMARY KEY,\
     topTime                 INTEGER DEFAULT 0,\
     conversationBGFileID    Text,\
-    draft                   Text\
+    draft                   Text,\
     extend                  Text\
     );";
     
@@ -28,6 +28,59 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatInfoDao)
     return ret;
 }
 
+- (WBChatInfoModel *)chatInfoWithID:(NSString *)conversationId{
+    if (conversationId == nil) {
+        return nil;
+    }
+    __block WBChatInfoModel * infoModel = nil;
+    [[WBDBClient sharedInstance].dbQueue inDatabase:^(FMDatabase *db) {
+        
+        NSString *selectSQl =@"SELECT * FROM t_ChatInfo where conversationID = ?;";
+        FMResultSet *set = [db executeQuery:selectSQl withArgumentsInArray:@[conversationId]];
+        if ([set next]) {
+            infoModel = [WBChatInfoModel new];
+            infoModel.conversationID = conversationId;
+            infoModel.topTime = [set intForColumn:WBChatInfoDaoKeyTopTime];
+            infoModel.conversationBGFileID = [set stringForColumn:WBChatInfoDaoKeyBGFileID];
+            infoModel.draft = [set stringForColumn:WBChatInfoDaoKeyDraft];
+            infoModel.extend = [set stringForColumn:WBChatInfoDaoKeyExtend];
+        }
+        [set close];
+        
+    }];
+    return infoModel;
+}
+
+- (BOOL)saveChatInfo:(WBChatInfoModel *)infoModel{
+    if (infoModel.conversationID.length == 0) {
+        return NO;
+    }
+    
+    __block BOOL result=NO;
+    
+    [[WBDBClient sharedInstance].dbQueue inDatabase:^(FMDatabase *db) {
+        
+        // 1.把基本信息,插入list表中
+        NSString *sql = @"INSERT OR REPLACE INTO " WBChatInfoDaoTableName @" ("
+        WBChatInfoDaoKeyId             @", "
+        WBChatInfoDaoKeyTopTime        @", "
+        WBChatInfoDaoKeyBGFileID       @", "
+        WBChatInfoDaoKeyDraft          @", "
+        WBChatInfoDaoKeyExtend
+        @") VALUES(?, ?, ?, ?, ?);";
+        
+        result = [db executeUpdate:sql withArgumentsInArray:
+                  @[infoModel.conversationID,
+                    @(infoModel.topTime),
+                    infoModel.conversationBGFileID.length ? infoModel.conversationBGFileID : @"",
+                    infoModel.draft.length ? infoModel.draft : @"",
+                    infoModel.extend.length ? infoModel.extend : @""
+                    ]
+                  ];
+        
+    }];
+    return result;
+}
 
 /**
  根据conversationId,删除一个本地的会话
@@ -48,4 +101,18 @@ WB_SYNTHESIZE_SINGLETON_FOR_CLASS(WBChatInfoDao)
     return isExist;
     
 }
+
+
+
+- (BOOL)saveConversation:(NSString *)conversationId draft:(NSString *)draft{
+    WBChatInfoModel *chatInfo = [self chatInfoWithID:conversationId];
+    if (chatInfo == nil) {
+        chatInfo = [WBChatInfoModel new];
+        chatInfo.conversationID = conversationId;
+    }
+    chatInfo.draft = draft;
+    return [self saveChatInfo:chatInfo];
+}
+
+
 @end
