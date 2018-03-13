@@ -86,6 +86,15 @@
 }
 
 
+#pragma mark -  GestureRecognizer Action
+- (void)bubbleLongPress:(UILongPressGestureRecognizer *)longPress{
+    
+}
+- (void)resentMessage:(UITapGestureRecognizer *)longPress{
+    if ([self.delegate respondsToSelector:@selector(cell:resendMessage:)]) {
+        [self.delegate cell:self resendMessage:self.cellModel];
+    }
+}
 
 #pragma mark - getters and setters
 - (void)setCellModel:(WBChatMessageBaseCellModel *)cellModel{

@@ -56,7 +56,7 @@
     
     [[WBChatKit sharedInstance] readConversation:self.conversation];
     BOOL restlt = [[WBChatKit sharedInstance] saveConversation:self.conversation.conversationId draft:self.chatBar.chatText];
-    NSLog(@"%@",@(restlt));
+    
 }
 
 
@@ -109,6 +109,11 @@
     
     WBImageBrowserView *pictureBrowserView = [WBImageBrowserView browserWithImageArray:imageMessageArray];
     pictureBrowserView.startIndex = [imageMessageArray indexOfObject:cellModel.messageModel] + 1;  //开始索引
+}
+
+- (void)cell:(WBChatMessageBaseCell *)cell resendMessage:(WBChatMessageBaseCellModel *)cellModel{
+    [self.dataArray removeObject:cellModel];
+    [self sendMessage:cellModel.messageModel];
 }
 
 #pragma mark - WBChatBarViewDataSource
@@ -295,6 +300,7 @@
     
     [self appendAMessageToTableView:message];
     
+    
     // 2.1 滚动tableVeiw的代码放在了消息状态变化的通知里面了.不然此处会发生体验不好.
     [self.tableView wb_scrollToBottomAnimated:NO];
     
@@ -335,9 +341,29 @@
     return isScroolBottom;
 }
 - (void)appendAMessageToTableView:(WBMessageModel *)aMessage{
-    
+    NSMutableArray *messagesArray = [[NSMutableArray alloc]initWithCapacity:20];
+
     WBChatMessageBaseCellModel *cellModel = [WBChatMessageBaseCellModel modelWithMessageModel:aMessage];
-    [self.dataArray addObject:cellModel];
+    
+    // 如果没有消息, 增加一个时间
+    if (self.dataArray.count == 0) {
+        WBChatMessageTimeCellModel *timeFM = [WBChatMessageTimeCellModel modelWithTimeStamp:cellModel.cellTimeStamp];
+        [messagesArray addObject:timeFM];
+    }
+    
+    // 如果有消息, 和上一条消息的时间间隔
+    else{
+        WBChatMessageBaseCellModel *lastCellModel = self.dataArray.lastObject;
+        
+        BOOL timeOffset = [NSDate wb_miniteInterval:3 firstTime:cellModel.cellTimeStamp secondTime:lastCellModel.cellTimeStamp];
+        if (timeOffset) {
+            WBChatMessageTimeCellModel *timeFM = [WBChatMessageTimeCellModel modelWithTimeStamp:cellModel.cellTimeStamp];
+            [messagesArray addObject:timeFM];
+        }
+    }
+    [messagesArray addObject:cellModel];
+
+    [self.dataArray addObjectsFromArray:messagesArray];
     [self.tableView reloadData];
 }
 
@@ -383,8 +409,8 @@
             
             // 3.1,处理时间
             //判断两条会话时间，是否在3分钟
-            BOOL outFifteen = [NSDate wb_miniteInterval:3 firstTime:firstModel.cellTimeStamp secondTime:secondModel.cellTimeStamp];
-            if (outFifteen) {
+            BOOL timeOffset = [NSDate wb_miniteInterval:3 firstTime:firstModel.cellTimeStamp secondTime:secondModel.cellTimeStamp];
+            if (timeOffset) {
                 WBChatMessageTimeCellModel *timeFM = [WBChatMessageTimeCellModel modelWithTimeStamp:secondModel.cellTimeStamp];
                 [messagesArray addObject:timeFM];
             }

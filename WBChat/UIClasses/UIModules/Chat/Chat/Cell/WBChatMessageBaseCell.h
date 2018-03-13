@@ -13,6 +13,7 @@
 
 @protocol WBChatMessageCellDelegate <NSObject>
 
+- (void)cell:(WBChatMessageBaseCell *)cell resendMessage:(WBChatMessageBaseCellModel *)cellModel;
 - (void)cell:(WBChatMessageBaseCell *)cell tapImageViewModel:(WBChatMessageBaseCellModel *)cellModel;
 
 @end

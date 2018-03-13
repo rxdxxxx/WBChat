@@ -102,6 +102,7 @@
 }
 
 - (int64_t)cellTimeStamp{
-    return self.messageModel.content.sendTimestamp ? : self.messageModel.content.readTimestamp;
+    int64_t time = self.messageModel.content.sendTimestamp ? : self.messageModel.content.readTimestamp;
+    return time ? : [[NSDate date] timeIntervalSince1970];
 }
 @end
