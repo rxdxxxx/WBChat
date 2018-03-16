@@ -7,6 +7,7 @@
 //
 
 #import "WBDiscoverListController.h"
+#import "UIViewController+NavBarItemExtension.h"
 
 @interface WBDiscoverListController ()
 

@@ -9,7 +9,8 @@
 #import "WBLoginController.h"
 #import "WBRegisterController.h"
 #import "WBConfig.h"
-
+#import "WBModuleControl.h"
+#import "WBNavigationController.h"
 @interface WBLoginController ()
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -38,11 +39,11 @@
 
 - (IBAction)loginBtnClick:(id)sender {
     
-    if (![UITools isValidateEmail:self.userNameTextField.text]) {
+    if (![WBTools isValidateEmail:self.userNameTextField.text]) {
         [WBHUD showErrorMessage:@"请输入正确的邮箱地址" toView:self.view];
         return;
     }
-    if (![UITools isValidatePassWord:self.passwordTextField.text]) {
+    if (![WBTools isValidatePassWord:self.passwordTextField.text]) {
         [WBHUD showErrorMessage:@"密码必须是8-16位数字、字符组合" toView:self.view];
         return;
     }

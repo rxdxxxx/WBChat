@@ -10,6 +10,7 @@
 #import "WBSearchContactsController.h"
 #import "WBContactsListUserCell.h"
 #import "WBChatViewController.h"
+#import "UIViewController+NavBarItemExtension.h"
 
 @interface WBContactsListController ()
 @property (nonatomic, strong) NSMutableArray *dataArray;

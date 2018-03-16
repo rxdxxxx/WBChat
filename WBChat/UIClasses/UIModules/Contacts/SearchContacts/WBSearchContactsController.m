@@ -8,6 +8,7 @@
 
 #import "WBSearchContactsController.h"
 #import "WBSearchContactsCell.h"
+#import "UIViewController+NavBarItemExtension.h"
 
 @interface WBSearchContactsController ()
 

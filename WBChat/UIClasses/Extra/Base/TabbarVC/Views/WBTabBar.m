@@ -9,7 +9,7 @@
 #import "WBTabBar.h"
 #import "WBTabBarButton.h"
 #import "WBConfig.h"
-
+#import "UIColor+Hex.h"
 @interface WBTabBar ()
 
 @property (nonatomic, strong)NSMutableArray* tabBarButtons;
